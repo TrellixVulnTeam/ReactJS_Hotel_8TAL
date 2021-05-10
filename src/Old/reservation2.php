@@ -81,7 +81,7 @@
                                                         $roomType = new RoomType();
                                                         $basket = new Basket();
                                                         $_SESSION['total'] = 0;
-                                                        $query = $user->getUserByEmail($_SESSION['email']);//get User
+                                                        $query = $user->getUserByEmail($_SESSION['email']);//get User_id
                                                         if(mysqli_num_rows($query) > 0) {
                                                             $fetch = mysqli_fetch_assoc($query);
                                                             $query1 = $basket->getBasketByUserID($fetch['user_id']);//get basket_id, 

@@ -154,7 +154,6 @@
                                         
                                         <button type="button" class="btn-room btn" name="kha" onclick="window.location.href='reservation2.php'">CONTINUE</button>
 
-                                        
                                     </form>
                                     <!-- Booking Summary End -->
                                 </div>
@@ -195,16 +194,28 @@
                                                 
                                                 include "checkBasket.php";
 
-                                                if(mysqli_num_rows($result) > 0) {
+                                                if(ISSET($_SESSION['email'])) {
+                                                    if(mysqli_num_rows($result) > 0) {
+                                                        while($fetch_data = mysqli_fetch_assoc($result)) {
+                                                            if(in_array($fetch_data['room_id'], $_SESSION['room_id']) === false) {
+                                                                ?>
+                                                                <form class="reservation-package_item">
+                                                                    <b>Room <?php echo $fetch_data['noroom']; ?> </b>
+                                                                    <a class="btn btn-room" href="save-roombook.php?room_id=<?php echo $fetch_data['room_id'];?>">BOOK</a>
+                                                                </form>
+                                                            <?php
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                else {
                                                     while($fetch_data = mysqli_fetch_assoc($result)) {
-                                                        if(in_array($fetch_data['room_id'], $_SESSION['room_id']) === false) {
                                                             ?>
                                                             <form class="reservation-package_item">
                                                                 <b>Room <?php echo $fetch_data['noroom']; ?> </b>
                                                                 <a class="btn btn-room" href="save-roombook.php?room_id=<?php echo $fetch_data['room_id'];?>">BOOK</a>
                                                             </form>
                                                         <?php
-                                                        }
                                                     }
                                                 }
                                             ?>
@@ -241,16 +252,28 @@
                                                 
                                                 include "checkBasket.php";
 
-                                                if(mysqli_num_rows($result) > 0) {
+                                                if(ISSET($_SESSION['email'])) {
+                                                    if(mysqli_num_rows($result) > 0) {
+                                                        while($fetch_data = mysqli_fetch_assoc($result)) {
+                                                            if(in_array($fetch_data['room_id'], $_SESSION['room_id']) === false) {
+                                                                ?>
+                                                                <form class="reservation-package_item">
+                                                                    <b>Room <?php echo $fetch_data['noroom']; ?> </b>
+                                                                    <a class="btn btn-room" href="save-roombook.php?room_id=<?php echo $fetch_data['room_id'];?>">BOOK</a>
+                                                                </form>
+                                                            <?php
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                else {
                                                     while($fetch_data = mysqli_fetch_assoc($result)) {
-                                                        if(in_array($fetch_data['room_id'], $_SESSION['room_id']) === false) {
                                                             ?>
                                                             <form class="reservation-package_item">
                                                                 <b>Room <?php echo $fetch_data['noroom']; ?> </b>
                                                                 <a class="btn btn-room" href="save-roombook.php?room_id=<?php echo $fetch_data['room_id'];?>">BOOK</a>
                                                             </form>
                                                         <?php
-                                                        }
                                                     }
                                                 }
                                             ?>
@@ -286,16 +309,28 @@
                                                 
                                                 include "checkBasket.php";
 
-                                                if(mysqli_num_rows($result) > 0) {
+                                                if(ISSET($_SESSION['email'])) {
+                                                    if(mysqli_num_rows($result) > 0) {
+                                                        while($fetch_data = mysqli_fetch_assoc($result)) {
+                                                            if(in_array($fetch_data['room_id'], $_SESSION['room_id']) === false) {
+                                                                ?>
+                                                                <form class="reservation-package_item">
+                                                                    <b>Room <?php echo $fetch_data['noroom']; ?> </b>
+                                                                    <a class="btn btn-room" href="save-roombook.php?room_id=<?php echo $fetch_data['room_id'];?>">BOOK</a>
+                                                                </form>
+                                                            <?php
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                else {
                                                     while($fetch_data = mysqli_fetch_assoc($result)) {
-                                                        if(in_array($fetch_data['room_id'], $_SESSION['room_id']) === false) {
                                                             ?>
                                                             <form class="reservation-package_item">
                                                                 <b>Room <?php echo $fetch_data['noroom']; ?> </b>
                                                                 <a class="btn btn-room" href="save-roombook.php?room_id=<?php echo $fetch_data['room_id'];?>">BOOK</a>
                                                             </form>
                                                         <?php
-                                                        }
                                                     }
                                                 }
                                             ?>
@@ -331,16 +366,28 @@
                                                 
                                                 include "checkBasket.php";
 
-                                                if(mysqli_num_rows($result) > 0) {
+                                                if(ISSET($_SESSION['email'])) {
+                                                    if(mysqli_num_rows($result) > 0) {
+                                                        while($fetch_data = mysqli_fetch_assoc($result)) {
+                                                            if(in_array($fetch_data['room_id'], $_SESSION['room_id']) === false) {
+                                                                ?>
+                                                                <form class="reservation-package_item">
+                                                                    <b>Room <?php echo $fetch_data['noroom']; ?> </b>
+                                                                    <a class="btn btn-room" href="save-roombook.php?room_id=<?php echo $fetch_data['room_id'];?>">BOOK</a>
+                                                                </form>
+                                                            <?php
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                else {
                                                     while($fetch_data = mysqli_fetch_assoc($result)) {
-                                                        if(in_array($fetch_data['room_id'], $_SESSION['room_id']) === false) {
                                                             ?>
                                                             <form class="reservation-package_item">
                                                                 <b>Room <?php echo $fetch_data['noroom']; ?> </b>
                                                                 <a class="btn btn-room" href="save-roombook.php?room_id=<?php echo $fetch_data['room_id'];?>">BOOK</a>
                                                             </form>
                                                         <?php
-                                                        }
                                                     }
                                                 }
                                             ?>

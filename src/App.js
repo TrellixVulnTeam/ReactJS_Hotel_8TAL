@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import routes from './routes'
+import Gallery from './components/body/gallery'
 
 
 import {
@@ -12,7 +13,6 @@ import {
   useParams
 } from "react-router-dom";
 
-
 import React, { Component } from 'react';
 
 class App extends Component {
@@ -21,6 +21,7 @@ class App extends Component {
       <Router>
         <div>
         <ul>
+          <Gallery></Gallery>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -30,6 +31,7 @@ class App extends Component {
           <li>
             <Link to="/topics">Topics</Link>
           </li>
+          
         </ul>
 
 

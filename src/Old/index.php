@@ -129,7 +129,7 @@
                             <div class="col-md-3 col-sm-6 col-12">
                                 <div class="card card-product mb-3 ">
                                     <div class="thumbnail">
-                                        <img class="card-img-top " src="images/home/Presidential1.jpg " alt="HKTQueen">
+                                        <img class="card-img-top " src="images/home/Presidential1.jpg" alt="HKTQueen">
                                     </div>
                                     <div class="card-body ">
                                         <h5 class="card-title ">Presidential Room</h5>
@@ -144,7 +144,7 @@
                             <div class="col-md-3 col-sm-6 col-12">
                                 <div class="card card-product mb-3 ">
                                     <div class="thumbnail">
-                                        <img class="card-img-top " src="images/Deluxe/Deluxe2.jpg " alt="HKTQueen">
+                                        <img class="card-img-top " src="images/home/Presidential1.jpg" alt="HKTQueen">
                                     </div>
                                     <div class="card-body ">
                                         <h5 class="card-title ">Deluxe Room</h5>
@@ -159,7 +159,7 @@
                             <div class="col-md-3 col-sm-6 col-12">
                                 <div class="card card-product mb-3 ">
                                     <div class="thumbnail">
-                                        <img class="card-img-top " src="images/Superior/Superior1.jpg " alt="HKTQueen">
+                                        <img class="card-img-top " src="images/home/Presidential1.jpg" alt="HKTQueen">
                                     </div>
                                     <div class="card-body ">
                                         <h5 class="card-title ">Superior Room</h5>
@@ -174,7 +174,7 @@
                             <div class="col-md-3 col-sm-6 col-12">
                                 <div class="card card-product mb-3 ">
                                     <div class="thumbnail">
-                                        <img class="card-img-top " src="images/Standard/Standard1.jpg " alt="HKTQueen">
+                                        <img class="card-img-top " src="images/home/Presidential1.jpg" alt="HKTQueen">
                                     </div>
 
                                     <div class="card-body ">
@@ -194,7 +194,7 @@
                             <div class="col-md-3 col-sm-6 col-12">
                                 <div class="card card-product mb-3 ">
                                     <div class="thumbnail">
-                                        <img class="card-img-top " src="images/Presidential/Presidential2.webp " alt="HKTQueen">
+                                        <img class="card-img-top " src="images/home/Presidential1.jpg" alt="HKTQueen">
                                     </div>
                                     <div class="card-body ">
                                         <h5 class="card-title ">Presidential Room</h5>
@@ -209,7 +209,7 @@
                             <div class="col-md-3 col-sm-6 col-12">
                                 <div class="card card-product mb-3 ">
                                     <div class="thumbnail">
-                                        <img class="card-img-top " src="images/Deluxe/Deluxe2.jpg " alt="HKTQueen">
+                                        <img class="card-img-top " src="images/home/Presidential1.jpg" alt="HKTQueen">
                                     </div>
 
                                     <div class="card-body ">
@@ -225,7 +225,7 @@
                             <div class="col-md-3 col-sm-6 col-12">
                                 <div class="card card-product mb-3 ">
                                     <div class="thumbnail">
-                                        <img class="card-img-top " src="images/Superior/Superior2.jpg " alt="HKTQueen">
+                                        <img class="card-img-top " src="images/home/Presidential1.jpg" alt="HKTQueen">
                                     </div>
 
                                     <div class="card-body ">
@@ -241,7 +241,7 @@
                             <div class="col-md-3 col-sm-6 col-12">
                                 <div class="card card-product mb-3 ">
                                     <div class="thumbnail">
-                                        <img class="card-img-top " src="images/Standard/Standard2.jpg " alt="HKTQueen">
+                                        <img class="card-img-top " src="images/home/Presidential1.jpg" alt="HKTQueen">
                                     </div>
 
                                     <div class="card-body ">

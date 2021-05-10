@@ -1,5 +1,6 @@
 <?php
     session_start();
+    // error_reporting(0);
 ?>
 <!-- MENU -->
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #363636; color: #fff;">

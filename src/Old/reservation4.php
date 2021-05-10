@@ -6,6 +6,7 @@ require_once "signup-form/PHPMailer/Exception.php";
 $email = "";
 $name = "";
 $errors = array();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +89,7 @@ $errors = array();
                                             </div>
 
                                             <div class="bill-content-room">
-                                                <span>01/04/2021</span>
+                                            <span><?php echo $date = date("d-m-Y");?></span>
                                                 <table class="table table-responsive-lg table-responsive-xl">
                                                     <thead>
                                                         <tr>

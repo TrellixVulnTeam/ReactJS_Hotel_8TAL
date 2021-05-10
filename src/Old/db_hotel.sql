@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `rooms` (
     `status` VARCHAR(255) NOT NULL,
     `phone` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`room_id`),
-    FOREIGN KEY (roomtype_id) REFERENCES `roomtypes`(roomtype_id)
+    FOREIGN KEY (roomtype_id) REFERENCES `roomtypes`(roomtype_id) on delete cascade on update cascade
 );
 
 CREATE TABLE IF NOT EXISTS `roomstatus` (
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `roomstatus` (
 	`arrive` DATE NOT NULL,
 	`depart` DATE NOT NULL,
 	PRIMARY KEY (`roomstatus_id`),
-	FOREIGN KEY(room_id) REFERENCES `rooms`(room_id)
+	FOREIGN KEY(room_id) REFERENCES `rooms`(room_id) on delete cascade on update cascade
 );
 
 
@@ -100,6 +100,17 @@ INSERT INTO `users` (`name`, `email`, `password`, `status`, `role`)
         ("Kha Nguyen", "kha.nguyen22@student.passerellesnumeriques.org", "$2y$10$xlKuRozj7KYvifghzkkV7uj9rJYIOsvWSwZIh8y0OQNG1bw6HQhee", "verified", "admin"),
         ("Admin", "admin@gmail.com", "admin", "verified", "admin");
 
+        INSERT INTO `users` (`name`, `email`, `password`, `status`, `role`) 
+        VALUES ("Nguyen Dinh Kha", "dinhkhakl01@gmail.com", "khanguyen123456", "verified", "admin"),
+        ("Nguyen Doan Ngoc Hau", "ndnh01@gmail.com", "hauNguyen123456", "verified", "admin"),
+		("Kha Nguyen", "hau.nguyen22@student.passerellesnumeriques.org", "haunguyen123456", "verified", "admin"),
+        ("Admin", "admin@gmail.com", "admin", "verified", "admin"),
+        ("Trung Trinh", "trungtrinh@gmail.com", "trungtrinh123456", "verified", "user"),
+        ("Nhu Quynh", "nhuquynh@gmail.com", "nhuquynh123456", "verified", "user"),
+		("Thu Sang", "thusang@gmail.com", "thusang123456", "verified", "user"),
+		("Dinh Kha", "dinhkha@gmail.com", "dinhkha123456", "verified", "user"),
+		("User", "user@gmail.com", "user123456", "verified", "user");
+
 -- CREATE TABLE IF NOT EXISTS `payment` ()
 
 CREATE TABLE IF NOT EXISTS `roombooks` (
@@ -113,14 +124,20 @@ CREATE TABLE IF NOT EXISTS `roombooks` (
     `payment` CHAR(10) NOT NULL,
     PRIMARY KEY (`roombook_id`),
     FOREIGN KEY(user_id) REFERENCES `users`(user_id),
-    FOREIGN KEY(room_id) REFERENCES `rooms`(room_id)
+    FOREIGN KEY(room_id) REFERENCES `rooms`(room_id) on delete cascade on update cascade
 );
 
 INSERT INTO `roombooks` (`user_id`, `room_id`, `phone`,  `arrive`, `depart`, `status`, `payment`)
-        VALUES (2, 5, '0337965469', '2021/04/15', '2021/04/18', 'pending', 'unpaid'),
-                (1, 10, '0337965469', '2021/04/20', '2021/04/22', 'pending', 'unpaid'),
-                (2, 12, '0337965469', '2021/04/29', '2021/04/30', 'pending', 'unpaid'),
-                (1, 13, '0337965469', '2021/04/25', '2021/04/27', 'pending', 'unpaid');
+        VALUES (1, 1, '0337965469', '2021/04/15', '2021/04/18', 'pending', 'unpaid'),
+                (2,2, '0337978967', '2021/04/20', '2021/04/22', 'pending', 'unpaid'),
+                (3, 3, '0337912369', '2021/04/29', '2021/04/30', 'pending', 'unpaid'),
+                (4, 4, '0334445469', '2021/04/25', '2021/04/27', 'pending', 'unpaid'),
+				(5, 5, '0311445469', '2021/04/28', '2021/04/30', 'pending', 'unpaid'),
+				(6, 6, '0852445469', '2021/05/25', '2021/05/27', 'pending', 'unpaid'),
+				(7, 7, '0334125469', '2021/05/5', '2021/05/7', 'pending', 'unpaid'),
+				(8, 8, '0314745469', '2021/05/10', '2021/05/17', 'pending', 'unpaid'),
+				(9, 9, '0334445469', '2021/5/5', '2021/5/17', 'pending', 'unpaid'),
+				(10,10,'0339275169', '2021/05/25', '2021/05/27', 'pending', 'unpaid');
 
 CREATE TABLE IF NOT EXISTS `roomstatus` (
 	`roomstatus_id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -143,5 +160,5 @@ CREATE TABLE IF NOT EXISTS `basket` (
     `room_id` INT(11) NOT NULL,
     PRIMARY KEY (`basket_id`),
 	FOREIGN KEY(user_id) REFERENCES `users`(user_id),
-	FOREIGN KEY(room_id) REFERENCES `rooms`(room_id)
+	FOREIGN KEY(room_id) REFERENCES `rooms`(room_id) on delete cascade on update cascade
 );
