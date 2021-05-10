@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import routes from './routes'
 import Gallery from './components/body/gallery'
-
+import Test from './API/test'
 
 import {
   BrowserRouter as Router,
@@ -18,31 +18,7 @@ import React, { Component } from 'react';
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div>
-        <ul>
-          <Gallery></Gallery>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/topics">Topics</Link>
-          </li>
-          
-        </ul>
-
-
-          <Switch>
-            {
-              this.show2(routes)
-            }
-
-          </Switch>
-        </div>
-      </Router>
+      <Test> HELoo</Test>
     );
   }
   show2 = (routes) => {
