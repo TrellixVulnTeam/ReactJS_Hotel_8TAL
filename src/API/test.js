@@ -10,9 +10,9 @@ class test extends Component {
        return await axios.get('http://localhost/long/api/classapi.php/product');
       
     }
-    GET=()=>{
+    componentDidMount(){
 
-        this.CALL.then((res)=>{
+        this.CALL().then((res)=>{
             console.log(res.data)
             this.setState({data:res.data})
         })
@@ -20,7 +20,8 @@ class test extends Component {
     render() {
         return (
             <div>
-                {this.state.data}
+		<h2>{this.GET}</h2>
+                {JSON.stringify(this.state.data)}
             </div>
         );
     }
