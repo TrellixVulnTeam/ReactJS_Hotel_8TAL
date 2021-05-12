@@ -1,7 +1,6 @@
 <?php
-
 require 'config.php';
-$config;
+$config; 
 
 class Database{   
         private $host;
@@ -23,17 +22,22 @@ class Database{
             $this->dbname=$config['DB']['schema'];
             $this->charset=$config['DB']['charset'];
             $this->connection = new mysqli($this->host, $this->user, $this->pass, $this->dbname); 
-            $this->connection->set_charset($this->charset);      
+            $this->connection->set_charset($this->charset);   
+
             if ($this->connection->connect_error) { 
                 $this->error('Failed to connect to MySQL - ' . $this->connection->connect_error);
             }
         }
-        public function getDBName(){ return $this->dbname;}
-        public function setDBName($dbname ){$this->dbname=$dbname;}
+
+        public function getDBName(){
+             return $this->dbname;
+            }
+
+        public function setDBName($dbname ){
+            $this->dbname=$dbname;
+        }
     
-      
         public function query($query) {
-     
             try{
                $this->result= $this->connection->query($query);
             }
@@ -45,17 +49,16 @@ class Database{
             return $this->result;
         }
     
-        public function fetchAll() {
-           
+        public function fetchAll() { //tìm nạp tất cả các hàng kết quả và trả về tập kết quả dưới dạng một mảng kết hợp
             $result = array();
-            while ($row= $this->fetchArray()) {
+            while ($row= $this->fetchArray()) { /// ? Chưa hiểu fetchArray() lấy dữ liệu từ nào
                     $result[] = $row;
                 }       
             return $result;
         }
     
-        public function fetchArray() {         
-            $result =$this->result->fetch_assoc();            
+        public function fetchArray() {      //tìm nạp một hàng kết quả dưới dạng một mảng kết hợp, một mảng số hoặc cả hai.   
+            $result =$this->result->fetch_assoc();     //Hàm fetch_assoc () / mysqli_fetch_assoc () tìm nạp một hàng kết quả dưới dạng một mảng kết hợp.       
             return $result;
         }
     

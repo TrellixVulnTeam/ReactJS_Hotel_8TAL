@@ -1,16 +1,13 @@
 <?php
-
-
 class Restful_api {
     protected $method   = '';
     protected $endpoint = '';
     protected $params   = array();
     protected $file     = null;
 
-
     public function __construct(){
-        $this->_input();
-        $this->_process_api();
+        $this->_input(); // input từ mô ra rửa ?
+        $this->_process_api();// vẫn chưa kịp load
     }
 
     protected function _input(){
@@ -19,8 +16,7 @@ class Restful_api {
     
        $this->endpoint = trim($_SERVER['PATH_INFO'],'/');
        }
-      
-     
+    
        $this->params=$_SERVER['QUERY_STRING'];
     
         $method         = $_SERVER['REQUEST_METHOD'];
@@ -58,18 +54,20 @@ class Restful_api {
 
     protected function _process_api(){     
         if (method_exists($this, $this->endpoint)){
-            $this->{$this->endpoint}();
+            $this->{$this->endpoint}();//() Gọi lại hàm product
         }
         else {
             $this->response(500, "Unknown endpoint");
         }
     }
+
     protected function response($status_code, $data = NULL){
         header($this->_build_http_header_string($status_code));
         header("Content-Type: application/json");
         echo json_encode($data);
         die();
     }
+
     protected function _build_http_header_string($status_code){
         $status = array(
             200 => 'OK',

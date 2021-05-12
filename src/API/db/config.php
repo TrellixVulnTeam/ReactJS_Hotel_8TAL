@@ -8,8 +8,5 @@ $config =array(
             'charset'=>'utf8'
 	    )
         );
-	
-
-
 
 ?>
