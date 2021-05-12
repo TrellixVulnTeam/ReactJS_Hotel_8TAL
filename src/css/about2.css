@@ -1,3 +1,24 @@
+
+
+.col7{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.card {
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    transition-duration: 0.3s;
+}
+
+.card img:hover {
+    transform: scale(1.2);
+}
+
 :root {
     --black-color: #000;
     --text-color: #333;
@@ -11,7 +32,7 @@
 }
 
 .container-fluid {
-    /* background-image: url('https://data.1freewallpapers.com/download/starfish-sand-beach-sea-foam-landscape.jpg'); */
+    background-image: url('img/nen.jpeg');
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -526,5 +547,3 @@ span {
         color: var(--black-color);
     }
 }
-
-
