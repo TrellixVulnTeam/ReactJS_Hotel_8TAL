@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../../css/about.css'
 import '../../css/style.css'
+import '../footer/footer'
+import Footer from '../footer/footer';
 
 class About extends Component { 
     render() {
@@ -55,6 +57,7 @@ class About extends Component {
             </div>
           </div>
         </div>
+        <Footer></Footer>
       </div>
       
     

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../css/gallery.css'
-
+import  Footer from '../footer/footer'
 class gallery extends Component {
     render() {
         return (
@@ -116,6 +116,7 @@ class gallery extends Component {
                     {/* END BODY */}
 
                 </div>
+                <Footer></Footer>
 
             </div>
         );

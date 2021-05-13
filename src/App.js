@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import Test from './API/test'
 
-import Index from './admin/signup-form/resetCode'
+import Index from './components/body/Home'
 
 import {
   BrowserRouter as Router,

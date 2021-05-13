@@ -14,7 +14,7 @@ class login extends Component {
           <h2 className="text-center">Login Form</h2>
         
           <div className="form-group">
-            <input className="form-control" type="email" name="email" placeholder="Email Address" required defaultValue="" />
+            <input className="form-control" type="email" name="email"  placeholder="Email Address" required defaultValue="" />
           </div>
           <div className="form-group">
             <input className="form-control" type="password" name="password" placeholder="Password" required />

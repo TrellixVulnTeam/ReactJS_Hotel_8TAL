@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../css/contact.css'
 import '../../css/style.css'
-
+import  Footer from '../footer/footer'
 class contact extends Component {
   render() {
     return (
@@ -51,7 +51,8 @@ class contact extends Component {
               </div>
            
           </section>
-     
+          <Footer></Footer>
+
       </div>
 
     );
