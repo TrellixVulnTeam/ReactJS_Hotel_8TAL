@@ -52,7 +52,7 @@
     <div id="wrapper">
 
         <!--Start sidebar-wrapper-->
-        <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+        <div id="sidebar-wrapper" d ata-simplebar="" data-simplebar-auto-hide="true">
             <div class="brand-logo">
                 <a href="index.php">
                     <img src="assets/images/logo.png" class="logo-icon" alt="logo icon">

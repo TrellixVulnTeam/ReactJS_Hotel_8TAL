@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import Test from './API/test'
 
-import Index from './admin/signup-form/signup'
+import Index from './admin/signup-form/resetCode'
 
 import {
   BrowserRouter as Router,
@@ -18,7 +18,7 @@ import React, { Component } from 'react';
 class App extends Component {
   render() {
     return (
-     < Index />
+      < Index />
     );
   }
   show2 = (routes) => {
@@ -26,14 +26,14 @@ class App extends Component {
     let result;
     result = routes.map((route, index) => {
       console.log(route)
-            return (
-                     <Route
-                        path={route.path}
-                        exact={route.exact}
-                        component={route.main}/> 
-                    );
-                                      }
-                       )
+      return (
+        <Route
+          path={route.path}
+          exact={route.exact}
+          component={route.main} />
+      );
+    }
+    )
 
     return result;
 

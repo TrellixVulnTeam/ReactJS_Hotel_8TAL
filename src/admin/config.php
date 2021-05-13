@@ -1,4 +1,4 @@
-rcc
+<?
 	class Rooms
 	{
 		private $servername = "localhost";
