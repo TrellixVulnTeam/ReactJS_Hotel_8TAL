@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../css/gallery.css'
+
 class gallery extends Component {
     render() {
         return (

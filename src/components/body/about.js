@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import '../../css/about2.css'
+import '../../css/about.css'
+import '../../css/style.css'
 
 class About extends Component { 
     render() {
         return (
 
-    <div>      
-    <div className="container-fluid">
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-md-7">
-            <br />
-            <br />
+          
             <img className="card-img-top " src="images/home/introduction1.jpg" />
           </div>
           <div className="col-md-5" style={{color: 'white'}}>
@@ -58,10 +56,9 @@ class About extends Component {
           </div>
         </div>
       </div>
-      <br />
-      <br />
-    </div>
-    </div> 
+      
+    
+ 
         );
     }
 }

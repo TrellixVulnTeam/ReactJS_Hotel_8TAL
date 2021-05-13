@@ -3,6 +3,8 @@
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    
+background-repeat: no-repeat;
     height: 100%;
 }
 
@@ -110,7 +112,8 @@
     color: #FFF;
     font-size: 12px;
     height: 38px;
-    background: #8E7037;
+    color: #8E7037 !important;
+    background-color: #8E7037 !important;
     line-height: 24px;
     border-radius: 0px;
     font-weight: 600;
@@ -120,7 +123,7 @@
 .btn-room:hover {
     border: 2px solid #8E7037;
     background: transparent;
-    color: #8E7037;
+    color: #8e6537;
 }
 
 .navbar-fixed-top {
