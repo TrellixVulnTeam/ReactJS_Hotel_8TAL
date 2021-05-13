@@ -1,14 +1,7 @@
 import logo from './logo.svg';
 import Test from './API/test'
-import Contact from './components/body/contact'
-import Gallery from './components/body/gallery'
-import About from './components/body/about'
 
-import Signin from './components/body/SignupForm/signin'
-import Signup from './components/body/SignupForm/signup'
-
-
-import 'bootstrap/dist/css/bootstrap.css';
+import Index from './admin/signup-form/signup'
 
 import {
   BrowserRouter as Router,
@@ -21,10 +14,11 @@ import {
 
 import React, { Component } from 'react';
 
+
 class App extends Component {
   render() {
     return (
-     < Contact />
+     < Index />
     );
   }
   show2 = (routes) => {
