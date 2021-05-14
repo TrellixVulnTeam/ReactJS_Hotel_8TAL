@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 const Home= React.lazy(()=> import ('./components/body/Home'));
 const Gallery= React.lazy(()=> import ('./components/body/gallery'));
 const Contact= React.lazy(()=> import ('./components/body/contact'));
-const Room= React.lazy(()=>import ('./components/body/Rooms'));
+const Rooms= React.lazy(()=>import ('./components/body/Rooms'));
 const About= React.lazy(()=>import ('./components/body/about'));
 const SignIn= React.lazy(()=>import ('./components/body/SignupForm/signin'));
 const SignUp= React.lazy(()=>import ('./components/body/SignupForm/signup'));
@@ -20,8 +20,8 @@ ReactDOM.render(
   <BrowserRouter>
     <React.Suspense fallback={<div></div>}>
     <Switch>
-
-    <Reservation2/>
+    {/* <Rooms/> */}
+    <Home/>
       
     </Switch>
     </React.Suspense>
