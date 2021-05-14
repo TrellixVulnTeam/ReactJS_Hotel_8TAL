@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '../../css/style.css';
-import 'bootstrap/dist/css/bootstrap.css'
+import '../../css/footer.css'
+
 class Footer extends Component {
   render() {
     return (
@@ -63,5 +63,3 @@ class Footer extends Component {
 }
 
 export default Footer;
-
-

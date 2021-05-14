@@ -3,6 +3,26 @@ import '../../css/contact.css'
 import '../../css/style.css'
 import  Footer from '../footer/footer'
 class contact extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+        name:'',
+        email:'',
+        subject:'',
+        message:'',  
+
+    }
+}
+
+myhandleChange =(event)=>{
+    let name = event.target.name;
+    let value = event.target.value;
+    this.setState({[name]:value});
+}
+mySubmitHandler =(event)=>{
+   event.preventDefault();    
+}
+
   render() {
     return (
 

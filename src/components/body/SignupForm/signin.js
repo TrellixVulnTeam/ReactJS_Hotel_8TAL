@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 import './style.css'
 class signin extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            email:'',
+            passsWord:''     
+        }
+    }
+    myhandleChange =(event)=>{
+         let name = event.target.name;
+         let value = event.target.value;
+         this.setState({[name]:value});
+    }
+    mySubmitHandler =(event)=>{
+        event.preventDefault();    
+    }
     render() {
         return (
             <div>

@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    </header>
+  
     <div class="container-fluid">
         <!-- MENU -->
         <?php

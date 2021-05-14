@@ -4,7 +4,7 @@
 class Restful_api {
     protected $method   = '';
     protected $endpoint = '';
-    protected $params   = array();
+    protected $params;
     protected $file     = null;
 
 
@@ -61,6 +61,7 @@ class Restful_api {
             $this->{$this->endpoint}();
         }
         else {
+	
             $this->response(500, "Unknown endpoint");
         }
     }
@@ -79,8 +80,12 @@ class Restful_api {
         );
         return "HTTP/1.1 " . $status_code . " " . $status[$status_code];
     }
+    protected function getQuery(){
+		$arr=array();
+				for ($i=0; $i < count( explode('&',$this->params)); $i++) { 
+					$slice =explode('=', explode('&',$this->params)[$i]);					
+					$arr[$slice[0]]=$slice[1];
+				}
+	return $arr;
 }
-
-
-
-?>
+}

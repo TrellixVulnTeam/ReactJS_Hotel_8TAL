@@ -1,6 +1,24 @@
 import React, { Component } from 'react';
 import './style.css'
+
 class signup extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            fullname:'',
+            email:'',
+            passWord:'',
+            confirmPass:'',
+        }
+    }
+    myhandleChange =(event)=>{
+        let name = event.target.name;
+        let value = event.target.value;
+        this.setState({[name]:value});
+   }
+   mySubmitHandler =(event)=>{
+       event.preventDefault();    
+   }
     render() {
         return (
             <div>
