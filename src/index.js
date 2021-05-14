@@ -12,7 +12,9 @@ const About= React.lazy(()=>import ('./components/body/about'));
 const SignIn= React.lazy(()=>import ('./components/body/SignupForm/signin'));
 const SignUp= React.lazy(()=>import ('./components/body/SignupForm/signup'));
 const Reservation= React.lazy(()=>import ('./components/body/reservation'));
-const Reservation2= React.lazy(()=>import ('./components/body/reservation2'));
+// const Reservation3= React.lazy(()=>import ('./components/body/reservation3'));
+const Footer= React.lazy(()=>import ('./components/footer/footer'));
+//const Reservation3= React.lazy(()=>import ('./components/body/reservation3'));
 
 
 
@@ -20,8 +22,9 @@ ReactDOM.render(
   <BrowserRouter>
     <React.Suspense fallback={<div></div>}>
     <Switch>
-    {/* <Rooms/> */}
-    <Home/>
+    
+    <Reservation/>
+ 
       
     </Switch>
     </React.Suspense>
