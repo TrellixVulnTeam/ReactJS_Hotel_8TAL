@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Router, Switch } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import Header from './components/header/header';
 import 'bootstrap/dist/css/bootstrap.css';
+import Show from './components/router/router/Show/Show';
 
 const Home= React.lazy(()=> import ('./components/body/Home'));
 const Gallery= React.lazy(()=> import ('./components/body/gallery'));
@@ -17,11 +19,16 @@ const Reservation2= React.lazy(()=>import ('./components/body/reservation2'));
 
 
 ReactDOM.render(
+  <React.StrictMode>
+    <Header/>
+  </React.StrictMode>,
+  document.getElementById('root0')
+);
+ReactDOM.render(
   <BrowserRouter>
     <React.Suspense fallback={<div></div>}>
     <Switch>
-
-    <Reservation2/>
+    <Home/>
       
     </Switch>
     </React.Suspense>

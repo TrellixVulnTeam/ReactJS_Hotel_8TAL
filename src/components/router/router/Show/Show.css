@@ -1,0 +1,42 @@
+
+.menu {
+    list-style: none;
+    float: left;
+    padding: 20px 45px;
+    list-style-type: none;
+    background-color: #232323;
+    color: white;
+   
+} 
+
+
+li a {
+    color: white;
+    text-decoration: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
+
+
+li a {
+    background-color: transparent;
+}
+ul{
+    background-color: coral;
+}
+
+/* :root{
+    --text-list-style: none;sss
+    --text-float: right;
+    --text-padding : 20px 30px;
+}
+.l1{
+    list-style: var(--text-list-style);
+    float: var( --text-float);
+    padding: var( --text-padding);
+}
+.l2{
+    list-style: var(--text-list-style);
+    float: var( --text-float);
+    padding: var(--text-padding);
+} */
