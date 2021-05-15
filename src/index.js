@@ -11,21 +11,21 @@ const Rooms= React.lazy(()=>import ('./components/body/Rooms'));
 const About= React.lazy(()=>import ('./components/body/about'));
 const SignIn= React.lazy(()=>import ('./components/body/SignupForm/signin'));
 const SignUp= React.lazy(()=>import ('./components/body/SignupForm/signup'));
-const Reservation= React.lazy(()=>import ('./components/body/reservation'));
-// const Reservation3= React.lazy(()=>import ('./components/body/reservation3'));
+
 const Footer= React.lazy(()=>import ('./components/footer/footer'));
-//const Reservation3= React.lazy(()=>import ('./components/body/reservation3'));
-
-
+const Spa= React.lazy(()=>import ('./components/body/services/spa'));
+const Pool= React.lazy(()=>import ('./components/body/services/pool'));
+const Restaurant= React.lazy(()=>import ('./components/body/services/restaurant'));
+const Reservation1= React.lazy(()=>import ('./components/body/reservation/reservation1'));
+const Reservation2= React.lazy(()=>import ('./components/body/reservation/reservation2'));
+const Reservation3= React.lazy(()=>import ('./components/body/reservation/reservation3'));
+const Reservation4= React.lazy(()=>import ('./components/body/reservation/reservation4'));
 
 ReactDOM.render(
   <BrowserRouter>
     <React.Suspense fallback={<div></div>}>
-    <Switch>
-    
-    <Reservation/>
- 
-      
+    <Switch>   
+    <Reservation4/>
     </Switch>
     </React.Suspense>
   </BrowserRouter>,

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import '../../css/bootstrap-select.min.css'
-import '../../css/styles.css'
-import Footer from '../footer/footer';
+import '../../../css/bootstrap-select.min.css'
+import '../../../css/styles.css'
 
-class reservation extends Component {
+class Reservation1 extends Component {
     render() {
         return (
             <div>
@@ -325,12 +324,11 @@ class reservation extends Component {
     </div>
   </section>
   {/* END / RESERVATION */}
-                                      
-                                      <Footer></Footer>
+                                    
             </div>
             </div>
         );
     }
 }
 
-export default reservation;
+export default Reservation1;

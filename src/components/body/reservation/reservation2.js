@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../../../css/bootstrap-select.min.css'
 import '../../../css/styles.css'
-import Footer from '../../footer/footer';
 
 class Reservation2 extends Component {
     render() {
@@ -121,7 +120,6 @@ class Reservation2 extends Component {
         </form></div>
     </div>
   </div>
-                                          <Footer></Footer>
 </div>
 
             </div>

@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
-function mapStateToProps(state) {
-    return {
-
-    };
-}
+import '../../../css/bootstrap-select.min.css'
+import '../../../css/services.css'
 
 class Restaurant extends Component {
     render() {
