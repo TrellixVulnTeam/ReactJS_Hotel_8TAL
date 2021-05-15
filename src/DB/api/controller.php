@@ -1,11 +1,11 @@
 <?php
 
-require 'api/user.php';
-require 'api/room.php';
-require 'api/contact.php';
-require 'api/basket.php';
-require 'api/roomtype.php';
-require 'api/roombook.php';
+require 'user.php';
+require 'room.php';
+require 'contact.php';
+require 'basket.php';
+require 'roomtype.php';
+require 'roombook.php';
 
 
 

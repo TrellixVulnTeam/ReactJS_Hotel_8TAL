@@ -45,16 +45,16 @@ class Database{
             return $this->result;
         }
     
-        public function fetchAll() {
+        public function getAllData() {
            
             $result = array();
-            while ($row= $this->fetchArray()) {
+            while ($row= $this->getData()) {
                     $result[] = $row;
                 }       
             return $result;
         }
     
-        public function fetchArray() {         
+        public function getData() {         
             $result =$this->result->fetch_assoc();            
             return $result;
         }

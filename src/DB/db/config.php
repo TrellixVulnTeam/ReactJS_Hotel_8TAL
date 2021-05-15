@@ -4,7 +4,7 @@ $config =array(
 	        'user' => 'root',
 	        'pass' => '',
 	        'host' => 'localhost',
-            'schema'=> 'php_project',
+            'schema'=> 'db_hotel',
             'charset'=>'utf8'
 	    )
         );

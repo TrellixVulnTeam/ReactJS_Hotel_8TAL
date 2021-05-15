@@ -20,9 +20,7 @@ ReactDOM.render(
   <BrowserRouter>
     <React.Suspense fallback={<div></div>}>
     <Switch>
-
-    <Reservation2/>
-      
+    <Home/>     
     </Switch>
     </React.Suspense>
   </BrowserRouter>,
