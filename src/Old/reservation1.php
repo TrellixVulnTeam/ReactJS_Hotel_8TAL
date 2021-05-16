@@ -103,8 +103,8 @@
                                         <?php 
                                             if(ISSET($_SESSION['email'])) {
                                                 include_once "signup-form/connection.php";
-                                                $user = new User();
-                                                $room = new Room();
+                                               $user = new User();
+                                                 $room = new Room();
                                                 $roomType = new RoomType();
                                                 $basket = new Basket();
                                                 $_SESSION['total'] = 0;

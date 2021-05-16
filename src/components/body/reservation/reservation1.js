@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../../css/bootstrap-select.min.css'
-import '../../css/styles.css'
-import Footer from '../footer/footer';
+import '../../../css/bootstrap-select.min.css'
+import '../../../css/styles.css'
+import Footer from '../../footer/footer';
 
 class reservation extends Component {
     render() {
