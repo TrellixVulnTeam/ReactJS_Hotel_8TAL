@@ -24,6 +24,19 @@ li a {
 ul{
     background-color: coral;
 }
+.menu1 {
+    list-style: none;
+    float: left;
+    padding: 20px 40px ;
+    list-style-type: none;
+    text-align: bottom;
+    background-color: #232323;
+    color: white;
+   height: 62px;
+} 
+
+
+
 
 /* :root{
     --text-list-style: none;sss

@@ -6,8 +6,6 @@ class Header extends Component {
     render() {
         return (
           <div>
-
-         
           <Carousel>
           <Carousel.Item interval={1000}>
             <img

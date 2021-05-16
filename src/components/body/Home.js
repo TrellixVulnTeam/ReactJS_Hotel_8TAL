@@ -1,51 +1,19 @@
 import React, { Component } from 'react';
+import Header from '../header/header'
+// import Footer from '../../components/footer/footer';
+class Homee extends Component {
 
-class Home extends Component {
-
-    render() {
-        return (
-            <div>
-        <div className="container">
-          <form className="booking-form">
-            <div className="arrive">
-              <label htmlFor="arrive">Arrive</label>
-              <input id="arrive" type="date" />
-            </div>
-            <div className="departure">
-              <label htmlFor="departure">Departure</label>
-              <input id="departure" type="date" />
-            </div>
-            <div className="select-book">
-              <label>Person</label>
-              <select name="book" id="person" className>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-              </select>
-            </div>
-            <div className="select-book">
-              <label>Type room</label>
-              <select name="book" className>
-                <option value="luxury">Luxury</option>
-                <option value="family">Family</option>
-                <option value="couple">Couple </option>
-                <option value="standard">Standard </option>
-              </select>
-            </div>
-            <div className="submit-form">
-              <input type="submit" defaultValue="Check Availability" />
-            </div>
-          </form>
-        </div>
-        <p>
-        </p><div className="container ">
+  render() {
+    return (
+      <div>
+        <div> <Header /> </div>
+        <div className="container ">
           <center>
-            <h1 style={{fontFamily: 'Didot', color: '#CC6600'}}>WELCOME TO HKTQUEEN HOTEL</h1>
+            <h1 style={{ fontFamily: 'Didot', color: '#CC6600' }}>WELCOME TO HKTQUEEN HOTEL</h1>
           </center><br />
           <div className="row infor_1 ">
-            <div className="col-md-5 " style={{fontSize: '22px', fontFamily: 'Optima', color: '#003300'}}>HKT Queen Hotel Đà Nẵng City is a world-class 5-star hotel, located at the intersection of four main districts, which is considered the heart and center of the city Đà Nẵng. It takes you only 35 minutes drive from the hotel to Đà Nẵng
-              airport, 8 minutes to the commercial and entertainment center of the city. With 300 elegantly designed and elegant standard rooms and suites with attention to every detail, it will bring the utmost comfort and comfort to you whether
+            <div className="col-md-5 " style={{ fontSize: '22px', fontFamily: 'Optima', color: '#003300' }}>HKT Queen Hotel Đà Nẵng City is a world-class 5-star hotel, located at the intersection of four main districts, which is considered the heart and center of the city Đà Nẵng. It takes you only 35 minutes drive from the hotel to Đà Nẵng
+            airport, 8 minutes to the commercial and entertainment center of the city. With 300 elegantly designed and elegant standard rooms and suites with attention to every detail, it will bring the utmost comfort and comfort to you whether
               it is a relaxing time or a business trip. </div>
             <div className="col-md-7 ">
               <div className="thumbnail">
@@ -61,7 +29,7 @@ class Home extends Component {
           <div className="row mt-5 ">
             <h2 className="list-product-title ">
               <center>
-                <h1 style={{fontFamily: 'Didot', color: '#CC6600'}}>ROOM</h1>
+                <h1 style={{ fontFamily: 'Didot', color: '#CC6600' }}>ROOM</h1>
               </center>
             </h2>
           </div>
@@ -203,8 +171,9 @@ class Home extends Component {
           </div>
         </div>
       </div>
-        );
-    }
+     
+    );
+  }
 }
 
-export default Home;
+export default Homee;

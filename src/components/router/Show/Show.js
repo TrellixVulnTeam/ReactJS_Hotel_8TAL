@@ -9,18 +9,18 @@ class Show extends Component {
         <ul>
           <li className="menu"><Link to="/"> HOME </Link></li>
           <li className="menu"><Link to="/room"> ROOMS  </Link></li>
-          <li className="menu"><Link to="/services"> SERVICES
-        {/* <Dropdown>
-  <DropdownToggle caret color="primary">
-    Material dropdown
-  </DropdownToggle>
-  <DropdownMenu>
-    <NavLink to="/link_to_somewhere">
-      <DropdownItem>Link</DropdownItem>
-    </NavLink>
-  </DropdownMenu>
-</Dropdown>*/}
-          </Link></li>
+
+          <li className="menu1">
+            <li className="--dropdown">
+              <Link to="/services"> SERVICES </Link>
+              <i className="fa fa-caret-down" />
+              <div className="--dropdown-content">
+                <a> <Link to="/restaurant">RESTAURANT </Link> </a>
+                <a> <Link to="/spa">SPA</Link> </a>
+                <a> <Link to="/pool">POOL</Link> </a>
+              </div>
+            </li>
+          </li>
           <li className="menu"><Link to="/reservation"> RESERVATION  </Link></li>
           <li className="menu"><Link to="/gallery"> GALLARY </Link></li>
           <li className="menu"><Link to="/contact"> CONTACT  </Link></li>
@@ -54,4 +54,5 @@ class Show extends Component {
 }
 
 export default Show;
+
 
