@@ -1,6 +1,6 @@
 
 import React from 'react'
-const Home = React.lazy(() => import('../body/home'));
+const Home = React.lazy(() => import('../body/Home'));
 const Gallery = React.lazy(() => import('../body/gallery'));
 const Contact = React.lazy(() => import('../body/contact'));
 const Rooms = React.lazy(() => import('../body/room'));

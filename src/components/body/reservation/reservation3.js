@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../../css/bootstrap-select.min.css'
 import '../../../css/styles.css'
-
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 class Reservation3 extends Component {
     render() {
@@ -48,8 +48,8 @@ class Reservation3 extends Component {
                               <input className="form-control wrap-box" type="text" placeholder="EX: 04/25" />
                             </div>
                             <div className="btn-reservation">
-                              <a className="btn-back btn" href="reservation2.php">PREVIOUS</a>
-                              <a className="btn-room btn" href="reservation4.php">CONTINUE</a>
+                              <a className="btn-back btn" href="/reservation/2">PREVIOUS</a>
+                              <a className="btn-room btn" ><Link to="/reservation/4">CONTINUE</Link></a>
                             </div>
                           </form>
                         </div>

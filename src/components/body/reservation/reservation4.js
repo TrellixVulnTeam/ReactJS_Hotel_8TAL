@@ -190,7 +190,7 @@ class Reservation4 extends Component {
                             <hr className="new2" />
                             <span className="thanks">Thank you for your reservation.</span>
                             <div className="btn-reservation">
-                              <a className="btn-back btn" href="reservation3.php">PREVIOUS</a>
+                              <a className="btn-back btn" href="/reservation/3">PREVIOUS</a>
                               <button type="submit" className="btn-room btn" name="confirm">CONFIRM</button>
                             </div>
                           </form>

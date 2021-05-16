@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Item_Home from '../Item/Item_home'
 import '../../css/style.css'
-
-const SliderHeader= React.lazy(()=>import ('../header/sliderHeader'));
+import Carousel from 'react-bootstrap/Carousel'
 class Home extends Component {
 
   render() {
@@ -42,6 +41,8 @@ class Home extends Component {
           <div id="slider2" className="carousel slide mt-1 " data-ride="carousel">
             <div className="carousel-inner">
               <div className="carousel-item active">
+              <Carousel>
+  <Carousel.Item>
                 <div className="row ">
                   <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
                   <Item_Home image="images/home/Presidential1.jpg" roomtype="Family" des=""></Item_Home>
@@ -51,26 +52,22 @@ class Home extends Component {
 
 
                 </div>
-              </div>
-              <div className="carousel-item room2">
+                </Carousel.Item>
+  <Carousel.Item>
                 <div className="row">
                   <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
                   <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
                   <Item_Home image="images/home/Presidential1.jpg" roomtype="Standard" des=""></Item_Home>
                   <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
                 </div>
+                </Carousel.Item>
+</Carousel>
               </div>
             </div>
-            <a className="carousel-control-prev room2" href="#slider2" role="button" data-slide="prev">
-              <span className="carousel-control-prev-icon " aria-hidden="true " />
-              <span className="sr-only ">Previous</span>
-            </a>
-            <a className="carousel-control-next room2" href="#slider2" role="button" data-slide="next">
-              <span className="carousel-control-next-icon " aria-hidden="true " />
-              <span className="sr-only ">Next</span>
-            </a>
+
+            </div>
           </div>
-        </div>
+      
         {/* end slide room*/}
         {/* Load jquery trước khi load bootstrap js */}
         <br />

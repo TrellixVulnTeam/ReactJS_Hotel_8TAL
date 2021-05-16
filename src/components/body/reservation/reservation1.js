@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../../css/bootstrap-select.min.css'
 import '../../../css/styles.css'
 import Footer from '../../footer/footer';
-
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 class reservation extends Component {
     render() {
         return (
@@ -100,7 +100,7 @@ class reservation extends Component {
                                          
                                       }
                                   ?*/}
-                  <button type="button" className="btn-room btn" name="kha" onclick="window.location.href='reservation2.php'">CONTINUE</button>
+                  <button type="button" className="btn-room btn" name="btn" ><Link to="/reservation/2">CONTINUE</Link></button>
                 </form>
                 {/* Booking Summary End */}
               </div>

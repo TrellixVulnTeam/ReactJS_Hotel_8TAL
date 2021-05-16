@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Footer from '../../footer/footer';
 import '../../../css/bootstrap-select.min.css'
 import '../../../css/styles.css'
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 class reservation2 extends Component {
     render() {
         return (
@@ -71,8 +72,8 @@ class reservation2 extends Component {
                     </table>
                   </div>
                   <div className="btn-reservation ">
-                    <a className="btn-back btn" href="reservation1.php">PREVIOUS</a>
-                    <a className="btn-room btn" href="reservation3.php">CONTINUE</a>
+                    <a className="btn-back btn" href="/reservation/1">PREVIOUS</a>
+                    <a className="btn-room btn" ><Link to="/reservation/3">CONTINUE</Link></a>
                   </div>
                 </form>
               </div>
