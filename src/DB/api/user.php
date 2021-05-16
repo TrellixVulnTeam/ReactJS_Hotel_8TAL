@@ -18,7 +18,7 @@ class User extends restful_api
 		if ($this->method == 'GET') {
 			$con = new Database();
 			if (empty($this->params)) {
-				$con->query("SELECT * FROM `user`");
+				$con->query("SELECT * FROM `users`");
 				$data = $con->getAllData();
 			} else {
 				// $arr = explode('=', $this->params);

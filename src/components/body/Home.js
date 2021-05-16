@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Item_Home from '../Item/Item_home'
+import '../../css/style.css'
+
+const SliderHeader= React.lazy(()=>import ('../header/sliderHeader'));
 class Home extends Component {
 
   render() {

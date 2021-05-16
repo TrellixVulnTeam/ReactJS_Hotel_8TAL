@@ -1,33 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter,  Switch, Route } from 'react-router-dom';
+import {BrowserRouter as Router } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
-
-const Home= React.lazy(()=> import ('./components/body/Home'));
-const Gallery= React.lazy(()=> import ('./components/body/gallery'));
-const Contact= React.lazy(()=> import ('./components/body/contact'));
-const Room= React.lazy(()=>import ('./components/body/room'));
-
-const About= React.lazy(()=>import ('./components/body/about'));
-const SignIn= React.lazy(()=>import ('./components/body/SignupForm/signin'));
-const SignUp= React.lazy(()=>import ('./components/body/SignupForm/signup'));
-const Reservation1= React.lazy(()=>import ('./components/body/reservation/reservation1'));
-const Reservation2= React.lazy(()=>import ('./components/body/reservation/reservation2'));
-const Header= React.lazy(()=>import ('./components/header/header'));
-
-
+import App from './App'
+const Header = React.lazy(() => import('./components/header/header'))
 
 ReactDOM.render(
   <BrowserRouter>
-    <React.Suspense fallback={<div></div>}>
-    <Switch>
-    <Room/>     
-    </Switch>
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <App></App>
+     
     </React.Suspense>
   </BrowserRouter>,
   document.getElementById('root')
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

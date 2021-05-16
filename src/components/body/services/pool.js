@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '../../../css/bootstrap-select.min.css'
-import '../../../css/services.css'
+import '../../../css/style.css';
+
 class Pool extends Component {
     render() {
         return (

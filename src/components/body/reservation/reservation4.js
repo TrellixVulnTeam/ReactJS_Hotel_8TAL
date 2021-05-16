@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '../../../../css/bootstrap-select.min.css'
-import '../../../../css/styles.css'
+import '../../../css/bootstrap-select.min.css'
+import '../../../css/styles.css'
 
 class Reservation4 extends Component {
     render() {
