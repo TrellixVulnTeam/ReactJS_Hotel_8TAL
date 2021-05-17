@@ -1,7 +1,7 @@
 import { Toast } from 'bootstrap';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 import './style.scoped.css'
 class signup extends Component {
   constructor(props) {
@@ -13,26 +13,24 @@ class signup extends Component {
       confirmPass: '',
     }
   }
-  // //////heckSignUp(){
-  //   checkSignUp(){	
-  //     axios({	
-  //     method: 'POST',	
-  //     url :'http://localhost/DB/api/controller.php/users',	
-  //     data : {
-  //       fullname: fullname,
-  //       email:email,
-  //       passWord:passWord,
-  //       confirmPass:confirmPass
-  //     }
-  //     }).then(res =>{	
-  //     this.setState({	
+  //////heckSignUp(){
+  checkSignUp() {
+    axios({
+      method: 'POST',
+      url: 'http://localhost/DB/api/controller.php/users',
+      data: {
+        fullname: this.state.fullname,
+        email: this.state.email,
+        passWord: this.state.passWord,
+        confirmPass: this.state.confirmPass // bên phải là tên dữ liệu
+      }
+    }).then(res => {
 
-  //     });	
-  //     }).catch(err =>{	
-  //     });	
-  //     }	
+    }).catch(err => {
+    });
+  }
 
-  //     /////// heckSignUp(){
+  /////// heckSignUp(){
   myhandleChange = (event) => {
     let name = event.target.name;
     let value = event.target.value;
