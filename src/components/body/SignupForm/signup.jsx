@@ -25,7 +25,7 @@ class signup extends Component {
         confirmPass: this.state.confirmPass // bên phải là tên dữ liệu
       }
     }).then(res => {
-
+      console.log(res.data);
     }).catch(err => {
     });
   }
