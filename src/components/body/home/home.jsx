@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Item_Home from './../../Item/item_home'
+import Item_Home from './../../Item/Item_home'
 import './style.scoped.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from './../../footer/footer'
