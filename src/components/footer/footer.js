@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import './footer.scoped.css'
+=======
+//import '../../css/footer.css'
+
+>>>>>>> 898b695520388d8afce46bda060207e42b49a756
 class Footer extends Component {
   render() {
     return (
