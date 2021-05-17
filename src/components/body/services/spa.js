@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../../css/style.css';
+import './style.scoped.css';
 
 class Spa extends Component {
     render() {

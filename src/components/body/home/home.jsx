@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import Item_Home from '../Item/Item_home'
-import '../../css/style.css'
+import Item_Home from './../../Item/item_home'
+import './style.scoped.css'
+import 'bootstrap/dist/css/bootstrap.css';
+
+const SliderHeader= React.lazy(()=>import ('./../../header/sliderHeader'));
 import Carousel from 'react-bootstrap/Carousel'
 class Home extends Component {
 

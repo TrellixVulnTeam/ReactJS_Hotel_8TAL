@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '../../../css/services.css'
-import '../../../css/style.css';
+import './style.scoped.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class Restaurant extends Component {
   render() {

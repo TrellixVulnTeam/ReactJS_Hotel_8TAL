@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import '../../css/about.css'
-import '../../css/style.css'
-import '../footer/footer'
-import Footer from '../footer/footer';
+import './about.scoped.css'
+import './style.scoped.css'
+import 'bootstrap/dist/css/bootstrap.css';
 
-class About extends Component { 
-    render() {
-        return (
+class About extends Component {
+  render() {
+    return (
 
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-7">
-          
+
             <img className="card-img-top " src="images/home/introduction1.jpg" />
           </div>
-          <div className="col-md-5" style={{color: 'white'}}>
+          <div className="col-md-5" style={{ color: 'white' }}>
             <center>
               <h2>ABOUT US</h2>
             </center>
@@ -28,9 +27,9 @@ class About extends Component {
         <br />
         <br />
         <div className="row ">
-          <div className="col-md-5 " style={{color: 'white'}}>
+          <div className="col-md-5 " style={{ color: 'white' }}>
             <center>
-              <h2 style={{fontFamily: 'Optima', color: 'white'}}>WHY GUEST CHOOSE HKT QUEEN HOTEL?</h2>
+              <h2 style={{ fontFamily: 'Optima', color: 'white' }}>WHY GUEST CHOOSE HKT QUEEN HOTEL?</h2>
             </center>
             <div>
               <p>When it comes to the reasons for choosing our hotel, there are countless reasons. We will provide you with a comfortable and professional space. The rooms facing a large space, equipment with modern technology will serve you
@@ -57,13 +56,12 @@ class About extends Component {
             </div>
           </div>
         </div>
-        <Footer></Footer>
       </div>
-      
-    
- 
-        );
-    }
+
+
+
+    );
+  }
 }
 
 export default About;

@@ -123,10 +123,3 @@ class reservation2 extends Component {
   </div>
                                           <Footer></Footer>
 </div>
-
-            </div>
-        );
-    }
-}
-
-export default reservation2;

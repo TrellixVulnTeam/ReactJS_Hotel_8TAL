@@ -1,23 +1,36 @@
 
 import React from 'react'
-const Home = React.lazy(() => import('../body/Home'));
-const Gallery = React.lazy(() => import('../body/gallery'));
-const Contact = React.lazy(() => import('../body/contact'));
-const Rooms = React.lazy(() => import('../body/room'));
-const About = React.lazy(() => import('../body/about'));
-const SignIn = React.lazy(() => import('../body/SignupForm/signin'));
-const SignUp = React.lazy(() => import('../body/SignupForm/signup'));
-const Reservation1 = React.lazy(() => import('../body/reservation/reservation1'));
-const Reservation2 = React.lazy(() => import('../body/reservation/reservation2'));
-const Reservation3 = React.lazy(() => import('../body/reservation/reservation3'));
-const Reservation4 = React.lazy(() => import('../body/reservation/reservation4'));
-const Pool = React.lazy(() => import('../body/services/pool'));
-const Restaurant = React.lazy(() => import('../body/services/restaurant'));
-const Spa = React.lazy(() => import('../body/services/spa'));
+const Home = React.lazy(() => import('./../body/home/home.jsx'));
+const Gallery = React.lazy(() => import('./../body/gallery/gallery.jsx'));
+const Contact = React.lazy(() => import('./../body/contact/contact.jsx'));
+const Rooms = React.lazy(() => import('./../body/room/room.jsx'));
+const About = React.lazy(() => import('./../body/about/about.jsx'));
+const SignIn = React.lazy(() => import('./../body/SignupForm/signin.jsx'));
+const SignUp = React.lazy(() => import('./../body/SignupForm/signup.jsx'));
+const Reservation1 = React.lazy(() => import('./../body/reservation/reservation1.jsx'));
+const Reservation2 = React.lazy(() => import('./../body/reservation/reservation2'));
+const Reservation3 = React.lazy(() => import('./../body/reservation/reservation3'));
+const Reservation4 = React.lazy(() => import('./../body/reservation/reservation4'));
+const Pool = React.lazy(() => import('./../body/services/pool'));
+const Restaurant = React.lazy(() => import('./../body/services/restaurant.jsx'));
+const Spa = React.lazy(() => import('./../body/services/spa'));
 
 
+// import  Home  from './../body/home';
+// import  Gallery   from'./../body/gallery';
+// import  Contact  from'./../body/contact';
+// import  Rooms    from'./../body/room';
+// import  About    from'./../body/about';
+// import  SignIn   from'./../body/SignupForm/signin';
+// import  SignUp    from'./../body/SignupForm/signup';
+// import  Reservation1    from'./../body/reservation/reservation1';
+// import  Reservation2    from'./../body/reservation/reservation2';
+// import  Reservation3 from'./../body/reservation/reservation3';
+// import  Reservation4    from'./../body/reservation/reservation4';
+// import  Pool   from'./../body/services/pool';
+// import  Restaurant    from'./../body/services/restaurant';
+// import  Spa    from'./../body/services/spa';
 
-;
 const Routes = [
     {
         path: '/',
@@ -53,7 +66,7 @@ const Routes = [
     , {
         path: '/services/spa',
         exact: true,
-        main: () => < Spa />
+        main: () => <Spa/>
 
     }
     ,

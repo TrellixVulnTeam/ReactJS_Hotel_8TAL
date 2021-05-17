@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
-import '../../css/contact.css'
-import '../../css/style.css'
-import  Footer from '../footer/footer'
+import './contact.scoped.css'
+import './style.scoped.css'
+import 'bootstrap/dist/css/bootstrap.css';
+
 class contact extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-        name:'',
-        email:'',
-        subject:'',
-        message:'',  
+    this.state = {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
 
     }
-}
+  }
 
-myhandleChange =(event)=>{
+  myhandleChange = (event) => {
     let name = event.target.name;
     let value = event.target.value;
-    this.setState({[name]:value});
-}
-mySubmitHandler =(event)=>{
-   event.preventDefault();    
-}
+    this.setState({ [name]: value });
+  }
+  mySubmitHandler = (event) => {
+    event.preventDefault();
+  }
 
   render() {
     return (
@@ -29,7 +30,10 @@ mySubmitHandler =(event)=>{
 
 
       <div className="bgr_contact ">
-          <section class="section-contact ">           
+        <div className="container-fluid">
+          <section className="section-contact ">
+            <div className="container">
+
               <div className="contact">
                 <div className="row">
                   <div className="col-md-6 col-lg-5">
@@ -69,11 +73,17 @@ mySubmitHandler =(event)=>{
                   </div>
                 </div>
               </div>
-           
-          </section>
-          <Footer></Footer>
+            </div>
 
+
+          </section>
+
+
+        </div>
       </div>
+
+
+
 
     );
   }

@@ -183,7 +183,7 @@ class Reservation4 extends Component {
                             </div>
                             <hr className="new1" />
                             <div className="bill-footer">
-                  s            <span>Customer (sign)</span>
+                             <span>Customer (sign)</span>
                               <div className="sign" />
                               <b>{/*?php if(ISSET($_SESSION['name'])) {echo $_SESSION['name'];} ?*/}</b>
                             </div>

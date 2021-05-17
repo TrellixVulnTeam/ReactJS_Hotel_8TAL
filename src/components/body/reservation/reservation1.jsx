@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import '../../../css/bootstrap-select.min.css'
-import '../../../css/styles.css'
-import Footer from '../../footer/footer';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import './styles.scoped.css'
+import 'bootstrap/dist/css/bootstrap.css';
+
 class reservation extends Component {
     render() {
         return (
@@ -326,7 +325,7 @@ class reservation extends Component {
   </section>
   {/* END / RESERVATION */}
                                       
-                                      <Footer></Footer>
+                                      
             </div>
             </div>
         );

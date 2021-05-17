@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react'
-import Item from'../Item/item_room';
-import '../../css/room.css';
+import Item from'./../../Item/item_room';
+import './room.scoped.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class Room extends Component {
     render() {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import '../../css/gallery.css'
-import  Footer from '../footer/footer'
+import './gallery.scoped.css'
+import 'bootstrap/dist/css/bootstrap.css';
+
 class gallery extends Component {
     render() {
         return (
@@ -116,7 +117,6 @@ class gallery extends Component {
                     {/* END BODY */}
 
                 </div>
-                <Footer></Footer>
 
             </div>
         );

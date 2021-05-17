@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './footer.scoped.css'
 class Footer extends Component {
   render() {
     return (
