@@ -48,14 +48,33 @@ class Database{
         public function getAllData() {
            
             $result = array();
-            while ($row= $this->getData()) {
+            while ($row= $this->result->fetch_assoc()) {
                     $result[] = $row;
                 }       
             return $result;
         }
     
-        public function getData() {         
-            $result =$this->result->fetch_assoc();            
+        public function getData() {  
+             try{
+                if(gettype($this->result)=="bool") 
+                {
+
+                  
+  				 $result =null;
+
+                } 
+                else{
+                     $result =$this->result->fetch_assoc();
+                 
+
+                }
+              
+            }      
+            catch( Throwable $e)
+            {
+                $result=null;
+            }
+
             return $result;
         }
     

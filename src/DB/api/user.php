@@ -27,17 +27,45 @@ class User extends restful_api
 				$data = $con->getData();
 			}
 			$this->response(200, $data);
-		 
-		}elseif ($this->method == 'POST') {
+		} elseif ($this->method == 'POST') {
+			$data=array();
 
+			try{
 
+			
+			if(empty($this->params)){
+				$this->response(500,"Khong co thong tin");
+			}
+			else{
+				$data['message']="Vui Long nhap du thong tin";
+				if(empty($this->params['email']||empty($this->params['name']))||empty($this->params['password'])){
+					$this->response(200,$data);
 
+				}
+				else{
+					$email= $this->params['email'];
+					$password= $this->params['password'];
+					$name= $this->params['name'];
+					$con =new Database;
+					//check co trong database chua
+					$con->query("select * from users where email ='$email'");
+					$check= $con->getData();
+					// select bang null co nghia la ko trung voi user nao
+					if($check==null){
+					$con->query("insert into users(name,email,password) values('$name','$email','$password') ");
+					$this->response(201);
+					}
+					else{
+						$data['message']="Tai khoan hoac email da duoc dang ky";
+						$this->response(200,$data);
+					}
 
-
-
-
-
-
+					
+				}
+			}
+		}catch(Throwable $error){
+			$this->response(500);
+		}
 		} elseif ($this->method == 'PUT') {
 			if (empty($id = $this->params['id'])) {
 				$this->response(404, "Khong tim thay id");
@@ -77,8 +105,6 @@ class User extends restful_api
 			}
 		}
 	}
-
-
 }
-    
+
 ?>
