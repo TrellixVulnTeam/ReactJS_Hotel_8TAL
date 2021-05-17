@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import '../../../css/bootstrap-select.min.css'
 import '../../../css/styles.css'
+=======
+import './styles.scoped.css'
+import Footer from './../../footer/footer'
+import Header from './../../header/header'
+
+>>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1
 
 class Reservation4 extends Component {
     render() {
         return (
             <div className="container-fluid">
+<<<<<<< HEAD
+=======
+               <Header></Header>
+>>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1
             {/* MENU */}
             {/*?php
                 require_once "header.php";
@@ -183,14 +194,22 @@ class Reservation4 extends Component {
                             </div>
                             <hr className="new1" />
                             <div className="bill-footer">
+<<<<<<< HEAD
                               <span>Customer (sign)</span>
+=======
+                             <span>Customer (sign)</span>
+>>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1
                               <div className="sign" />
                               <b>{/*?php if(ISSET($_SESSION['name'])) {echo $_SESSION['name'];} ?*/}</b>
                             </div>
                             <hr className="new2" />
                             <span className="thanks">Thank you for your reservation.</span>
                             <div className="btn-reservation">
+<<<<<<< HEAD
                               <a className="btn-back btn" href="reservation3.php">PREVIOUS</a>
+=======
+                              <a className="btn-back btn" href="/reservation/3">PREVIOUS</a>
+>>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1
                               <button type="submit" className="btn-room btn" name="confirm">CONFIRM</button>
                             </div>
                           </form>
@@ -203,6 +222,10 @@ class Reservation4 extends Component {
                 </div>
               </div>
             </section>
+<<<<<<< HEAD
+=======
+            <Footer></Footer>
+>>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1
           </div>
     
         );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style.css'
+import './style.scoped.css'
 class NewPass extends Component {
     constructor(props){
         super(props);

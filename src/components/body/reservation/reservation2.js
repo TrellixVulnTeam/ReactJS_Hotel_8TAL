@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD:src/components/body/reservation/reservation2.js
 import '../../../css/bootstrap-select.min.css'
 import '../../../css/styles.css'
 
 class Reservation2 extends Component {
+=======
+import './styles.scoped.css'
+import Footer from './../../footer/footer'
+import Header from './../../header/header'
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+class reservation2 extends Component {
+>>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1:src/components/body/reservation2.js
     render() {
         return (
             <div>
                 <div className="container-fluid">
+                  <Header></Header>
   {/* MENU */}
   {/*?php
       require_once "header.php";
@@ -71,8 +80,10 @@ class Reservation2 extends Component {
                     </table>
                   </div>
                   <div className="btn-reservation ">
-                    <a className="btn-back btn" href="reservation1.php">PREVIOUS</a>
-                    <a className="btn-room btn" href="reservation3.php">CONTINUE</a>
+                    <a className="btn-back btn" href="/reservation/1">PREVIOUS</a>
+                    <a className="btn-room btn" ><Link to="/reservation3">CONTINUE</Link></a>
+                    <Switch> <Route path='/reserveration4' > </Route></Switch>
+
                   </div>
                 </form>
               </div>
@@ -121,10 +132,9 @@ class Reservation2 extends Component {
     </div>
   </div>
 </div>
-
-            </div>
-        );
-    }
-}
+<Footer></Footer>
+</div>
+);
+}}
 
 export default Reservation2;

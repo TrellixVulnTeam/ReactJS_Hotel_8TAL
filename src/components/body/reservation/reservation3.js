@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import '../../../css/bootstrap-select.min.css'
 import '../../../css/styles.css'
+=======
+import './styles.scoped.css'
+
+import Footer from './../../footer/footer'
+import Header from './../../header/header'
+
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+>>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1
 
 class Reservation3 extends Component {
     render() {
         return (
             <div className="container-fluid">
+<<<<<<< HEAD
+=======
+               <Header></Header>
+>>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1
             {/* MENU */}
             {/*?php
                 require_once "header.php";
@@ -47,8 +60,14 @@ class Reservation3 extends Component {
                               <input className="form-control wrap-box" type="text" placeholder="EX: 04/25" />
                             </div>
                             <div className="btn-reservation">
+<<<<<<< HEAD
                               <a className="btn-back btn" href="reservation2.php">PREVIOUS</a>
                               <a className="btn-room btn" href="reservation4.php">CONTINUE</a>
+=======
+                              <a className="btn-back btn" href="/reservation/2">PREVIOUS</a>
+                              <a className="btn-room btn" ><Link to="/reservation4">CONTINUE</Link></a>
+                              <Switch> <Route path='/reserveration4' > </Route></Switch>
+>>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1
                             </div>
                           </form>
                         </div>
@@ -115,6 +134,10 @@ class Reservation3 extends Component {
                 </div>
               </div>
             </section>
+<<<<<<< HEAD
+=======
+            <Footer></Footer>
+>>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1
           </div>
     
         );

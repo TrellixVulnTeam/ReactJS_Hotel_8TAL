@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter,  Switch, Route } from 'react-router-dom';
+import {BrowserRouter as Router } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
+<<<<<<< HEAD
 
 const Home= React.lazy(()=> import ('./components/body/Home'));
 const Gallery= React.lazy(()=> import ('./components/body/gallery'));
@@ -27,10 +29,19 @@ ReactDOM.render(
     <Switch>   
     <Reservation4/>
     </Switch>
+=======
+import App from './App'
+ReactDOM.render(
+  <BrowserRouter>
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <App></App>
+     
+>>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1
     </React.Suspense>
   </BrowserRouter>,
   document.getElementById('root')
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

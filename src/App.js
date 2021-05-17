@@ -1,7 +1,3 @@
-import logo from './logo.svg';
-import Test from './API/test'
-
-import Index from './components/body/Home'
 
 import {
   BrowserRouter as Router,
@@ -13,35 +9,39 @@ import {
 } from "react-router-dom";
 
 import React, { Component } from 'react';
-
-
+import Routes from './components/route/router';
+import 'bootstrap/dist/css/bootstrap.css';
+import Abc from './components/body/reservation/reservation2'
 class App extends Component {
   render() {
-    return (
-      < Index />
+    return (  
+      <div> 
+       
+      <Router>
+        
+        <Switch>
+          {this.show2(Routes)}
+        </Switch>
+        </Router>
+         </div>
     );
   }
-  show2 = (routes) => {
-
+  show2 = (Routes) => {
     let result;
-    result = routes.map((route, index) => {
+    result = Routes.map((route, index) => {
       console.log(route)
       return (
         <Route
+        key={index}
           path={route.path}
           exact={route.exact}
-          component={route.main} />
-      );
+          component={route.main} >
+          </Route>
+      ); 
     }
     )
-
     return result;
-
-
   }
-
-
-
 }
 
 

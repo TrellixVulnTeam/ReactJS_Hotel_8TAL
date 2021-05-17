@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style.css'
+import './style.scoped.css'
 class ResetCode extends Component {
     constructor(props){
         super(props);
@@ -17,7 +17,6 @@ class ResetCode extends Component {
    }
     render() {
         return (
-
             <div className="container">
               <div className="row">
                 <div className="col-md-4 offset-md-4 form">
