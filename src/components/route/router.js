@@ -8,7 +8,7 @@ const About = React.lazy(() => import('./../body/about/about.jsx'));
 const SignIn = React.lazy(() => import('./../body/SignupForm/signin.jsx'));
 const SignUp = React.lazy(() => import('./../body/SignupForm/signup.jsx'));
 const Reservation1 = React.lazy(() => import('./../body/reservation/reservation1.jsx'));
-const Reservation2 = React.lazy(() => import('./../body/reservation/reservation2'));
+const Reservation2 = React.lazy(() => import('./../body/reservation/reservation2.js'));
 const Reservation3 = React.lazy(() => import('./../body/reservation/reservation3'));
 const Reservation4 = React.lazy(() => import('./../body/reservation/reservation4'));
 const Pool = React.lazy(() => import('./../body/services/pool'));
@@ -38,12 +38,7 @@ const Routes = [
         main: () => <Home />
 
     },
-    {
-        path: '/',
-        exact: true,
-        main: () => <Home />
-
-    },
+   
     {
         path: '/room',
         exact: true,
@@ -52,45 +47,45 @@ const Routes = [
     }
     ,
     {
-        path: '/services/pool',
+        path: '/pool',
         exact: true,
         main: () => < Pool />
 
     }
     , {
-        path: '/services/restaurant',
+        path: '/restaurant',
         exact: true,
         main: () => < Restaurant />
 
     }
     , {
-        path: '/services/spa',
+        path: '/spa',
         exact: true,
         main: () => <Spa/>
 
     }
     ,
     {
-        path: '/reservation/1',
+        path: '/reservation1',
         exact: true,
         main: () => < Reservation1 />
 
     },
 
     {
-        path: '/reservation/2',
+        path: '/reservation2',
         exact: true,
         main: () => < Reservation2 />
 
     },
     {
-        path: '/reservation/3',
+        path: '/reservation3',
         exact: true,
         main: () => < Reservation3 />
 
     },
     {
-        path: '/reservation/4',
+        path: '/reservation4',
         exact: true,
         main: () => < Reservation4 />
 

@@ -10,20 +10,18 @@ import {
 
 import React, { Component } from 'react';
 import Routes from './components/route/router';
-import Header from './components/header/header'
-import Footer from './components/footer/footer'
 import 'bootstrap/dist/css/bootstrap.css';
-
+import Abc from './components/body/reservation/reservation2'
 class App extends Component {
   render() {
     return (  
       <div> 
+       
       <Router>
-       <Header></Header>
+        
         <Switch>
           {this.show2(Routes)}
         </Switch>
-        <Footer/>
         </Router>
          </div>
     );
@@ -34,9 +32,11 @@ class App extends Component {
       console.log(route)
       return (
         <Route
+        key={index}
           path={route.path}
           exact={route.exact}
-          component={route.main} />
+          component={route.main} >
+          </Route>
       ); 
     }
     )

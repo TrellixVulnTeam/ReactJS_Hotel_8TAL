@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import '../../../css/bootstrap-select.min.css'
-import '../../../css/styles.css'
+import './styles.scoped.css'
+import Footer from './../../footer/footer'
+import Header from './../../header/header'
+
 
 class Reservation4 extends Component {
     render() {
         return (
             <div className="container-fluid">
+               <Header></Header>
             {/* MENU */}
             {/*?php
                 require_once "header.php";
@@ -203,6 +206,7 @@ class Reservation4 extends Component {
                 </div>
               </div>
             </section>
+            <Footer></Footer>
           </div>
     
         );

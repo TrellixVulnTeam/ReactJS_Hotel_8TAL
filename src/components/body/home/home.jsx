@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import Item_Home from './../../Item/item_home'
 import './style.scoped.css'
 import 'bootstrap/dist/css/bootstrap.css';
-
-const SliderHeader= React.lazy(()=>import ('./../../header/sliderHeader'));
+import Footer from './../../footer/footer'
+import Header from './../../header/header'
 import Carousel from 'react-bootstrap/Carousel'
+const SliderHeader= React.lazy(()=>import ('./../../header/sliderHeader'));
+
 class Home extends Component {
 
   render() {
     return (
       <div>
-        <p>
-        </p><div className="container ">
+        <Header/>
+        <SliderHeader></SliderHeader>
+        <div className="container">
           <center>
             <h1 style={{ fontFamily: 'Didot', color: '#CC6600' }}>WELCOME TO HKTQUEEN HOTEL</h1>
           </center><br />
@@ -113,6 +116,7 @@ class Home extends Component {
         </div>
         <br />
         <hr />
+        <Footer></Footer>
       </div>
     );
   }

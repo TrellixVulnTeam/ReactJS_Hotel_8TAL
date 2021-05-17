@@ -1,36 +1,37 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel'
+import './header.scoped.css'
 class Header extends Component {
     render() {
         return (
-            <div>
+            <div >
 
-<Carousel>
+    <Carousel id="slider1" className="mt-1">
           <Carousel.Item interval={1000}>
             <img
-              className="d-block w-100"
+              className="d-block w-100 slider_1"
               src="images/home/slide1.jpg"
               alt="First slide"
             />
           </Carousel.Item>
-          <Carousel.Item interval={100}>
+          <Carousel.Item interval={1000}>
             <img
-              className="d-block w-100"
+              className="d-block w-100 slider_1"
               src="images/home/slide2.jpg"
               alt="Second slide"
             />
           </Carousel.Item>
-          <Carousel.Item interval={10}>
+          <Carousel.Item interval={1000}>
             <img
-              className="d-block w-100"
+              className="d-block w-100 slider_1"
               src="images/home/slide2.jpg"
               alt="Third slide"
             />
           </Carousel.Item>
-          <Carousel.Item>
+          <Carousel.Item interval={1000}>
             <img
-              className="d-block w-100"
+              className="d-block w-100 slider_1"
               src="images/home/slide3.jpg"
               alt="Third slide"
             />

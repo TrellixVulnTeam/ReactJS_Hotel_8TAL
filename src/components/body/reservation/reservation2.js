@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import Footer from '../../footer/footer';
-import '../../../css/bootstrap-select.min.css'
-import '../../../css/styles.css'
+import './styles.scoped.css'
+import Footer from './../../footer/footer'
+import Header from './../../header/header'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 class reservation2 extends Component {
     render() {
         return (
             <div>
                 <div className="container-fluid">
+                  <Header></Header>
   {/* MENU */}
   {/*?php
       require_once "header.php";
@@ -73,7 +74,9 @@ class reservation2 extends Component {
                   </div>
                   <div className="btn-reservation ">
                     <a className="btn-back btn" href="/reservation/1">PREVIOUS</a>
-                    <a className="btn-room btn" ><Link to="/reservation/3">CONTINUE</Link></a>
+                    <a className="btn-room btn" ><Link to="/reservation3">CONTINUE</Link></a>
+                    <Switch> <Route path='/reserveration4' > </Route></Switch>
+
                   </div>
                 </form>
               </div>
@@ -121,5 +124,10 @@ class reservation2 extends Component {
         </form></div>
     </div>
   </div>
-                                          <Footer></Footer>
 </div>
+<Footer></Footer>
+</div>
+);
+}}
+
+export default reservation2;

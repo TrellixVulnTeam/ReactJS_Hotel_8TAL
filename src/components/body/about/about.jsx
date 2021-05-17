@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import './about.scoped.css'
 import './style.scoped.css'
 import 'bootstrap/dist/css/bootstrap.css';
+import Footer from './../../footer/footer'
+import Header from './../../header/header'
 
 class About extends Component {
   render() {
     return (
 
       <div className="container-fluid">
+        <Header></Header>
         <div className="row">
           <div className="col-md-7">
 
@@ -56,6 +59,7 @@ class About extends Component {
             </div>
           </div>
         </div>
+        <Footer></Footer>
       </div>
 
 

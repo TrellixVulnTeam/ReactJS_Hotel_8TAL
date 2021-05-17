@@ -3,11 +3,13 @@ import React, { Component } from 'react'
 import Item from'./../../Item/item_room';
 import './room.scoped.css';
 import 'bootstrap/dist/css/bootstrap.css';
-
+import Header from  './../../header/header'
 class Room extends Component {
     render() {
         return (
-
+          
+          <div class="container-fluid">
+            <Header></Header>
             <section className="body-room-4">
               <div className="container">
                 <div className="wrap-room-4">
@@ -20,6 +22,7 @@ class Room extends Component {
                 </div>
               </div>
             </section>
+            </div>
           );
 }
 }

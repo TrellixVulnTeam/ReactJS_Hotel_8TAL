@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import './room.scoped.css'
 class Item extends Component {
     render() {
         return (

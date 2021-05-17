@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './contact.scoped.css'
 import './style.scoped.css'
-import 'bootstrap/dist/css/bootstrap.css';
+import Footer from './../../footer/footer'
+import Header from './../../header/header'
 
 class contact extends Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class contact extends Component {
 
       <div className="bgr_contact ">
         <div className="container-fluid">
+          <Header></Header>
           <section className="section-contact ">
             <div className="container">
 
@@ -80,6 +82,7 @@ class contact extends Component {
 
 
         </div>
+        <Footer></Footer>
       </div>
 
 

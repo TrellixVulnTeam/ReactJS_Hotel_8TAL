@@ -46,18 +46,18 @@ class Show extends Component {
                 </li>
                 <li className="nav-item active">
                   <div className="--dropdown">
-                    <button className="--dropbtn"><Link to="/services/restaurant"> SERVICES </Link>
+                    <button className="--dropbtn"><Link to="/restaurant"> SERVICES </Link>
                       <i className="fa fa-caret-down" />
                     </button>
                     <div className="--dropdown-content">
-                      <a > <Link to="/services/restaurant"> RESTAURANT  </Link></a>
-                      <a ><Link to="/services/spa"> SPA  </Link></a>
-                      <a ><Link to="/services/pool"> Pool  </Link></a>
+                      <a > <Link to="/restaurant"> RESTAURANT  </Link></a>
+                      <a ><Link to="/spa"> SPA  </Link></a>
+                      <a ><Link to="/pool"> Pool  </Link></a>
                     </div>
                   </div>
                 </li>
                 <li className="nav-item active">
-                  <a className="nav-link" ><Link to="/reservation/1"> RESERVATION  </Link></a>
+                  <a className="nav-link" ><Link to="/reservation1"> RESERVATION  </Link></a>
                 </li>
                 <li className="nav-item active">
                   <a className="nav-link" ><Link to="/gallery"> GALLERY  </Link></a>
@@ -69,6 +69,12 @@ class Show extends Component {
                   <a className="nav-link" ><Link to="/about"> ABOUT US  </Link></a>
                 </li>
                 <li className="nav-item active">
+                  <a className="nav-link"><Link to="/signIn"> SIGN IN  </Link></a>
+                </li>
+                <li className="nav-item active">
+                  <a className="nav-link" ><Link to="/signUp"> SIGN UP  </Link></a>
+                </li>
+                {/* <li className="nav-item active">
                   <div className="social" style={{}}>
                     <button className="register signIn" id="signin" data-toggle="modal" data-target="#login">
                       <a ><Link to="/signIn"> SIGN IN  </Link></a>
@@ -77,7 +83,7 @@ class Show extends Component {
                       <a ><Link to="/signUp"> SIGN UP  </Link></a>
                     </button>
                   </div>
-                </li>
+                </li> */}
                 {/* <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle user-management" style={{}} id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><i className="fa fa-user fa-fw user" >
                   </i>

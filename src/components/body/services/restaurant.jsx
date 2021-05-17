@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import './style.scoped.css';
-import 'bootstrap/dist/css/bootstrap.css';
+import './services.scoped.css';
+import Header from  './../../header/header'
+import Footer from './../../footer/footer'
 
 class Restaurant extends Component {
   render() {
     return (
+      <div className="container-fluid"> 
+      <Header> </Header>
+      
       <div className="container">
         <main className="main">
           <div className="slider-wrapper">
@@ -47,6 +52,8 @@ class Restaurant extends Component {
             </div>
           </div>
         </main>
+      </div>
+      <Footer></Footer>
       </div>
     );
   }

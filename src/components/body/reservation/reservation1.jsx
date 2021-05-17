@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './styles.scoped.css'
 import 'bootstrap/dist/css/bootstrap.css';
-
+import Footer from './../../footer/footer'
+import Header from './../../header/header'
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 class reservation extends Component {
     render() {
         return (
             <div>
                 <div className="container-fluid">
+                <Header></Header>
   {/* MENU */}
   {/*?php
       require_once "header.php";
@@ -99,7 +102,8 @@ class reservation extends Component {
                                          
                                       }
                                   ?*/}
-                  <button type="button" className="btn-room btn" name="btn" ><Link to="/reservation/2">CONTINUE</Link></button>
+                  <button type="button" className="btn-room btn" name="btn" ><Link to="/reservation2">CONTINUE</Link></button>
+
                 </form>
                 {/* Booking Summary End */}
               </div>
@@ -327,6 +331,7 @@ class reservation extends Component {
                                       
                                       
             </div>
+            <Footer></Footer>
             </div>
         );
     }

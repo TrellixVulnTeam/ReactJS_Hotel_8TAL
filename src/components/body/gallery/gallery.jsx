@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './gallery.scoped.css'
 import 'bootstrap/dist/css/bootstrap.css';
+import Footer from './../../footer/footer'
+import Header from './../../header/header'
 
 class gallery extends Component {
     render() {
         return (
             <div>
                 <div className="container-fluid">
-
+                    <Header></Header>
                     {/* BODY */}
                     <br />
                     <center>
@@ -117,7 +119,7 @@ class gallery extends Component {
                     {/* END BODY */}
 
                 </div>
-
+            <Footer></Footer>
             </div>
         );
     }

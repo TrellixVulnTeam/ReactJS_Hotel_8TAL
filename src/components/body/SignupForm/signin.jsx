@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './style.scoped.css'
 
 class signin extends Component {
@@ -20,9 +21,9 @@ class signin extends Component {
     render() {
         return (
 
-            <>
+           <div> 
                 <button className="header" onclick="window.location.href='../index.php'">
-                    <a href="../index.php">Home</a>
+                    <Link to='/' >Home</Link>
                 </button>
                 <div className="container">
                     <div className="row">
@@ -44,9 +45,8 @@ class signin extends Component {
                         </div>
                     </div>
                 </div>
-                <div id="eJOY__extension_root" className="eJOY__extension_root_class" style={{ all: 'unset' }} /><iframe id="nr-ext-rsicon" style={{ position: 'absolute', display: 'none', width: 50, height: 50, zIndex: 2147483647, borderStyle: 'none', background: 'transparent' }} />
-            </>
 
+                </div>
 
         );
     }

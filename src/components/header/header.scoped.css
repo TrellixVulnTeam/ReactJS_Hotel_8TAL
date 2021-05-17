@@ -1,4 +1,4 @@
-/* .headers > input{
+.headers > input{
     font-size: 15px;
     background-color:coral;
     width: 170PX;
@@ -15,14 +15,14 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 10px 3px 15px 10px;
      display: inline-flex;
-} */
+}
 
 :root {
     --black-color: #000;
     --text-color: #333;
     --white-color: #fff;
 }
-/* :hover img #slider_1
+:hover img #slider_1
 {
     background: transparent;
     color: #8E7037;
@@ -31,12 +31,8 @@
     border: none;
     transition: all 0.3s ;
     ;
-}  */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+} 
+
 
 
 .container-fluid .menu {
@@ -342,8 +338,7 @@ span {
     display: block;
 }
 
-.signIn,
-.signUp {
+.signIn, .signUp {
     margin-top: 10px;
     padding-right: 1rem;
     padding-left: 1rem;

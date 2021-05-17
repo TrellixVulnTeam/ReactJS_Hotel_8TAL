@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import './style.scoped.css'
 class signup extends Component {
     constructor(props){
@@ -22,7 +24,7 @@ class signup extends Component {
         return (
             <>
             <button className="header" onclick="window.location.href='../index.php'">
-              <a href="../index.php">Home</a>
+            <Link to='/' >Home</Link>
             </button>
             <div className="container">
               <div className="row">
