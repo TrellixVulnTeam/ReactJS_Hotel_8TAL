@@ -44,7 +44,8 @@ class Restful_api
                 break;
 
             case 'PUT':
-                $this->params = $this->parse_raw_http_request($arr);
+                $this->params=array();
+                $this->parse_raw_http_request($this->params);
                 break;
 
             case 'DELETE':
