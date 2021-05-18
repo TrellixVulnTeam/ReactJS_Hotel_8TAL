@@ -11,7 +11,6 @@ import {
 import React, { Component } from 'react';
 import Routes from './components/route/router';
 import 'bootstrap/dist/css/bootstrap.css';
-import Abc from './components/body/reservation/reservation2'
 class App extends Component {
   render() {
     return (  

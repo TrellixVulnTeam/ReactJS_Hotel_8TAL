@@ -44,7 +44,8 @@ class Restful_api
                 break;
 
             case 'PUT':
-                $this->params = $this->parse_raw_http_request($arr);
+                $this->params=array();
+                $this->parse_raw_http_request($this->params);
                 break;
 
             case 'DELETE':
@@ -78,6 +79,8 @@ class Restful_api
     {
         $status = array(
             200 => 'OK',
+            201=> "Created",
+            403=>"Forbidden",
             404 => 'Not Found',
             405 => 'Method Not Allowed',
             500 => 'Internal Server Error'
