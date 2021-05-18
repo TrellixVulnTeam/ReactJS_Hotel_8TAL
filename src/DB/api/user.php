@@ -67,44 +67,61 @@ class User extends restful_api
 			$this->response(500);
 		}
 		} elseif ($this->method == 'PUT') {
-			if (empty($id = $this->params['id'])) {
-				$this->response(404, "Khong tim thay id");
+			if (empty($id = $this->params['user_id'])) {
+				$this->response(500, "Thieu id");
 			} else {
 				$con = new Database;
-
-
-				// Tien hanh update ne Sen 
-
-				// $con->query("update basket set name='$name',quantity='$quantity',
-				// subtitle='$subtitle',summary='$summary',
-				// type='$type',price='$price',discount='$discount'
-				// where id='$id'"); 
-
-
-
+				$con->query("SELECT * from users where user_id='$id'");
+				$check= $con->getData();
+				if($check==null){
+					$data['message']="Tai khoan khong ton tai";
+					$con->close();
+					$this->response(200,$data);
+				}
+				else{				
+				$name=$check['name'];
+				$email=$check['email'];
+				if( $name=='admin' ||$email=='admin@gmail.com'){
+					$con->close();
+					$this->response(200,"Khong the thay doi quyen admin");
+					return;
+				}
+				$con->query("UPDATE users set name='$name',email='$email',password='$password' where user_id='$id'");
 				$con->close();
 				$this->response(200);
 			}
+		}
+
 		} elseif ($this->method == 'DELETE') {
-
-			$id = $this->params['id'];
+			$id = $this->params['user_id']; 
 			if (empty($id)) {
-				$this->response(404, "Khong tim thay id");
+				$this->response(500, "Thieu id");
 			} else {
-				//........
 				$con = new Database;
-				$con->query("select * from user where id='$id'");
-				$data = $con->getData();
-				if ($data['status'] == 1)
-					$status = 0; // 0 tuc la bi block
-
-				else
-					$status = 1; // 1 tuc la van con hoat dong		
-				$con->query("update user set status='$status' where id='$id'");
-				$this->response(200);
+				$con->query("SELECT * from users where user_id='$id'");
+				$check= $con->getData();
+				if($check==null){
+					$data['message']="Tai khoan khong ton tai";
+					$con->close();
+					$this->response(200,$data);
+				}
+				else{				
+				$name=$check['name'];
+				$email=$check['email'];
+				if( $name=='admin' ||$email=='admin@gmail.com'){
+					$con->close();
+					$this->response(200,"Khong the xoa tai khoan admin");
+					return;
+				}
 			}
+				
+		
+				$con->query("DELETE * from users  where user_id='$id'");//ko status la block hay chua thoi
+				$this->response(200);
 		}
 	}
 }
+	}
+
 
 ?>

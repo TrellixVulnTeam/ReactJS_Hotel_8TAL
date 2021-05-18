@@ -4,8 +4,7 @@ class Item_home extends Component {
 
     render() {
         return (
-         
-                
+                         
                 <div className="col-md-3 col-sm-6 col-12">
                       <div className="card card-product mb-3 ">
                         <div className="thumbnail">
