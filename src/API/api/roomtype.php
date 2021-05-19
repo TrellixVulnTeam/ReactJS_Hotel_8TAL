@@ -26,7 +26,7 @@ class RoomType extends restful_api
 				$data = $con->getData(); 
 			}
 			$this->response(200, $data);
-		 
+			
 		}elseif ($this->method == 'POST') {
 			$data =array();
 			$con = new Database();
@@ -34,16 +34,16 @@ class RoomType extends restful_api
 				$this->response(500,"Khong co thong tin");	
                 $data = $con->getAllData();
 			}else{
-				$con->query("INSERT INTO roomtypes(roomtype, rent, quantity) VALUES ('$roomtype', '$rent', '$quantity')");
+				$con->query("INSERT INTO roomtypes(roomtype, rent, quantity) VALUES ('$roomType', '$rent', '$quantity')");
 			}
-			$this->response(200, $data);
+			$this->response(200, $data);                                                                  
 			
 		} elseif ($this->method == 'PUT') {
 			if (empty($id = $this->params['roomtype_id'])) {
 				$this->response(404, "Khong tim thay id");
 			} else {
 				$con = new Database;
-				$con->query("UPDATE roomtypes set romtype='$roomtype',rent='$rent',quantity='$quantity'	
+				$con->query("UPDATE roomtypes set romtype='$roomType',rent='$rent',quantity='$quantity'	
 				where roomtype_id='$roomtype_id'"); 
 				$con->close();
 				$this->response(200);		
@@ -55,15 +55,20 @@ class RoomType extends restful_api
 				$this->response(404, "Khong tim thay id");
 			} else {
 				$con = new Database;
-				$con->query("SELECT * from roomtypes where roomtype='$roomtype_id'");
-				$data = $con->getData();
-				$con->query("DELETE * from roomtypes where roomtype='$roomtype_id'");
+				$con->query("SELECT * from roomtypes where roomtype_id='$id'");
+				$check=getData();
+				$id=$check['roomtype_id'];
+				if($id== null){
+					$data['message']="id khong ton tai";// Làm ntn để kiểm tra thể loại đó còn trong bảng hay không?Nếu con thì thực hiện xóa id, còn không thì thông báo id không tồn tại
+				}else{
+				$con->query("DELETE FROM roomtypes WHERE roomtype_id ='$roomtypes'");
 				$this->response(200);
+				}
 			}
 		}
 	}
 }
-$Roomtype = new RoomType(); 
+
     
 ?>
    
