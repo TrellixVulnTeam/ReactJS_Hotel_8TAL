@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './assets/css/animate.css'
-import './assets/css/sidebar-menu.css'
-import './assets/css/adminstyle.css'
-import './assets/css/bootstrap.css'
+import './assets/css/animate.scoped.css'
+import './assets/css/sidebar-menu.scoped.css'
+import './assets/css/adminstyle.scoped.css'
+import './assets/css/bootstrap.scoped.css'
 class rooms extends Component {
     render() {
         return (

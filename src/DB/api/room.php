@@ -29,8 +29,28 @@ class Room extends restful_api
 			$this->response(200, $arr);
 		 
 		}elseif ($this->method == 'POST') {
+			$data=array();
+			try{
 
+			
+			if(empty($this->params)){
+				$this->response(500,"Khong co thong tin");
+			}
+			else{
+				
+			$con =new Database;
+			$roomtype_id=$this->params['roomtype_id'];
+			$noroom=$this->params['noroom'];
+			$img=$this->params['img'];
+			$status= $this->params['status'];
+			$phone= $this->params['phones'];
 
+			$con->query("insert into rooms(roomtype_id,noroom,img,status,phone) values('$roomtype_id','$noroom','$img','$status','$phone')");
+			$this->response(201,print_r($this->params));
+			}
+		}catch(Throwable $error){
+			$this->response(500);
+		}
 
 
 
