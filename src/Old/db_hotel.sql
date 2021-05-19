@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS `roomtypes` (
     `rent` DECIMAL(10) NOT NULL,
     `quantity` INT(11) NOT NULL,
     PRIMARY KEY (`roomtype_id`)
-);
+); 
 
 INSERT INTO `roomtypes` (`roomtype`, `rent`, `quantity`) 
         VALUES ("Luxury", 590, 10),
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `roombooks` (
     `status` text NOT NULL,
     `payment` CHAR(10) NOT NULL,
     PRIMARY KEY (`roombook_id`),
-    FOREIGN KEY(user_id) REFERENCES `users`(user_id),
+    FOREIGN KEY(user_id) REFERENCES `users`(user_id) on delete cascade on update cascade,
     FOREIGN KEY(room_id) REFERENCES `rooms`(room_id) on delete cascade on update cascade
 );
 
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `roomstatus` (
 	`arrive` DATE NOT NULL,
 	`depart` DATE NOT NULL,
 	PRIMARY KEY (`roomstatus_id`),
-	FOREIGN KEY(room_id) REFERENCES `rooms`(room_id)
+	FOREIGN KEY(room_id) REFERENCES `rooms`(room_id) on delete cascade on update cascade
 );
 
 INSERT INTO `roomstatus` (`room_id`, `arrive`, `depart`) 
@@ -159,6 +159,6 @@ CREATE TABLE IF NOT EXISTS `basket` (
     `user_id` INT(11) NOT NULL,
     `room_id` INT(11) NOT NULL,
     PRIMARY KEY (`basket_id`),
-	FOREIGN KEY(user_id) REFERENCES `users`(user_id),
+	FOREIGN KEY(user_id) REFERENCES `users`(user_id) on delete cascade on update cascade ,
 	FOREIGN KEY(room_id) REFERENCES `rooms`(room_id) on delete cascade on update cascade
 );

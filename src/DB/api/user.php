@@ -21,9 +21,9 @@ class User extends restful_api
 				$con->query("SELECT * FROM `users`");
 				$data = $con->getAllData();
 			} else {
-				// $arr = explode('=', $this->params);
-				// $id = array_pop($arr);
-				// $con->query("select * from user where id='$id'");
+			
+				$id =$this->params['user_id'];
+				$con->query("select * from users where user_id='$id'");
 				$data = $con->getData();
 			}
 			$this->response(200, $data);
@@ -81,12 +81,13 @@ class User extends restful_api
 				else{				
 				$name=$check['name'];
 				$email=$check['email'];
+				$password=$check['password'];
 				if( $name=='admin' ||$email=='admin@gmail.com'){
 					$con->close();
 					$this->response(200,"Khong the thay doi quyen admin");
 					return;
 				}
-				$con->query("UPDATE users set name='$name',email='$email',password='$password' where user_id='$id'");
+				$con->query("UPDATE users set name='$name',email='$email',password= '$password' where user_id='$id'");
 				$con->close();
 				$this->response(200);
 			}
@@ -114,9 +115,7 @@ class User extends restful_api
 					return;
 				}
 			}
-				
-		
-				$con->query("DELETE * from users  where user_id='$id'");//ko status la block hay chua thoi
+				$con->query("DELETE from users  where user_id='$id'");//ko status la block hay chua thoi
 				$this->response(200);
 		}
 	}
