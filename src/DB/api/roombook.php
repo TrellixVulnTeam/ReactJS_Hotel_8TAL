@@ -21,61 +21,94 @@ class RoomBook extends restful_api
 		if ($this->method == 'GET') {
 			$con = new Database();
 			if (empty($this->params)) {
-				$con->query("SELECT * FROM `roombook`");
+				$con->query("SELECT * FROM `roombooks`");
 				$data = $con->getAllData();
 			} else {
-				// $arr = explode('=', $this->params);
-				// $id = array_pop($arr);
-				// $con->query("select * from roombook where id='$id'");
+				$id = $this->params['roombook_id'];
+				$con->query("SELECT * FROM roombooks where roombook_id=$id");
 				$data = $con->getData();
 			}
 			$this->response(200, $data);
 		 
 		}elseif ($this->method == 'POST') {
 
+			
+			if (empty($this->params)) {
+				$this->response(500, "Khong co thong tin");
+			} else {
+				if (empty($this->params['user_id'] || empty($this->params['room_id'])) || empty($this->params['phone'])||empty($this->params['arrive']||empty($this->params['depart']))) {
+					$data['message'] = "Vui Long nhap du thong tin";
+					$this->response(200, $data);
+					die();
+				} else {
+			
+					$user_id=$this->params['user_id'];
+					$room_id=$this->params['room_id'];
+					$phone=$this->params['phone'];
+					$arrive=$this->params['arrive'];
+					$depart=$this->params['depart'];
+				
+
+					$con =new Database;
+					$con->query("select * from users where user_id='$user_id'");
+					$check= $con->getData();
+					// check khong tim ra tuc la user nay chua ton tai
+					if($check==null){
+						$data['message']="USER NAY KHONG TON TAI";
+						$con->close();
+						$this->response(200,$data);
+					}
+					$con->query("select * from rooms where room_id ='$room_id'");
+					$check= $con->getData();
+					if($check==null){
+						$data['message']="PHONG NAY KHONG TON TAI";
+						$con->close();
+						$this->response(200,$data);
+					}
+					if($check['status']!="available"){
+						$data['message']="PHONG ROOM "+$check['room_id'] +"NOT available";
+						$con->close();
+						$this->response(200,$data);
+					}
+					$status="pending";
+					$payment="unpaid";
+					$con->query("INSERT INTO roombooks(user_id,room_id,phone,arrive,depart,status,payment) values('$user_id','$room_id','$phone','$arrive','$depart','$status','$payment')");
+					// update khi da co nguoi dat phong
+					$con->query("UPDATE ROOMS SET status='unavailable' where room_id='$room_id'");
+					$data['message']="BOOKROOM Thanh cong";
+					$this->response(200,);
 
 
+				}
 
-
-
-
-
+			}
 
 		} elseif ($this->method == 'PUT') {
-			if (empty($id = $this->params['id'])) {
+			$id = $this->params['roombook_id'];
+			if (empty($id)) {
 				$this->response(404, "Khong tim thay id");
 			} else {
+				if(empty($this->params['status'])||empty($this->params['payment'])){
+					$data['message']="THIEU STATUS";
+					$this->response(200,$data);
+				}
+				$status=$this->params['status'];
+				$payment=$this->params['payment'];
 				$con = new Database;
-
-
-				// Tien hanh update ne Sen 
-
-				// $con->query("update basket set name='$name',quantity='$quantity',
-				// subtitle='$subtitle',summary='$summary',
-				// type='$type',price='$price',discount='$discount'
-				// where id='$id'"); 
-
-
-
+				$con->query("UPDATE roombooks set status='$status', payment='$payment' where roombook_id= '$id'");
 				$con->close();
 				$this->response(200);
 			}
 		} elseif ($this->method == 'DELETE') {
 
-			$id = $this->params['id'];
+			$id = $this->params['roombook_id'];
 			if (empty($id)) {
 				$this->response(404, "Khong tim thay id");
 			} else {
-				//........
 				$con = new Database;
-				$con->query("select * from user where id='$id'");
-				$data = $con->getData();
-				if ($data['status'] == 1)
-					$status = 0; // 0 tuc la bi block
-
-				else
-					$status = 1; // 1 tuc la van con hoat dong		
-				$con->query("update user set status='$status' where id='$id'");
+				$con->query("DELETE from roombooks  where roombook_id='$id'");
+			
+				
 				$this->response(200);
 			}
 		}

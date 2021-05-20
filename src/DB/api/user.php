@@ -13,6 +13,7 @@ class User extends restful_api
 	{
 		parent::__construct();
 	}
+	
 	function users()
 	{
 		if ($this->method == 'GET') {
