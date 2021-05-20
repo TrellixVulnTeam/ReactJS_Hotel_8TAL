@@ -133,11 +133,11 @@ class editRoom extends Component {
           <div className="container-fluid">
             <div className="card">
               <div className="card-body">
-                <h2>Edit Room</h2>
+                <h2 className="text-body">Edit Room</h2>
                 <div className="container">
      
                     <div className="form-group ">
-                      <label htmlFor="roomtype_id">Roomtype ID :</label>
+                      <label htmlFor="roomtype_id "className="text-body">Roomtype ID :</label>
                       
                       <select name="roomtype_id" className="form-control text-body" id required>
        
@@ -146,25 +146,25 @@ class editRoom extends Component {
                       </select>
                     </div>
                     <div className="form-group">
-                      <label htmlFor="noroom">No room:</label>
+                      <label htmlFor="noroom " className="text-body">No room:</label>
                       <input type="text" className="form-control text-body" name="noroom" value={this.state.noroom} onChange={(e) => this.setState({ noroom: e.target.value })} />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="img">Img:</label>
+                      <label htmlFor="img "className="text-body">Img:</label>
                       <input type="file" className="form-control text-body" name="img" value={this.state.img} onChange={(e) => this.setState({ img: e.target.value })}/>
                     </div>
                     <div className="form-group">
-                      <label htmlFor="status">Status:</label>
+                      <label htmlFor="status "className="text-body">Status:</label>
                       <select name="status" className="form-control text-body" id required>
-                        <option value="available">Available</option>
-                        <option value="unavailable">Unavailable</option>
+                        <option value="available" className="text-body">Available</option>
+                        <option value="unavailable" className="text-body">Unavailable</option>
                       </select>
                     </div>
                     <div className="form-group">
-                      <label htmlFor="phone">Phone:</label>
+                      <label htmlFor="phone text-body"className="text-body">Phone:</label>
                       <input type="phone" className="form-control text-body" name="phone"  value={this.state.phone} onChange={(e) => this.setState({ phone: e.target.value })}  required />
                     </div>
-                    <input type="submit" name="update" className="btn btn-primary" style={{float: 'right'}} onClick={this.onSave} defaultValue="Submit" />
+                    <input type="submit" name="update" className="btn btn-primary" style={{float: 'right'}} onClick={this.onSave}  />
           
                 </div>
               </div>

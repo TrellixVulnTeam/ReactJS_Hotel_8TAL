@@ -29,6 +29,13 @@ class edit_user extends Component {
     
 
       componentDidMount() {
+        axios.get("http://localhost/ReactJS_Hotel/src/DB/api/controller.php/users?user_id=8").then(res => {
+          this.setState({ data: res.data }) 
+      })
+      }
+        onSave = (event)=>{
+
+          event.preventDefault();
       let formData = new FormData();  
       formData.append('user_id', this.state.user_id);  
       formData.append('name', this.state.name);
@@ -42,9 +49,11 @@ class edit_user extends Component {
               'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
           }
       }).then(Response=>{
+        
           console.log(Response)
       })
     }
+  
 
     render() {
         return (
@@ -154,7 +163,7 @@ class edit_user extends Component {
                         <option value="verified" className="text-body" >verified</option>
                       </select>
                     </div>
-                    <button type="submit" name="updateuser" onClick={this.onSave} className="btn btn-primary" style={{float: 'right'}}>Submit</button>
+                    <button type="submit" name="updateuser" onClick={this.onSave} className="btn btn-primary" style={{float: 'right'}} >Submit</button>
                   </form>
                 </div>
               </div>
