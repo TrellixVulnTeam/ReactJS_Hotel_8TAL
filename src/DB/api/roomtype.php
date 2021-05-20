@@ -99,9 +99,9 @@ class RoomType extends restful_api
 					$this->response(404, "Khong tim thay id");
 				} else {
 					$con = new Database;
-					$status="delete at" +date("d/m/Y");
+					$status="delete at ".date("d/m/Y");
 					$con->query("UPDATE roomtypes set status='$status' where roomtype_id='$id'");
-					$data['message']="DELETE room "+$id +" THANH CONG";
+					$data['message']="DELETE room ".$id." THANH CONG";
 					$this->response(200,$data);
 				}
 				$this->response(500);

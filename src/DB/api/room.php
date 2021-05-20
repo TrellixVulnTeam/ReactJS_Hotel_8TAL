@@ -67,7 +67,7 @@ class Room extends restful_api
 				$img=$this->params['img'];
 				$con->query("update rooms set noroom='$noroom',img='$img',phone='$phone',roomtype_id='$type' where room_id='$id'"); 
 				$con->close();
-				$data['message']="UPDATE" +$id +" THANH CONG";
+				$data['message']="UPDATE ".$id." THANH CONG";
 				$this->response(200,$data);
 			}
 		} elseif ($this->method == 'DELETE') {
@@ -77,9 +77,9 @@ class Room extends restful_api
 				$this->response(404, "Khong tim thay id");
 			} else {		
 				$con = new Database;
-				$status="delete at" +date("d/m/Y");
+				$status="delete at ".date("d/m/Y");
 				$con->query("UPDATE rooms set status='$status' where room_id='$id'");
-				$data['message']="DELETE room "+$id +" THANH CONG";
+				$data['message']="DELETE room ".$id." THANH CONG";
 				$this->response(200,$data);
 			}
 		}

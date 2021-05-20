@@ -66,7 +66,7 @@ class RoomBook extends restful_api
 						$this->response(200,$data);
 					}
 					if($check['status']!="available"){
-						$data['message']="PHONG ROOM "+$check['room_id'] +"NOT available";
+						$data['message']="PHONG ROOM ".$check['room_id']. " NOT available";
 						$con->close();
 						$this->response(200,$data);
 					}

@@ -7,6 +7,12 @@ require 'basket.php';
 require 'roomtype.php';
 require 'roombook.php';
 
+header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
+header("Pragma: no-cache"); // HTTP 1.0.
+header("Expires: 0"); // Proxies.
+header("Access-Control-Allow-Origin: *");
+header('Content-type: application/json; charset=utf-8');
+
 try{
 
 if(empty($_SERVER['PATH_INFO'])){
@@ -15,6 +21,8 @@ if(empty($_SERVER['PATH_INFO'])){
     die();
 }
 if ($_SERVER['PATH_INFO'] == '/users')
+    $user = new User();
+    if ($_SERVER['PATH_INFO'] == '/checklogin')
     $user = new User();
 if ($_SERVER['PATH_INFO'] == '/rooms')
     $room = new Room();
