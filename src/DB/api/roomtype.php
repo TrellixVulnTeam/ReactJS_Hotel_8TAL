@@ -15,6 +15,9 @@ class RoomType extends restful_api
 	}
 	function roomTypes()
 	{
+		try{
+
+		
 		if ($this->method == 'GET') {
 			$con = new Database();
 			if (empty($this->params)) {
@@ -76,8 +79,12 @@ class RoomType extends restful_api
 				$this->response(200);
 			}
 		}
+	
 	}
+	catch(Throwable $e) {
 
-
+		$this->response(500, "ERROR");
+	}
+	}
 }
 ?>

@@ -18,15 +18,15 @@ class Contact extends restful_api
 		if ($this->method == 'GET') {
 			$con = new Database();
 			if (empty($this->params)) {
-				$con->query("SELECT * FROM `contact`");
+				$con->query("SELECT * FROM `contacts`");
 				$data = $con->getAllData();
 			} else {
-				// $arr = explode('=', $this->params);
-				// $id = array_pop($arr);
-				// $con->query("select * from contact where id='$id'");
+				$id=$this->params['contact_id'];
+				$con->query("select * from room where contact_id='$id'");
 				$data = $con->getData();
 			}
 			$this->response(200, $data);
+		 
 		 
 		}elseif ($this->method == 'POST') {
 

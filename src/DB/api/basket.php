@@ -16,24 +16,35 @@ class Basket extends restful_api
 	}
 	function baskets()
 	{
-
+		try{
+		
 		//Lay query tu axios nha mn
 		if ($this->method == 'GET') {
+			
 			$con = new Database();
 			if (empty($this->params)) {
-				$con->query("SELECT * FROM `basket`");
+				$con->query("SELECT * FROM `baskets`");
 				$data = $con->getAllData();
 				//Lay tat ca cac thong tin gio hang
 			} else {
 
+				if(empty($this->params['basket_id'])){
+					$user_id = $this->params['user_id'];
+					$con->query("select * from baskets where user_id='$user_id'");
+					// Lay tat  cac cac basket cua user nao do
+				}
+				else{
 				$basket_id = $this->params['basket_id'];
-				$user_id = $this->params['user_id'];
-				$room_id = $this->params['room_id'];
-				$con->query("select * from basket where id='$user_id'");
-				// Lay tat cac thong tin basket tai user_id 
-				$data = $con->getData();
+				$con->query("select * from baskets where basket_id='$basket_id'");
+				// Lay ra basket cu the nao do
+
+				}
+				$data= $con->getData();
+
 			}
 			$this->response(200, $data);
+
+
 		} elseif ($this->method == 'POST') {
 			//Lay data tu $_POST
 
@@ -77,5 +88,10 @@ class Basket extends restful_api
 			}
 		}
 	}
+	catch(Throwable $e) {
+
+		$this->response(500, "ERROR");
+	}
+}
 }
 ?>

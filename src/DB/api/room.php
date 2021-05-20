@@ -15,18 +15,20 @@ class Room extends restful_api
 	}
 	function rooms()
 	{
+		try{
+
+		
 		if ($this->method == 'GET') {
-			//$con = new Database();
+			$con = new Database();
 			if (empty($this->params)) {
-				//$con->query("SELECT * FROM `basket`");
-				//$data = $con->fetchAll();
+				$con->query("SELECT * FROM `basket`");
+				$data = $con->getAllData();
 			} else {
-					
-				$arr=$this->getQuery();
-				//$con->query("select * from room where id='$id'");
-				//$data = $con->fetchArray();
+				$id=$this->params['room_id'];
+				$con->query("select * from room where room_id='$id'");
+				$data = $con->getData();
 			}
-			$this->response(200, $arr);
+			$this->response(200, $data);
 		 
 		}elseif ($this->method == 'POST') {
 			$data=array();
@@ -96,8 +98,11 @@ class Room extends restful_api
 				$this->response(200);
 			}
 		}
+	}catch(Throwable $e) {
+
+		$this->response(500, "ERROR");
 	}
 
-
+	}
 }
 ?>

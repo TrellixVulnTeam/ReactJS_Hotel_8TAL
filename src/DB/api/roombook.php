@@ -15,6 +15,9 @@ class RoomBook extends restful_api
 	}
 	function roomBooks()
 	{
+		try{
+
+		
 		if ($this->method == 'GET') {
 			$con = new Database();
 			if (empty($this->params)) {
@@ -78,6 +81,11 @@ class RoomBook extends restful_api
 		}
 	}
 
+	catch(Throwable $e) {
+
+		$this->response(500, "ERROR");
+	}
+}
 
 }
 ?>
