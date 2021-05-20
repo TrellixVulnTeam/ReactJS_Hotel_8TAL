@@ -30,12 +30,14 @@ class App extends Component {
     result = Routes.map((route, index) => {
       console.log(route)
       return (
+        <Switch>
         <Route
         key={index}
           path={route.path}
           exact={route.exact}
           component={route.main} >
           </Route>
+          </Switch>
       ); 
     }
     )

@@ -34,7 +34,7 @@ class addRoom extends Component {
         formData.append('img', this.state.img);  
         formData.append('status', this.state.status);
         formData.append('phones', this.state.phone);
-        axios.post('http://localhost:8080/DB/api/controller.php/rooms',formData,{
+        axios.get('http://localhost/ReactJS_Hotel/src/DB/api/controller.php/rooms',formData,{
             headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
             }
@@ -119,36 +119,36 @@ class addRoom extends Component {
               <div className="content-wrapper">
                 <div className="container-fluid">
                   <div className="card">
-                    <div className="card-body">
-                      <h2>Add Room</h2>
+                    <div className="card-body text-body">
+                      <h2 className="text-body">Add Room</h2>
                       <form onSubmit={this.submitForm} method="POST" encType="multipart/form-data">
                         <div className="form-group">
-                          <label htmlFor="roomtype_id">Roomtype ID :</label>
+                          <label htmlFor="roomtype_id" className="text-body">Roomtype ID :</label>
                           {/* <input type="text" class="form-control" name="roomtype_id" placeholder="Enter roomtype_id " > */}
                           <select name="roomtype_id" onChange={this.myhandleChange} className="form-control" value={this.state.roomtype_id}  required>
-                            <option value={1}>Luxury</option>
-                            <option value={2}>Family</option>
-                            <option value={3}>Couple</option>
-                            <option value={4}>Standard</option>
+                            <option value={1}className="text-body">Luxury</option>
+                            <option value={2} className="text-body">Family</option>
+                            <option value={3} className="text-body">Couple</option>
+                            <option value={4} className="text-body">Standard</option>
                           </select>
                         </div>
                         <div className="form-group">
-                          <label htmlFor="noroom">No room:</label>
+                          <label htmlFor="noroom" className="text-body">No room:</label>
                           <input type="text" className="form-control" onChange={this.myhandleChange} name="noroom" placeholder="Enter no room" value={this.state.noroom} required />
                         </div>
                         <div className="form-group">
-                          <label htmlFor="img">Img:</label>
+                          <label htmlFor="img"className="text-body">Img:</label>
                           <input type="file" className="form-control"onChange={this.myhandleChange} name="img"  value={this.state.img} required />
                         </div>
                         <div className="form-group">
-                          <label htmlFor="status">Status:</label>
+                          <label htmlFor="status"className="text-body">Status:</label>
                           <select name="status" className="form-control" onChange={this.myhandleChange} value={this.state.status} required>
                             <option value="available" selected>Available</option>
                             <option value="unavailable">Unavailable</option>
                           </select>
                         </div>
                         <div className="form-group">
-                          <label htmlFor="phone">Phone:</label>
+                          <label htmlFor="phone" className="text-body">Phone:</label>
                           <input type="text" className="form-control" name="phone"  value={this.state.phone}  onChange={this.myhandleChange} placeholder="Enter phone" required />
                         </div>
                         <input type="submit" name="submit" className="btn btn-primary" style={{float: 'right'}} defaultValue="Submit" />

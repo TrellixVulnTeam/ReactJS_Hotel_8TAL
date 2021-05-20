@@ -162,3 +162,14 @@ CREATE TABLE IF NOT EXISTS `basket` (
 	FOREIGN KEY(user_id) REFERENCES `users`(user_id) on delete cascade on update cascade ,
 	FOREIGN KEY(room_id) REFERENCES `rooms`(room_id) on delete cascade on update cascade
 );
+
+
+
+----------------------------------------------------------------------------------
+drop table basket;
+drop table contacts;
+drop table roomsbooks;
+drop table rooms;
+drop table roomstatus;
+drop table roomtypes;
+drop table uses;

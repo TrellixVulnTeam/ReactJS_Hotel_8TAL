@@ -14,8 +14,9 @@ const Reservation4 = React.lazy(() => import('./../body/reservation/reservation4
 const Pool = React.lazy(() => import('./../body/services/pool'));
 const Restaurant = React.lazy(() => import('./../body/services/restaurant.jsx'));
 const Spa = React.lazy(() => import('./../body/services/spa'));
-
-
+const editRoom = React.lazy(() => import('./../../admin/editRoom.js'));
+const Room = React.lazy(() => import('./../../admin/rooms.js'));
+const Booking = React.lazy(() => import('./../../admin/booking.js'));
 // import  Home  from './../body/home';
 // import  Gallery   from'./../body/gallery';
 // import  Contact  from'./../body/contact';
@@ -118,6 +119,31 @@ const Routes = [
         path: '/signUp',
         exact: true,
         main: () => < SignUp />
+
+    },
+
+    {
+        path: '/booking',
+        exact: true,
+        main: () => < Booking />
+
+    },
+    {
+        path: '/room',
+        exact: true,
+        main: () => < Room />
+
+    },
+    {
+        path: '/logOut',
+        exact: true,
+        main: () => < logOut />
+
+    },
+    {
+        path: '/editRoom/:room_id?',
+        exact: true,
+        main: () => < editRoom />
 
     }
 ]

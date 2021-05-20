@@ -4,11 +4,11 @@ import { BrowserRouter,  Switch, Route } from 'react-router-dom';
 import {BrowserRouter as Router } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
-import App from './admin/addRoom'
+import App123 from './admin/editBooking';
 ReactDOM.render(
   <BrowserRouter>
     <React.Suspense fallback={<div>Loading...</div>}>
-      <App></App>
+      <App123></App123>
      
     </React.Suspense>
   </BrowserRouter>,

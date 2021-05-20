@@ -3,7 +3,17 @@ import './assets/css/animate.scoped.css'
 import './assets/css/sidebar-menu.scoped.css'
 import './assets/css/adminstyle.scoped.css'
 import './assets/css/bootstrap.scoped.css'
+import axios from 'axios';
 class booking extends Component {
+    constructor(props){
+        super(props);
+        this.state={data:[]};
+    }
+    componentDidMount(){
+        axios.get("http://localhost/ReactJS_Hotel/src/DB/api/controller.php/rooms").then(res=>{
+            this.setState({data:res.data});
+        })
+    }
     render() {
         return (
             <div>
@@ -103,6 +113,9 @@ class booking extends Component {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    {this.state.data.map(elements=>{
+                                                        return (<td>{elements.phone}</td>)
+                                                    })}
                                                 </tbody>
                                             </table>
                                         </div>
