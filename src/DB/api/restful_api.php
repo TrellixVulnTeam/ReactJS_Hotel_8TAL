@@ -59,13 +59,13 @@ class Restful_api
                 break;
 
             case 'PUT':
-                $this->params = array();
-                $this->parse_raw_http_request($this->params);
+                $this->params = $_POST;
+                //$this->parse_raw_http_request($this->params);
                 break;
 
             case 'DELETE':
 
-                $this->params = $this->getQuery();
+                $this->params =$_POST;
                 break;
 
             default:
