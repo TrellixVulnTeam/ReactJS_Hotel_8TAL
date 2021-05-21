@@ -6,7 +6,7 @@ require 'contact.php';
 require 'basket.php';
 require 'roomtype.php';
 require 'roombook.php';
-
+require 'checklogin.php';
 header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
 header("Pragma: no-cache"); // HTTP 1.0.
 header("Expires: 0"); // Proxies.
@@ -23,7 +23,7 @@ if(empty($_SERVER['PATH_INFO'])){
 if ($_SERVER['PATH_INFO'] == '/users')
     $user = new User();
     if ($_SERVER['PATH_INFO'] == '/checklogin')
-    $user = new User();
+      new Checklogin();
 if ($_SERVER['PATH_INFO'] == '/rooms')
     $room = new Room();
 if ($_SERVER['PATH_INFO'] == '/contacts')

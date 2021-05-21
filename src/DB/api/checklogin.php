@@ -7,7 +7,7 @@ header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
 header("Pragma: no-cache"); // HTTP 1.0.
 header("Expires: 0"); // Proxies.
 header("Access-Control-Allow-Origin: *");
-class User extends restful_api
+class Checklogin extends restful_api
 {
     function __construct()
     {
@@ -25,14 +25,15 @@ class User extends restful_api
                     $data['message']= "EMAIL KHONG DUOC TRONG";
                     $this->response(200,$data);
                 }
-                if(empty($this->params['password'])||strpos($this->params['password'],"")!=false||$this->params['password']==null){
+                if(empty($this->params['password'])||strpos($this->params['password']," ")!=false||$this->params['password']==null){
                     $data['message']= "MAT KHAU KHONG DUNG DINH DANG";
                     $this->response(200,$data);
                 }
                 $email=$this->params['email'];
                 $password=$this->params['password'];
-                $con->query("select * from users where email='$email' AND '$password'");
+                $con->query("select * from users where email='$email' AND password='$password'");
                 $check=$con->getData();
+
                 if($check==null){
                     $data['message']="Tai khoan hoac mat khau khong chinh xac";
                 }
