@@ -34,11 +34,11 @@ class Restful_api
         $this->query_string = $_SERVER['QUERY_STRING'];
 
         $method   = $_SERVER['REQUEST_METHOD'];
-        if (isset($_POST)) {
+        if ($method=="POST") {
             if ($_POST['method'] == 'PUT' || $_POST['method'] == 'put')
                 $method = 'PUT';
               
-            if ($_POST['method'] == 'DELETE' || $_POST['method'] == 'DELETE')
+            if ($_POST['method'] == 'DELETE' || $_POST['method'] == 'delete')
                 $method = 'DELETE';
         }
 
