@@ -3,7 +3,7 @@ import './style.scoped.css';
 import './services.scoped.css';
 import Header from './../../header/header'
 import Footer from './../../footer/footer'
-
+import Carousel from 'react-bootstrap/Carousel'
 class Spa extends Component {
   render() {
     return (
@@ -14,18 +14,18 @@ class Spa extends Component {
             <div className="slider-wrapper">
               <div className="slider-panel-controller">
                 <a href className="slider-left-ctrl slider-ctrl" data-move="left"><i className="fa fa-chevron-right" /></a>
-                <div className="slider-panel">
-                  <div className="slider-image">
+                <Carousel>
+               <Carousel.Item>
                     <img src="images/services/spa/Spa1.jpg" />
-                  </div>
-                  <div className="slider-image">
+                    </Carousel.Item>
+               <Carousel.Item>
                     <img src="images/services/spa/Spa2.jpg" />
-                  </div>
-                  <div className="slider-image">
+                    </Carousel.Item>
+               <Carousel.Item>
                     <img src="images/services/spa/Spa3.jpg" />
-                  </div>
-                </div>
-                <a href className="slider-right-ctrl slider-ctrl" data-move="right"><i className="fa fa-chevron-right" /></a>
+                    </Carousel.Item>
+</Carousel>
+ 
               </div>
             </div>
             <div className="slider-content col-5">
