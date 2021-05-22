@@ -191,21 +191,21 @@ p {
     outline: 0!important
 }
 
-.a {
+a {
     color: #ffffff;
 }
 
-.a {
+a {
     outline: none!important
 }
 
-.a:hover {
+a:hover {
     color: #ffffff;
     text-decoration: none;
 }
 
-.a.text-muted:focus,
-.a.text-muted:hover {
+a.text-muted:focus,
+a.text-muted:hover {
     color: #748690;
 }
 
@@ -320,9 +320,6 @@ small {
 #wrapper {
     width: 100%;
     position: relative;
-    min-height:1000px;
-    max-height: auto;
-    height: auto;
 }
 
 #sidebar-wrapper {

@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
-import Item_Home from './../../Item/item_home'
+import Item_Home from './../../Item/home_item'
 import './style.scoped.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from './../../footer/footer'
 import Header from './../../header/header'
+import { useHistory } from "react-router-dom";
+
 import Carousel from 'react-bootstrap/Carousel'
-const SliderHeader= React.lazy(()=>import ('./../../header/sliderHeader'));
+const SliderHeader = React.lazy(() => import('./../../header/sliderHeader'));
+
 
 class Home extends Component {
 
   render() {
     return (
       <div>
-        <Header/>
+        <Header />
         <SliderHeader></SliderHeader>
         <div className="container">
           <center>
@@ -47,33 +50,33 @@ class Home extends Component {
           <div id="slider2" className="carousel slide mt-1 " data-ride="carousel">
             <div className="carousel-inner">
               <div className="carousel-item active">
-              <Carousel>
-  <Carousel.Item>
-                <div className="row ">
-                  <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                  <Item_Home image="images/home/Presidential1.jpg" roomtype="Family" des=""></Item_Home>
-                  <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                  <Item_Home image="images/home/Presidential1.jpg" roomtype="Couple" des=""></Item_Home>
+                <Carousel>
+                  <Carousel.Item>
+                    <div className="row ">
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Family" des=""></Item_Home>
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Couple" des=""></Item_Home>
 
 
 
-                </div>
-                </Carousel.Item>
-  <Carousel.Item>
-                <div className="row">
-                  <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                  <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                  <Item_Home image="images/home/Presidential1.jpg" roomtype="Standard" des=""></Item_Home>
-                  <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                </div>
-                </Carousel.Item>
-</Carousel>
+                    </div>
+                  </Carousel.Item>
+                  <Carousel.Item>
+                    <div className="row">
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Standard" des=""></Item_Home>
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
+                    </div>
+                  </Carousel.Item>
+                </Carousel>
               </div>
             </div>
 
-            </div>
           </div>
-      
+        </div>
+
         {/* end slide room*/}
         {/* Load jquery trước khi load bootstrap js */}
         <br />

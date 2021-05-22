@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './assets/css/animate.scoped.css'
 import './assets/css/sidebar-menu.scoped.css'
 import './assets/css/adminstyle.scoped.css'
-import './assets/css/bootstrap.scoped.css';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-
-class edit_user extends Component {
+import MenuBar from './menubar';
+import Header from './header'
+class EditUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -59,74 +59,8 @@ class edit_user extends Component {
         return (
           <div className=" body bg-theme bg-theme1">
             <div id="wrapper">
-        {/*Start sidebar-wrapper*/}
-        <div id="sidebar-wrapper" data-simplebar data-simplebar-auto-hide="true">
-          <div className="brand-logo">
-            <a href="index.php">
-              <img src="assets/images/logo.png" className="logo-icon" alt="logo icon" />
-              <h5 className="logo-text">HKTQueen Hotel</h5>
-            </a>
-          </div>
-          <ul className="sidebar-menu do-nicescrol">
-            <li>
-              <a href="index.php">
-                <i className="fa fa-tachometer" aria-hidden="true" /> <span>Dashboard</span>
-              </a>
-            </li>
-            <li>
-              <a href="booking.php">
-                <i className="fa fa-shopping-cart" aria-hidden="true" /> <span>Booking</span>
-              </a>
-            </li>
-            <li>
-              <a href="rooms.php">
-                <i className="fa fa-bed" aria-hidden="true" /> <span>Rooms</span>
-              </a>
-            </li>
-            <li>
-              <a href="users.php">
-                <i className="fa fa-user" aria-hidden="true" /> <span>Users</span>
-              </a>
-            </li>
-            <li>
-              <a href="./signup-form/login-user.php" target="_blank">
-                <i className="fa fa-sign-out" aria-hidden="true" /> <span>Log Out</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        {/*End sidebar-wrapper*/}
-        {/*Start topbar header*/}
-        <header className="topbar-nav">
-          <nav className="navbar navbar-expand fixed-top">
-            <ul className="navbar-nav mr-auto align-items-center">
-              <li className="nav-item">
-                <a className="nav-link toggle-menu" href="javascript:void();">
-                  <i className="menu-icon fa fa-bars" />
-                </a>
-              </li>
-              <li className="nav-item">
-                <form className="search-bar">
-                  <input type="text" className="form-control" placeholder="Enter keywords" />
-                  <a href="javascript:void();"><i className="fa fa-search" /></a>
-                </form>
-              </li>
-            </ul>
-            <ul className="navbar-nav align-items-center right-nav-link">
-              <li className="nav-item">
-                <a className="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
-                  <span className="user-profile"><img src="assets/images/user.png" className="img-circle" alt="user avatar" /></span>
-                </a>
-                <ul className="dropdown-menu dropdown-menu-right">
-                  <li className="dropdown-item" >
-                    <a href="./signup-form/login-user.php">Logout </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
-        </header>
-        {/*End topbar header*/}
+          <Header></Header>
+          <MenuBar></MenuBar>
         <div className="clearfix" />
         <div className="content-wrapper">
           <div className="container-fluid">
@@ -178,4 +112,4 @@ class edit_user extends Component {
     }
 }
 
-export default edit_user;
+export default EditUser;

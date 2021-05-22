@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './assets/css/animate.scoped.css'
 import './assets/css/sidebar-menu.scoped.css'
 import './assets/css/adminstyle.scoped.css'
-import './assets/css/bootstrap.scoped.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom'
-
+import MenuBar from './menubar';
+import Header from './header'
 class editRoom extends Component {
     constructor(props) {
         super(props);
