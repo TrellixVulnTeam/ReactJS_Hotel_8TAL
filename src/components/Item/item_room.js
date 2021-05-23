@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react';
 import './room.scoped.css'
+import { BrowserRouter,  Switch, Route } from 'react-router-dom';
+
 class Item extends Component {
     render() {
         return (

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 
+=======
+import React, { Component } from 'react';
+>>>>>>> 855f7da9744f6a61b0fc3f3579f901f94b2d8030
 
 import './style.scoped.css';
 import './services.scoped.css';

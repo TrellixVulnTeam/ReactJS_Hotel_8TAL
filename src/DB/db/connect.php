@@ -56,10 +56,10 @@ class Database{
     
         public function getData() {  
              try{
+
                 if(gettype($this->result)=="bool") 
                 {
-
-                  
+              
   				 $result =null;
 
                 } 

@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import './header.scoped.css'
-class Show extends Component {
+class Header extends Component {
   render() {
     return (
       <div>
@@ -114,4 +114,4 @@ class Show extends Component {
 
 }
 
-export default Show;
+export default Header;

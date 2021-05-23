@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './style.scoped.css'
-
+import axios from 'axios';
+import { data } from 'jquery';
 class signin extends Component {
     constructor(props) {
         super(props);
@@ -10,6 +11,23 @@ class signin extends Component {
             passsWord: ''
         }
     }
+//////heckSignIn(){
+    checkSignIn(){	
+        axios({	
+        method: 'GET',	
+        url :'http://localhost/DB/api/controller.php/users',	
+        data : null	
+        }).then(res =>{	
+        this.setState({	
+        // products :res.data
+        email: data.email,
+        passsWord: data.passsWord
+        });	
+        }).catch(err =>{	
+        });	
+        }	
+
+        /////// heckSignIn(){
     myhandleChange = (event) => {
         let name = event.target.name;
         let value = event.target.value;
@@ -18,10 +36,11 @@ class signin extends Component {
     mySubmitHandler = (event) => {
         event.preventDefault();
     }
+  
     render() {
         return (
 
-           <div> 
+            <div>
                 <button className="header" onclick="window.location.href='../index.php'">
                     <Link to='/' >Home</Link>
                 </button>
@@ -46,7 +65,7 @@ class signin extends Component {
                     </div>
                 </div>
 
-                </div>
+            </div>
 
         );
     }

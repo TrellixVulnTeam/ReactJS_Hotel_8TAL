@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from "axios";
+
 class Test extends Component {
     constructor(props) {
         super(props);
@@ -10,20 +11,6 @@ class Test extends Component {
     }
 
     
-
-    componentDidMount() {
-        axios({
-            method: 'POST',
-            data:{text:"jjjj"},
-            url: './wrap',
-            timeout: 4000,    // 4 seconds timeout          
-           })
-           .then(response => {
-             this.setState({data:response.data});
-             console.log(response);
-          })        
-          .catch(error => console.error('timeout exceeded'));
-    }
 
 
     render() {

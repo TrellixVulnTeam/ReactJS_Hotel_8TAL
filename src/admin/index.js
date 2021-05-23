@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './assets/css/adminstyle.css'
-import './assets/css/animate.css'
-import './assets/css/sidebar-menu.css'
+import './assets/css/animate.scoped.css'
+import './assets/css/sidebar-menu.scoped.css'
+import './assets/css/adminstyle.scoped.css'
+import MenuBar from './menubar';
+import Header from './header'
 class Index extends Component {
 
     render() {
@@ -9,71 +11,8 @@ class Index extends Component {
 
                 <div  className="bg-theme bg-theme1 body">
                     <div id="wrapper">
-                        <div id="sidebar-wrapper" data-simplebar data-simplebar-auto-hide="true">
-                            <div className="brand-logo">
-                                <a href="index.php">
-                                    <img src="images/logo.png" className="logo-icon" alt="logo icon" />
-                                    <h5 className="logo-text">HKTQueen Hotel</h5>
-                                </a>
-                            </div>
-                            <ul className="sidebar-menu do-nicescrol">
-                                <li>
-                                    <a href="index.php">
-                                        <i className="fa fa-tachometer" aria-hidden="true" /> <span>Dashboard</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="booking.php">
-                                        <i className="fa fa-shopping-cart" aria-hidden="true" /> <span>Booking</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="rooms.php">
-                                        <i className="fa fa-bed" aria-hidden="true" /> <span>Rooms</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="users.php">
-                                        <i className="fa fa-user" aria-hidden="true" /> <span>Users</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="./signup-form/login-user.php" target="_blank">
-                                        <i className="fa fa-sign-out" aria-hidden="true" /> <span>Log Out</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <header className="topbar-nav">
-                            <nav className="navbar navbar-expand fixed-top">
-                                <ul className="navbar-nav mr-auto align-items-center">
-                                    <li className="nav-item">
-                                        <a className="nav-link toggle-menu" href="javascript:void();">
-                                            <i className="menu-icon fa fa-bars" />
-                                        </a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <form className="search-bar">
-                                            <input type="text" className="form-control" placeholder="Enter keywords" />
-                                            <a href="javascript:void();"><i className="fa fa-search" /></a>
-                                        </form>
-                                    </li>
-                                </ul>
-                                <ul className="navbar-nav align-items-center right-nav-link">
-                                    <li className="nav-item">
-                                        <a className="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
-                                            <span className="user-profile"><img src="images/user.png" className="img-circle" alt="user avatar" /></span>
-                                        </a>
-                                        <ul className="dropdown-menu dropdown-menu-right">
-                                            <li className="dropdown-item">
-                                                <a href="./signup-form/login-user.php">Logout </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </header>
+                     <MenuBar></MenuBar>
+                     <Header></Header>
                         <div className="clearfix" />
                         <div className="content-wrapper">
                             <div className="container-fluid">

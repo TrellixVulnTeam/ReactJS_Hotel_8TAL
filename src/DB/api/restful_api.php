@@ -1,5 +1,12 @@
 <?php
 
+header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
+header("Pragma: no-cache"); // HTTP 1.0.
+header("Expires: 0"); // Proxies.
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
+header('Content-type: application/json; charset=utf-8');
+
 
 class Restful_api
 {
@@ -26,7 +33,15 @@ class Restful_api
 
         $this->query_string = $_SERVER['QUERY_STRING'];
 
-        $method         = $_SERVER['REQUEST_METHOD'];
+        $method   = $_SERVER['REQUEST_METHOD'];
+        if ($method=="POST") {
+            if ($_POST['method'] == 'PUT' || $_POST['method'] == 'put')
+                $method = 'PUT';
+              
+            if ($_POST['method'] == 'DELETE' || $_POST['method'] == 'delete')
+                $method = 'DELETE';
+        }
+
         $allow_method   = array('GET', 'POST', 'PUT', 'DELETE');
 
         if (in_array($method, $allow_method)) {
@@ -40,17 +55,17 @@ class Restful_api
                 break;
 
             case 'GET':
-                $this->params=$_GET;
+                $this->params = $_GET;
                 break;
 
             case 'PUT':
-                $this->params=array();
-                $this->parse_raw_http_request($this->params);
+                $this->params = $_POST;
+                //$this->parse_raw_http_request($this->params);
                 break;
 
             case 'DELETE':
 
-                $this->params=$this->getQuery();
+                $this->params =$_POST;
                 break;
 
             default:
@@ -79,8 +94,8 @@ class Restful_api
     {
         $status = array(
             200 => 'OK',
-            201=> "Created",
-            403=>"Forbidden",
+            201 => "Created",
+            403 => "Forbidden",
             404 => 'Not Found',
             405 => 'Method Not Allowed',
             500 => 'Internal Server Error'
