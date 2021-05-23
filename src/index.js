@@ -5,10 +5,11 @@ import {BrowserRouter as Router } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import App from './App'
+import Test from './test'
 ReactDOM.render(
   <BrowserRouter>
     <React.Suspense fallback={<div>Loading...</div>}>
-      <App></App>
+      <Test></Test>
      
     </React.Suspense>
   </BrowserRouter>,

@@ -6,6 +6,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 import MenuBar from './menubar';
 import Header from './header'
+import url from '../config'
+
 class editRoom extends Component {
     constructor(props) {
         super(props);
@@ -36,7 +38,7 @@ class editRoom extends Component {
                 'Access-Control-Allow-Origin': '*',
             }
         }
-        axios.get(`http://localhost/ReactJS_Hotel/src/DB/api/controller.php/rooms`, formData, config).then(Response => {
+        axios.get(url+`/rooms`, formData, config).then(Response => {
             console.log(Response)
         })
     }
@@ -57,7 +59,7 @@ class editRoom extends Component {
         }
 
     }
-    axios.post(`http://localhost:8080/DB/api/controller.php/rooms`, formData, config).then(Response => {
+    axios.post(url+`/rooms`, formData, config).then(Response => {
         console.log(Response.data.message);  
         }).catch (function (error) {
     if (error.response) {

@@ -6,6 +6,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import MenuBar from './menubar';
 import Header from './header'
+import url from '../config'
+
 class rooms extends Component {
     constructor(props) {
         super(props);
@@ -13,13 +15,13 @@ class rooms extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost/ReactJS_Hotel/src/DB/api/controller.php/rooms").then(res => {
+        axios.get(url+"/rooms").then(res => {
             this.setState({ data: res.data })
         })
     }
     OnDelete = (room_id) => {
         // event.preventDefault();
-        axios.delete(`http://localhost/ReactJS_Hotel/src/DB/api/controller.php/rooms?room_id=${room_id}`, {
+        axios.delete(url+`/rooms?room_id=${room_id}`, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                 'Access-Control-Allow-Origin': '*'

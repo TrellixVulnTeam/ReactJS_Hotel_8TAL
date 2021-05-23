@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import MenuBar from './menubar';
 import Header from './header'
+import url from '../config'
+
 class EditUser extends Component {
     constructor(props) {
         super(props);
@@ -29,7 +31,7 @@ class EditUser extends Component {
     
 
       componentDidMount() {
-        axios.get("http://localhost/ReactJS_Hotel/src/DB/api/controller.php/users?user_id=8").then(res => {
+        axios.get(url+"/users?user_id=8").then(res => {
           this.setState({ data: res.data }) 
       })
       }
@@ -44,7 +46,7 @@ class EditUser extends Component {
       formData.append('code', this.state.code);
       formData.append('status', this.state.status);
       formData.append('role', this.state.role);
-      axios.put(`http://localhost/ReactJS_Hotel/src/DB/api/controller.php/users?user_id=8`,formData,{
+      axios.put(url+`/users?user_id=8`,formData,{
           headers : {
               'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
           }

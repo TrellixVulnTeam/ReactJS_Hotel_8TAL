@@ -5,17 +5,20 @@ import './assets/css/adminstyle.scoped.css'
 import axios from 'axios';
 import MenuBar from './menubar';
 import Header from './header'
-import { Navbar } from 'react-bootstrap';
+import url from '../config'
 class booking extends Component {
     constructor(props) {
         super(props);
-        this.state = { data: [] };
+        this.state = { data: [] }
     }
+// hello hello
     componentDidMount() {
-        axios.get("http://localhost/ReactJS_Hotel/src/DB/api/controller.php/rooms").then(res => {
-            this.setState({ data: res.data });
+        axios.get(url+"/roombooks").then(res => {
+            this.setState({ data: res.data })
+
         })
     }
+
     render() {
         return (
             <div>
@@ -49,9 +52,30 @@ class booking extends Component {
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        {this.state.data.map(elements => {
-                                                            return (<td>{elements.phone}</td>)
+                                                        {this.state.data.map(element => {
+                                                            return (<tr>
+                                                                <td>{element.roombook_id}</td>
+                                                                <td>{element.user_id}</td>
+                                                                <td>{element.room_id}</td>
+                                                                <td>{element.phone}</td>                                                                
+                                                                <td>{element.arrive}</td>
+                                                                <td>{element.depart}</td>
+                                                                <td>{element.status}</td>
+                                                                <td>{element.payment}</td>
+                                                                <td><div style={{ display: "flex"}} width="100px" hover>
+                                                                    <button style={{color:"green"}} >
+                                                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                                    </button>
+                                                                    <form action="" method="post">
+                                                                        <button name="deletebooking" style={{color:"red"}}>
+                                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                                </td>
+                                                            </tr>)
                                                         })}
+
                                                     </tbody>
                                                 </table>
                                             </div>
