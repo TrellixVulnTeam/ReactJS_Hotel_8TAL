@@ -13,22 +13,46 @@ class rooms extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost/ReactJS_Hotel/src/DB/api/controller.php/rooms").then(res => {
+        axios.get("http://localhost:8080/DB/api/controller.php/rooms").then(res => {
             this.setState({ data: res.data })
         })
     }
-    OnDelete = (room_id) => {
-        // event.preventDefault();
-        axios.delete(`http://localhost/ReactJS_Hotel/src/DB/api/controller.php/rooms?room_id=${room_id}`, {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                'Access-Control-Allow-Origin': '*'
-            }
-        }).then(res => {
-            alert("Xóa thành công", {})
-            console.log(res.data);
-        });
+    OnDelete = (id) => {
+    //     axios.delete(`http://localhost:8080/DB/api/controller.php/rooms?room_id=${room_id}`, {
+    //         headers: {
+    //             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    //             'Access-Control-Allow-Origin': '*'
+    //         }
+    //     }).then(res => {
+    //         alert("Xóa thành công", {})
+    //         console.log(res.data);
+    //     });
+    // }
+    let formData = new FormData();
+    formData.append('room_id', id);
+    formData.append('roomtype_id', this.state.roomtype_id);
+    formData.append('noroom', this.state.noroom);
+    formData.append('img', this.state.img);
+    formData.append('status', this.state.status);
+    formData.append('phones', this.state.phone);
+    formData.append('method','DELETE'); // luu y o day
+    let config = {
+        headers: {
+            "Content-Type": "application/json",
+             
     }
+
+}
+axios.post(`http://localhost:8080/DB/api/controller.php/rooms`, formData, config).then(Response => {
+    console.log(Response.data.message);  
+    }).catch (function (error) {
+if (error.response) {
+    console.log(error.response.headers);
+}
+
+});
+
+}
     render() {
         return (
             <div className=" body bg-theme bg-theme1">

@@ -36,7 +36,7 @@ class editRoom extends Component {
                 'Access-Control-Allow-Origin': '*',
             }
         }
-        axios.get(`http://localhost/ReactJS_Hotel/src/DB/api/controller.php/rooms`, formData, config).then(Response => {
+        axios.get(`http://localhost:8080/DB/api/controller.php/rooms`, formData, config).then(Response => {
             console.log(Response)
         })
     }
