@@ -5,7 +5,7 @@ import {BrowserRouter as Router } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 //import App from './App'
-import App from './admin/editRoom'
+import App from './admin/booking'
 ReactDOM.render(
   <BrowserRouter>
     <React.Suspense fallback={<div>Loading...</div>}>

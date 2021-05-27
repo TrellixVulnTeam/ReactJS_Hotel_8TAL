@@ -11,13 +11,39 @@ class booking extends Component {
         super(props);
         this.state = { data: [] }
     }
-// hello hello
+
     componentDidMount() {
         axios.get(url+"/roombooks").then(res => {
             this.setState({ data: res.data })
-
         })
     }
+        OnDelete = (roombook_id) => {
+            let formData = new FormData();
+            formData.append('roombook_id',roombook_id);
+            formData.append('method','delete'); // luu y o day
+            let config = {
+                headers: {
+                    "Content-Type": "application/json",
+                     
+            }
+    
+        }
+        axios.post(url+`/roombooks?roombook_id=${roombook_id}`, formData, config).then(Response => {
+            console.log(Response.data.message);  
+            }).catch (function (error) {
+        if (error.response) {
+            console.log(error.response.headers);
+        }
+        
+    });
+    }
+// hello hello
+    // componentDidMount() {
+    //     axios.get(url+"/roombooks").then(res => {
+    //         this.setState({ data: res.data })
+
+    //     })
+    // }
 
     render() {
         return (
@@ -67,9 +93,10 @@ class booking extends Component {
                                                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                                                     </button>
                                                                     <form action="" method="post">
-                                                                        <button name="deletebooking" style={{color:"red"}}>
-                                                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                                                        </button>
+                                    
+                                                                        <button name="deletebooking" onClick={() => this.OnDelete(element.roombook_id)} style={{ color: "red" }}>
+                                                                             <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                       </button>
                                                                     </form>
                                                                 </div>
                                                                 </td>
