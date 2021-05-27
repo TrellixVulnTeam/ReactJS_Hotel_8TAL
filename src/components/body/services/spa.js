@@ -41,7 +41,6 @@ class Spa extends Component {
       </div>
     );
   }
->>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1
 }
 
 export default Spa;

@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import MenuBar from './menubar';
 import Header from './header'
+import url from '../config'
+
 class edit extends Component {
 
     render() {

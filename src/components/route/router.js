@@ -54,7 +54,7 @@ const Routes = [
     {
         path: '/',
         exact: true,
-        main: () => <Admin />
+        main: () => <Home />
 
     },
     {

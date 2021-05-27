@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD:src/components/body/reservation/reservation2.js
-import '../../../css/bootstrap-select.min.css'
-import '../../../css/styles.css'
-
-class Reservation2 extends Component {
-=======
 import './styles.scoped.css'
 import Footer from './../../footer/footer'
 import Header from './../../header/header'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 class reservation2 extends Component {
->>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1:src/components/body/reservation2.js
     render() {
         return (
             <div>
@@ -137,4 +130,4 @@ class reservation2 extends Component {
 );
 }}
 
-export default Reservation2;
+export default reservation2;

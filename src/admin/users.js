@@ -2,9 +2,23 @@ import React, { Component } from 'react';
 import './assets/css/animate.scoped.css'
 import './assets/css/sidebar-menu.scoped.css'
 import './assets/css/adminstyle.scoped.css'
+import axios from 'axios'
 import MenuBar from './menubar';
 import Header from './header'
+import url from '../config'
 class users extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { data: [] }
+  }
+
+  componentDidMount() {
+    axios.get(url+"/users").then(res => {
+      // axios.get(" http://localhost/quynhreactjs/ReactJS_Hotel/src/DB/api/controller.php/rooms").then(res => {
+      this.setState({ data: res.data })
+
+    })
+  }
   render() {
     return (
       <div className="bg-theme bg-theme1">
@@ -25,16 +39,38 @@ class users extends Component {
                       <table className="table align-items-center table-flush table-borderless table-hover">
                         <thead>
                           <tr>
-                            <th>User ID</th>
+                            <th>User_id </th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Password</th>
                             <th>Code</th>
-                            <th>Status</th>
+                            <th>status</th>
                             <th>Role</th>
-                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
+                          {this.state.data.map(element => {
+                            return (<tr>
+                              <td>{element.user_id}</td>
+                              <td>{element.name}</td>
+                              <td>{element.email}</td>
+                              <td>{element.password}</td>
+                              <td>{element.code}</td>
+                              <td>{element.status}</td>
+                              <td>{element.role}</td>
+                              <td><div style={{ display: 'flex'}} width="100px" hover>
+                                <button>
+                                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button>
+                                <form action="" method="post">
+                                  <button name="deletebooking"  style={{color:'red'}}>
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                  </button>
+                                </form>
+                              </div>
+                              </td>
+                            </tr>)
+                          })}
                         </tbody>
                       </table>
                     </div>

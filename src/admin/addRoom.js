@@ -8,6 +8,7 @@ import 'axios';
 import MenuBar from './menubar';
 import Header from './header'
 import axios from 'axios';
+import url from '../config'
 function HomeButton() {
   let history = useHistory();
 
@@ -51,7 +52,7 @@ class addRoom extends Component {
         formData.append('img', this.state.img);  
         formData.append('status', this.state.status);
         formData.append('phones', this.state.phone);
-        axios.get('http://localhost/ReactJS_Hotel/src/DB/api/controller.php/rooms',formData,{
+        axios.get(url+'/rooms',formData,{
             headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
             }

@@ -7,6 +7,8 @@ import axios from 'axios';
 
 import MenuBar from './menubar';
 import Header from './header'
+import url from '../config'
+
 class editBooking extends Component {
         constructor(props) {
             super(props);
@@ -41,7 +43,7 @@ class editBooking extends Component {
           formData.append('depart', this.state.depart);
           formData.append('status', this.state.status);
           formData.append('payment', this.state.payment);
-          axios.put(`http://localhost/ReactJS_Hotel/src/DB/api/controller.php/roombooks?roombook_id=8`,formData,{
+          axios.put(url+`/roombooks?roombook_id=8`,formData,{
               headers : {
                   'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' 
                         }

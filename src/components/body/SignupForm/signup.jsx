@@ -7,35 +7,52 @@ class signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fullname: '',
+      name: '',
       email: '',
-      passWord: '',
+      password: '',
       confirmPass: '',
     }
   }
-  //////heckSignUp(){
-  checkSignUp() {
-    axios({
-      method: 'POST',
-      url: 'http://localhost/DB/api/controller.php/users',
-      data: {
-        fullname: this.state.fullname,
-        email: this.state.email,
-        passWord: this.state.passWord,
-        confirmPass: this.state.confirmPass // bên phải là tên dữ liệu
-      }
-    }).then(res => {
-     
-      console.log(res.data);
-    }).catch(err => {
-    });
-  }
 
+  //////heckSignUp(){
+  checkSignUp = () => {
+    if (this.state.password != this.state.confirmPass) {
+      alert("PASSWORD NOT MATCH");
+    }
+    else {
+      let form = new FormData;
+      form.append('email', this.state.email);
+      form.append('name', this.state.name);
+      form.append('password', this.state.password);//ok roi
+      axios({
+        method: 'POST',
+        url: 'http://localhost/quynhreactjs/ReactJS_Hotel/src/DB/api/controller.php/users',
+        data: form
+      }).then(data => {
+
+        if (data.status === 201) {
+          alert(" Đang ký thành công ")
+          this.props.history.push("/signIn"); // ok roi do
+        }
+        else{
+          //console.log(data.data.message);
+          alert(" Tài khoản đã tồn tại ")
+
+          // ví dụ tài khoản đã đang nhập ấy mk in ra message ra màn hình dduocj ko , thấy nó chỉ in trong localhost , ng
+        }
+
+      }).catch(err => {
+        console.log(err);
+      });
+    }
+  }
+  //console.log(res.data);
   /////// heckSignUp(){
   myhandleChange = (event) => {
     let name = event.target.name;
     let value = event.target.value;
     this.setState({ [name]: value });
+
   }
   mySubmitHandler = (event) => {
     event.preventDefault();
@@ -45,28 +62,28 @@ class signup extends Component {
   render() {
     return (
       <>
-        <button className="header" onclick="window.location.href='../index.php'">
+        <button className="header">
           <Link to='/' >Home</Link>
         </button>
         <div className="container">
           <div className="row">
             <div className="col-md-4 offset-md-4 form">
-              <form action="signup-user.php" method="POST" autoComplete>
-                <h2 className="text-center">Signup Form</h2>
+              <form>
+                <h2 className="text-center"> Signup Form </h2>
                 <div className="form-group">
-                  <input className="form-control" type="text" name="name" placeholder="Full Name" required defaultValue />
+                  <input className="form-control" type="text" name="name" onChange={this.myhandleChange} placeholder="User Name" required />
                 </div>
                 <div className="form-group">
-                  <input className="form-control" type="email" name="email" placeholder="Email Address" required defaultValue />
+                  <input className="form-control" type="email" name="email" onChange={this.myhandleChange} placeholder="Email Address" required />
                 </div>
                 <div className="form-group">
-                  <input className="form-control" type="password" name="password" placeholder="Password" required />
+                  <input className="form-control" type="password" name="password" onChange={this.myhandleChange} placeholder="Password" required />
                 </div>
                 <div className="form-group">
-                  <input className="form-control" type="password" name="cpassword" placeholder="Confirm password" required />
+                  <input className="form-control" type="password" name="confirmPass" onChange={this.myhandleChange} placeholder="Confirm password" required />
                 </div>
                 <div className="form-group">
-                  <input className="form-control button" type="submit" name="signup" defaultValue="Signup" />
+                  <input className="form-control button" type="button" onClick={this.checkSignUp} name="signup" defaultValue="Signup" />
                 </div>
                 <div className="link login-link text-center">Already a member? <a href="login-user.php">Login here</a></div>
               </form>

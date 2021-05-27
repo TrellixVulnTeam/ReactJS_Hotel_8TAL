@@ -6,6 +6,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 import MenuBar from './menubar';
 import Header from './header'
+import url from '../config'
+
 class editRoom extends Component {
     constructor(props) {
         super(props);
@@ -15,7 +17,7 @@ class editRoom extends Component {
             noroom: '',
             img: '',
             status: '',
-            phones: ''
+            phone: ''
         }
     }
     myhandleChange = (event) => {
@@ -36,20 +38,19 @@ class editRoom extends Component {
                 'Access-Control-Allow-Origin': '*',
             }
         }
-        axios.get(`http://localhost:8080/DB/api/controller.php/rooms`, formData, config).then(Response => {
+        axios.get(url+`/rooms`, formData, config).then(Response => {
             console.log(Response)
         })
     }
-    onSave = (id) => {
-
+    onSave = (room_id) => {
         let formData = new FormData();
-        formData.append('room_id', id);
-        formData.append('roomtype_id', this.state.roomtype_id);
+        formData.append('room_id',room_id);
+        formData.append('roomtype_id',this.state.roomtype_id);
         formData.append('noroom', this.state.noroom);
         formData.append('img', this.state.img);
         formData.append('status', this.state.status);
-        formData.append('phones', this.state.phone);
-        formData.append('method','PUT'); // luu y o day
+        formData.append('phone', this.state.phone);
+        formData.append('method','PUT'); 
         let config = {
             headers: {
                 "Content-Type": "application/json",
@@ -57,7 +58,7 @@ class editRoom extends Component {
         }
 
     }
-    axios.post(`http://localhost:8080/DB/api/controller.php/rooms`, formData, config).then(Response => {
+    axios.post(url+`/rooms?room_id=${room_id}`, formData, config).then(Response => {
         console.log(Response.data.message);  
         }).catch (function (error) {
     if (error.response) {
@@ -174,7 +175,7 @@ render() {
                                         <label htmlFor="phone text-body" className="text-body">Phone:</label>
                                         <input type="phone" className="form-control text-body" name="phone" value={this.state.phone} onChange={(e) => this.setState({ phone: e.target.value })} required />
                                     </div>
-                                    <input type="submit" name="update" className="btn btn-primary" style={{ float: 'right' }} onClick={() => { this.onSave(8) }} />
+                                    <input type="submit" name="update" className="btn btn-primary" style={{ float: 'right' }} onClick={() => { this.onSave(1) }} />
 
                                 </div>
                             </div>

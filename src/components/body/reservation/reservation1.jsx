@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD:src/components/body/reservation/reservation1.js
-import '../../../css/bootstrap-select.min.css'
-import '../../../css/styles.css'
-
-class Reservation1 extends Component {
-=======
 import './styles.scoped.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from './../../footer/footer'
 import Header from './../../header/header'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 class reservation extends Component {
->>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1:src/components/body/reservation/reservation1.jsx
     render() {
         return (
             <div>
@@ -335,12 +328,8 @@ class reservation extends Component {
     </div>
   </section>
   {/* END / RESERVATION */}
-<<<<<<< HEAD:src/components/body/reservation/reservation1.js
-                                    
-=======
                                       
                                       
->>>>>>> 1fa1202d31dddc98feae044c3cdd7224868e64a1:src/components/body/reservation/reservation1.jsx
             </div>
             <Footer></Footer>
             </div>
@@ -348,4 +337,4 @@ class reservation extends Component {
     }
 }
 
-export default Reservation1;
+export default reservation;
