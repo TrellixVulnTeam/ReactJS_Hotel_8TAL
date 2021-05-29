@@ -3,15 +3,87 @@ import Item_Home from './../../Item/home_item'
 import './style.scoped.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from './../../footer/footer'
-import Header from './../../header/header'
-import { useHistory } from "react-router-dom";
+import Header from './../../header/header';
+import url from './../../../config'
+import axios from 'axios'
+import Carousel from 'react-bootstrap/Carousel';
 
-import Carousel from 'react-bootstrap/Carousel'
 const SliderHeader = React.lazy(() => import('./../../header/sliderHeader'));
 
 
 class Home extends Component {
 
+
+  constructor(props) {
+    super(props);
+    this.state = { dataRoom: [] };
+
+  }
+
+  getAllRoom = async () => {
+    let allRoom = [];
+    await axios.get(url + "/rooms").then((response) => {
+      allRoom = response.data;
+    });
+    return allRoom;
+  }
+  getRoomType = async (id) => {
+
+    let data = [];
+    await axios.get(url + "/roomtypes?roomtype_id=" + id).then(res => {
+      data = res.data;
+    });
+    return data;
+  }
+  componentDidMount = async () => {
+
+    let data = await this.getAllRoom();
+    let arr = [];
+
+    let filterRoomType = [];
+
+    data = data.filter(data => data.status == "available");
+
+    let getType = data.map((item) => {
+      return item.roomtype_id;
+    });
+
+
+    getType.map((item, index) => {
+      if (getType.indexOf(item) == index)
+        filterRoomType.push(item);
+    });
+
+     filterRoomType.forEach(async item => {
+      let room = await this.getRoomType(item);
+      arr.push(room)
+    });
+
+    setTimeout(() => {
+      for (let i = 0; i < data.length; i++) {
+        console.log(arr.length);
+        console.log(arr)
+  
+        for (let j = 0; j < arr.length; j++) {
+          const element = arr[j];
+          if (element.roomtype_id == data[i].roomtype_id) {
+            data[i].rent = element.rent;
+            data[i].quantity = element.roomtype;
+            data[i].roomtype = element.roomtype;
+          }
+        }
+      };
+      
+    }, 200);
+    this.setState({dataRoom:data})
+   
+
+   
+
+
+
+
+  }
   render() {
     return (
       <div>
@@ -57,9 +129,14 @@ class Home extends Component {
                       <Item_Home image="images/home/Presidential1.jpg" roomtype="Family" des=""></Item_Home>
                       <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
                       <Item_Home image="images/home/Presidential1.jpg" roomtype="Couple" des=""></Item_Home>
+                    </div>
+                    <br /> <hr /> <br />
 
-
-
+                    <div className="row">
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Family" des=""></Item_Home>
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Couple" des=""></Item_Home>
                     </div>
                   </Carousel.Item>
                   <Carousel.Item>
@@ -68,6 +145,13 @@ class Home extends Component {
                       <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
                       <Item_Home image="images/home/Presidential1.jpg" roomtype="Standard" des=""></Item_Home>
                       <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
+                    </div>
+                    <br /> <hr /> <br />
+                    <div className="row">
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Family" des=""></Item_Home>
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
+                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Couple" des=""></Item_Home>
                     </div>
                   </Carousel.Item>
                 </Carousel>

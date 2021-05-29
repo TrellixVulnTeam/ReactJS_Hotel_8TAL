@@ -1,3 +1,3 @@
-const url='http://localhost/long/DB/api/controller.php'
+const url='http://localhost:8080/Db/api/controller.php'
 
 export default url;
