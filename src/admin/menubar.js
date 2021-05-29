@@ -45,8 +45,6 @@ class menubar extends Component {
                         <Link to='/usersAdmin'>
                              <a className="a" >
                             <i className="fa fa-user" aria-hidden="true" /> <span>Users</span>
-
-
                         </a>
                         </Link>
                     </li>

@@ -76,7 +76,7 @@ class RoomBook extends restful_api
 					// update khi da co nguoi dat phong
 					$con->query("UPDATE ROOMS SET status='unavailable' where room_id='$room_id'");
 					$data['message']="BOOKROOM Thanh cong";
-					$this->response(200,);
+					$this->response(200,$data);
 
 
 				}
@@ -85,22 +85,23 @@ class RoomBook extends restful_api
 
 		} elseif ($this->method == 'PUT') {
 			$id = $this->params['roombook_id'];
+              
+                	$status = $this->params['status'];
+                	$phone = $this->params['phone'];
+                	$arrive = $this->params['arrive'];
+                	$depart = $this->params['depart'];
+                	$payment =$this->params['payment'];
 			if (empty($id)) {
 				$this->response(404, "Khong tim thay id");
 			} else {
-				if(empty($this->params['status'])||empty($this->params['payment'])){
-					$data['message']="THIEU STATUS";
-					$this->response(200,$data);
-				}
-				$status=$this->params['status'];
-				$payment=$this->params['payment'];
 				$con = new Database;
-				$con->query("UPDATE roombooks set status='$status', payment='$payment' where roombook_id= '$id'");
+				$con->query("UPDATE roombooks set depart='$depart', arrive='$arrive', phone='$phone',  status='$status', payment='$payment' where roombook_id= '$id'");
 				$con->close();
-				$this->response(200);
+				$data['message']="UPDATE ".$id." THANH CONG";
+				$this->response(200,$data);
 			}
 		} elseif ($this->method == 'DELETE') {
-
+  
 			$id = $this->params['roombook_id'];
 			if (empty($id)) {
 				$this->response(404, "Khong tim thay id");

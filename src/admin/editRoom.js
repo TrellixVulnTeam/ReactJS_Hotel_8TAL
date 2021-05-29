@@ -28,18 +28,17 @@ class editRoom extends Component {
     mySubmitHandler = (event) => {
     }
 
-
     componentDidMount() {
-        let formData = new FormData();
-        formData.append('room_id', this.state.room_id);
-        let config = {
-            headers: {
-                "Content-Type": "application/json",
-                'Access-Control-Allow-Origin': '*',
-            }
-        }
-        axios.get(url+`/rooms`, formData, config).then(Response => {
-            console.log(Response)
+        axios.get(url+`/rooms?room_id=7`).then(res => {
+            this.setState({
+                room_id: res.data.room_id,
+                roomtype_id: res.data.roomtype_id,
+                noroom: res.data.noroom,
+                img: res.data.img,
+                status: res.data.status,
+                phone: res.data.phone,
+            })
+            console.log(res)
         })
     }
     onSave = (room_id) => {
@@ -68,76 +67,14 @@ class editRoom extends Component {
 });
 
     }
+
 render() {
     return (
         <div className=" body bg-theme bg-theme1">
 
             <div id="wrapper">
-                <div id="sidebar-wrapper" data-simplebar data-simplebar-auto-hide="true" className="active">
-                    <div className="brand-logo">
-                        <a href="index.php">
-                            <img src="images/logo.png" className="logo-icon" alt="logo icon" />
-                            <h5 className="logo-text">HKTQueen Hotel</h5>
-                        </a>
-                    </div>
-                    <ul className="sidebar-menu do-nicescrol in">
-                        <li>
-                            <a href="index.php">
-                                <i className="fa fa-tachometer" aria-hidden="true" /> <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="booking.php">
-                                <i className="fa fa-shopping-cart" aria-hidden="true" /> <span>Booking</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="rooms.php">
-                                <i className="fa fa-bed" aria-hidden="true" /> <span>Rooms</span>
-                            </a>
-                        </li>
-                        <li className="active">
-                            <a href="users.php" className="active">
-                                <i className="fa fa-user" aria-hidden="true" /> <span>Users</span>
-                            </a>n
-                                </li>
-                        <li>
-                            <a href="./signup-form/login-user.php" target="_blank">
-                                <i className="fa fa-sign-out" aria-hidden="true" /> <span>Log Out</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <header className="topbar-nav">
-                    <nav className="navbar navbar-expand fixed-top">
-                        <ul className="navbar-nav mr-auto align-items-center">
-                            <li className="nav-item">
-                                <a className="nav-link toggle-menu" href="javascript:void();">
-                                    <i className="menu-icon fa fa-bars" />
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <form className="search-bar">
-                                    <input type="text" className="form-control" placeholder="Enter keywords" />
-                                    <a href="javascript:void();"><i className="fa fa-search" /></a>
-                                </form>
-                            </li>
-                        </ul>
-                        <ul className="navbar-nav align-items-center right-nav-link">
-                            <li className="nav-item">
-                                <a className="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
-                                    <span className="user-profile"><img src="images/user.png" className="img-circle" alt="user avatar" /></span>
-                                </a>
-                                <ul className="dropdown-menu dropdown-menu-right">
-                                    <li className="dropdown-item" >
-                                        <a href="./signup-form/login-user.php">Logout </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </header>
+            <MenuBar></MenuBar>
+            <Header></Header>
                 {/*End topbar header*/}
                 <div className="clearfix" />
                 <div className="content-wrapper">
@@ -150,11 +87,8 @@ render() {
                                     <div className="form-group ">
                                         <label htmlFor="roomtype_id " className="text-body">Roomtype ID :</label>
 
-                                        <select name="roomtype_id" className="form-control text-body" id required>
-
-                                            <option value={this.state.roomtype_id} onChange={(e) => this.setState({ roomtype_id: e.target.value })}></option>
-
-                                        </select>
+                                        <input type="roomtype_id" readonly='true' className="form-control text-body" value={this.state.roomtype_id} onChange={(e) => this.setState({ roomtype_id: e.target.value })} id required/>
+                                        
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="noroom " className="text-body">No room:</label>
@@ -165,8 +99,8 @@ render() {
                                         <input type="file" className="form-control text-body" name="img" value={this.state.img} onChange={(e) => this.setState({ img: e.target.value })} />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="status " className="text-body">Status:</label>
-                                        <select name="status" className="form-control text-body" id required>
+                                        <label htmlFor="status " className="text-body" >Status:</label>
+                                        <select name="status" value={this.state.value} onChange={this.myhandleChange}  className="form-control text-body" id required>
                                             <option value="available" className="text-body">Available</option>
                                             <option value="unavailable" className="text-body">Unavailable</option>
                                         </select>
@@ -175,7 +109,7 @@ render() {
                                         <label htmlFor="phone text-body" className="text-body">Phone:</label>
                                         <input type="phone" className="form-control text-body" name="phone" value={this.state.phone} onChange={(e) => this.setState({ phone: e.target.value })} required />
                                     </div>
-                                    <input type="submit" name="update" className="btn btn-primary" style={{ float: 'right' }} onClick={() => { this.onSave(1) }} />
+                                    <input type="submit" name="update" className="btn btn-primary" style={{ float: 'right' }} onClick={() => { this.onSave(7) }} />
 
                                 </div>
                             </div>

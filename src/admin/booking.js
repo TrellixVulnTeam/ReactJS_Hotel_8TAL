@@ -20,7 +20,7 @@ class booking extends Component {
         OnDelete = (roombook_id) => {
             let formData = new FormData();
             formData.append('roombook_id',roombook_id);
-            formData.append('method','delete'); // luu y o day
+            formData.append('method','DELETE'); // luu y o day
             let config = {
                 headers: {
                     "Content-Type": "application/json",
@@ -66,12 +66,11 @@ class booking extends Component {
                                                     <thead>
                                                         <tr>
                                                             <th>ID</th>
-                                                            <th>Name</th>
-                                                            <th>Email</th>
+                                                            <th>User_id</th>
+                                                            <th>Rooom_id</th>
                                                             <th>Phone</th>
-                                                            <th>Room</th>
-                                                            <th>Arrive</th>
-                                                            <th>Depart</th>
+                                                            <th>Arrival time</th>
+                                                            <th>Departure time</th>
                                                             <th>Status</th>
                                                             <th>Payment </th>
                                                             <th>Action</th>
@@ -92,12 +91,9 @@ class booking extends Component {
                                                                     <button style={{color:"green"}} >
                                                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                                                     </button>
-                                                                    <form action="" method="post">
-                                    
                                                                         <button name="deletebooking" onClick={() => this.OnDelete(element.roombook_id)} style={{ color: "red" }}>
                                                                              <i class="fa fa-trash" aria-hidden="true"></i>
                                                                        </button>
-                                                                    </form>
                                                                 </div>
                                                                 </td>
                                                             </tr>)

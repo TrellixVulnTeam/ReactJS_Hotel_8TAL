@@ -68,11 +68,13 @@ class User extends restful_api
 			$this->response(500);
 		}
 		} elseif ($this->method == 'PUT') {
-			if (empty($id = $this->params['user_id'])) {
+			$user_id = $this->params['user_id'];
+
+			if (empty($user_id )) {
 				$this->response(500, "Thieu id");
 			} else {
 				$con = new Database;
-				$con->query("SELECT * from users where user_id='$id'");
+				$con->query("SELECT * from users where user_id='$user_id '");
 				$check= $con->getData();
 				if($check==null){
 					$data['message']="Tai khoan khong ton tai";
@@ -88,9 +90,16 @@ class User extends restful_api
 					$this->response(200,"Khong the thay doi quyen admin");
 					return;
 				}
-				$con->query("UPDATE users set name='$name',email='$email',password= '$password' where user_id='$id'");
+				$name = $this->params['name'];
+				$email = $this->params['email'];
+                       	 	$password = $this->params['password'];
+				$role = $this->params['role'];
+				$status = $this->params['status'];
+				$con->query("UPDATE users set name='$name',email='$email',password= '$password',role='$role',status='$status' where user_id='$user_id '");
+				$data['message']="Update thành công";
 				$con->close();
-				$this->response(200);
+				$this->response(200,$data);
+				
 			}
 		}
 
@@ -117,7 +126,8 @@ class User extends restful_api
 				}
 			}
 				$con->query("DELETE from users  where user_id='$id'");//ko status la block hay chua thoi
-				$this->response(200);
+				$data['message']="DELETE".$id."Thành công";
+				$this->response(200,$data);
 		}
 	}
 }

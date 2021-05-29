@@ -19,6 +19,7 @@ class Room extends restful_api
 
 		
 		if ($this->method == 'GET') {
+
 			$con = new Database();
 			if (empty($this->params)) {
 				$con->query("SELECT * FROM `rooms`");
@@ -54,30 +55,29 @@ class Room extends restful_api
 		}
 
 		} elseif ($this->method == 'PUT') {
-			if (empty($this->params['room_id'])) {
-				$this->response(404, "Khong tim thay id");
-			} else {
-				$con = new Database;
-				
-				
+				$id=$this->params['room_id'];
 				$noroom=$this->params['noroom'];
 				$phone=$this->params['phone'];
 				$type=$this->params['roomtype_id'];
-				$id=$this->params['room_id'];
+				
 				$img=$this->params['img'];
+			if (empty($id)) {
+				$this->response(404, "Khong tim thay id");
+			} else {
+				$con = new Database;	
 				$con->query("update rooms set noroom='$noroom',img='$img',phone='$phone',roomtype_id='$type' where room_id='$id'"); 
 				$con->close();
 				$data['message']="UPDATE ".$id." THANH CONG";
 				$this->response(200,$data);
 			}
 		} elseif ($this->method == 'DELETE') {
-
-			$id = $this->params['room_id'];
+			
+			$con = new Database;
+                        $id = $this->params['room_id'];
 			if (empty($id)) {
-				$this->response(404, "Khong tim thay id");
+				$this->response(404, "Khong tim thay id a");
 			} else {		
-				$con = new Database;
-				$status="delete at ".date("d/m/Y");
+				$status="delete at".date(" d/m/Y");
 				$con->query("UPDATE rooms set status='$status' where room_id='$id'");
 				$data['message']="DELETE room ".$id." THANH CONG";
 				$this->response(200,$data);

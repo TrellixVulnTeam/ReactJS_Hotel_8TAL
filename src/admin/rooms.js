@@ -19,17 +19,6 @@ class rooms extends Component {
             this.setState({ data: res.data })
         })
     }
-    // OnDelete = (room_id) => {
-    //     axios.delete(url+`/rooms?room_id=${room_id}`, {
-    //         headers: {
-    //             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    //             'Access-Control-Allow-Origin': '*'
-    //         }
-    //     }).then(res => {
-    //         alert("Xóa thành công", {})
-    //         console.log(res.data);
-    //     });
-    // }
         OnDelete = (room_id) => {
             let formData = new FormData();
             formData.append('room_id', room_id);

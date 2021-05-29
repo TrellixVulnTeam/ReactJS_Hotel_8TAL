@@ -23,37 +23,57 @@ class editBooking extends Component {
               payment:'',
             }
           }
-        myhandleChange = (event) => {
+
+          myhandleChange = (event) => {
             let name = event.target.name;
             let value = event.target.value;
             this.setState({ [name]: value });
-          }
-          mySubmitHandler = (event) => {
-          }
-        
+        }
+        mySubmitHandler = (event) => {
+        }
 
           componentDidMount() {
+            axios.get(url+`/roombooks?roombook_id=7`).then((res) =>{
+              this.setState({
+                roombook_id: res.data.roombook_id,
+                user_id: res.data.user_id,
+                room_id: res.data.room_id,
+                status: res.data.status,
+                phone: res.data.phone,
+                arrive: res.data.arrive,
+                depart: res.data.depart,
+                payment: res.data.payment,
+                })
+                console.log(res)
+            })
+        }
+          onSave = (roombook_id) => {
           let formData = new FormData();  
-          formData.append('roombook_id', this.state.roombook_id);  
+          formData.append('roombook_id', roombook_id);  
           formData.append('user_id', this.state. user_id);
           formData.append('room_id', this.state.room_id);  
           formData.append('status', this.state.status);
           formData.append('phone', this.state.phone);
           formData.append('arrive', this.state.arrive);  
           formData.append('depart', this.state.depart);
-          formData.append('status', this.state.status);
           formData.append('payment', this.state.payment);
-          axios.put(url+`/roombooks?roombook_id=8`,formData,{
-              headers : {
-                  'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' 
-                        }
-                   
-                   }).then(Response=>{
-              console.log(Response)
-          })
+          formData.append('method','PUT');
+          let config ={
+            headers: {
+              "Content-Type": "application/json",
+           }
           }
-
+          axios.post(url+`/roombooks?roombook_id=${roombook_id}`,formData, config).then(Response => {
+            console.log(Response.data.message);  
+            }).catch (function (error) {
+        if (error.response) {
+            console.log(error.response.headers);
+        }
         
+    });
+    
+        }
+
     render() {
       return (
      <div>
@@ -69,14 +89,13 @@ class editBooking extends Component {
             <div className="card-body">
               <h2 className="text-body">Edit Booking</h2>
               <div className="container">
-                <form action method="POST" encType="multipart/form-data">
                   <div className="form-group">
-                    <label htmlFor="user_id" className="text-body">User ID:</label>
-                    <input type="user_id"  className="form-control text-body" name="user_id" value={this.state.user_id} onChange={(e) => this.setState({ user_id: e.target.value })}/>
+                    <label htmlFor="user_id" className="text-body"readonly>User ID:</label>
+                    <input type="user_id"  readonly='true'  className="form-control text-body" name="user_id" defaultValue={this.state.user_id} />
                   </div>
                   <div className="form-group">
                     <label htmlFor="room_id" className="text-body">Room ID:</label>
-                    <input type="room_id"  className="form-control text-body" name="room_id" value={this.state.room_id} onChange={(e) => this.setState({ room_id: e.target.value })}/>
+                    <input type="room_id" readonly='true'  className="form-control text-body" name="room_id" defaultValue={this.state.room_id} />
                   </div>
                   <div className="form-group">
                     <label htmlFor="phone" className="text-body">Phone:</label>
@@ -92,20 +111,19 @@ class editBooking extends Component {
                   </div>
                   <div className="form-group">
                     <label htmlFor="status" className="text-body">Status:</label>
-                    <select name="status" className="form-control text-body" id required>
-                      <option value="pending"className="text-body">Pending</option>
+                    <select name="status" value={this.state.value} onChange={this.myhandleChange} className="form-control text-body" id required>
+                      <option value="pending"className="text-body" >Pending</option>
                       <option value="booking"className="text-body">Booking</option>
                     </select>
                   </div>
                   <div className="form-group">
                     <label htmlFor="payment"className="text-body">Payment :</label>
-                    <select name="payment" className="form-control text-body" id required>
-                      <option value="paid"className="text-body">Paid </option>
+                    <select name="payment" value={this.state.value} onChange={this.myhandleChange} className="form-control text-body" id required>
+                      <option value="paid"className="text-body" >Paid </option>
                       <option value="unpaid"className="text-body">Unpaid</option>
                     </select>
                   </div>
-                  <button type="submit" name="updatebook" onClick={this.onSave}>Submit</button>
-                </form>
+                  <input type="submit" name="updatebook" className="btn btn-primary" style={{ float: 'right' }} onClick={() => { this.onSave(7) }} />
               </div>
             </div>
           </div>

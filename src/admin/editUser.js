@@ -32,29 +32,45 @@ class EditUser extends Component {
 
       componentDidMount() {
         axios.get(url+"/users?user_id=8").then(res => {
-          this.setState({ data: res.data }) 
+          this.setState({
+            user_id: res.data.user_id,
+            name: res.data.name,
+            email: res.data.email,
+            password: res.data.password,
+            code: res.data.code,
+            status: res.data.status,
+            role: res.data.role,
+        })
+        console.log(res)
       })
       }
-        onSave = (event)=>{
-
-          event.preventDefault();
+   onSave = (user_id) => {
       let formData = new FormData();  
-      formData.append('user_id', this.state.user_id);  
+      formData.append('user_id',user_id);  
       formData.append('name', this.state.name);
       formData.append('email', this.state.email);  
       formData.append('password', this.state.password);
       formData.append('code', this.state.code);
       formData.append('status', this.state.status);
       formData.append('role', this.state.role);
-      axios.put(url+`/users?user_id=8`,formData,{
-          headers : {
-              'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
-          }
-      }).then(Response=>{
-        
-          console.log(Response)
-      })
+      formData.append('method','PUT');
+      let config = {
+        headers: {
+            "Content-Type": "application/json",
+             
     }
+
+}
+axios.post(url+`/users?user_id=${user_id}`, formData, config).then(Response => {
+    console.log(Response.data.message);  
+    }).catch (function (error) {
+if (error.response) {
+    console.log(error.response.headers);
+}
+
+});
+
+}
   
 
     render() {
@@ -70,8 +86,6 @@ class EditUser extends Component {
               <div className="card-body text-body">
                 <h2 className="text-body">Edit User</h2>
                 <div className="container">
-        
-                  <form action method="POST" encType="multipart/form-data">
                     <div className="form-group">
                       <label htmlFor="user_id" className="text-body">User ID:</label>
                       <input type="text" readOnly="true" className="form-control text-body" name="user_id"  value={this.state.user_id} onChange={(e) => this.setState({ user_id: e.target.value })} required />
@@ -94,13 +108,12 @@ class EditUser extends Component {
                     </div>
                     <div className="form-group">
                       <label htmlFor="status " className="text-body">Status :</label>
-                      <select name="status" className="form-control text-body" id required>
+                      <select name="status"  value={this.state.value} onChange={this.myhandleChange} className="form-control text-body" id required>
                         <option value="unverified" className="text-body">unverified</option>
                         <option value="verified" className="text-body" >verified</option>
                       </select>
                     </div>
-                    <button type="submit" name="updateuser" onClick={this.onSave} className="btn btn-primary" style={{float: 'right'}} >Submit</button>
-                  </form>
+                    <button type="submit" name="updateuser" onClick={this.onSave(8)} className="btn btn-primary" style={{float: 'right'}} >Submit</button>
                 </div>
               </div>
             </div>
