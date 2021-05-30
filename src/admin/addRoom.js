@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+<<<<<<< refs/remotes/origin/quynh
+=======
+import { useHistory } from "react-router-dom";
+>>>>>>> local
 import './assets/css/animate.scoped.css'
 import './assets/css/sidebar-menu.scoped.css'
 import './assets/css/adminstyle.scoped.css'
@@ -29,13 +33,16 @@ class addRoom extends Component {
 
         event.preventDefault();
         let formData = new FormData();  
-
         formData.append('roomtype_id', this.state.roomtype_id);  
         formData.append('noroom', this.state.noroom);
         formData.append('img', this.state.img);  
         formData.append('status', this.state.status);
         formData.append('phones', this.state.phone);
+<<<<<<< refs/remotes/origin/quynh
         axios.post('http://localhost:8080/DB/api/controller.php/rooms',formData,{
+=======
+        axios.post(url+'/rooms',formData,{
+>>>>>>> local
             headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
             }
@@ -49,6 +56,7 @@ class addRoom extends Component {
             <div className="bg-theme bg-theme1">
             <div id="wrapper">
               {/*Start sidebar-wrapper*/}
+<<<<<<< refs/remotes/origin/quynh
               <div id="sidebar-wrapper" data-simplebar data-simplebar-auto-hide="true">
                 <div className="brand-logo">
                   <a href="index.php">
@@ -116,13 +124,24 @@ class addRoom extends Component {
                 </nav>
               </header>
               {/*End topbar header*/}
+=======
+            <MenuBar>
+            </MenuBar>
+            <Header></Header>
+>>>>>>> local
               <div className="clearfix" />
               <div className="content-wrapper">
                 <div className="container-fluid">
                   <div className="card">
+<<<<<<< refs/remotes/origin/quynh
                     <div className="card-body">
                       <h2>Add Room</h2>
                        <form onSubmit={this.submitForm} method="POST" encType="multipart/form-data">
+=======
+                    <div className="card-body text-body">
+                      <h2 className="text-body"> Add Room</h2>
+                      <form onSubmit={this.submitForm} method="GET" encType="multipart/form-data">
+>>>>>>> local
                         <div className="form-group">
                           <label htmlFor="roomtype_id">Roomtype ID :</label>
                           {/* <input type="text" class="form-control" name="roomtype_id" placeholder="Enter roomtype_id " > */}
@@ -152,8 +171,14 @@ class addRoom extends Component {
                           <label htmlFor="phone">Phone:</label>
                           <input type="text" className="form-control" name="phone"  value={this.state.phone}  onChange={this.myhandleChange} placeholder="Enter phone" required />
                         </div>
+<<<<<<< refs/remotes/origin/quynh
                         <input type="submit" name="submit" className="btn btn-primary" style={{float: 'right'}} defaultValue="Submit" />
                       </form> 
+=======
+                        <input type="submit" name="submit" className="btn btn-primary"  onChange= {this.submitForm}  style={{float: 'right'}} defaultValue="Submit" />
+                      </form>
+                       <HomeButton/> 
+>>>>>>> local
                     </div>
                   </div>
                   {/*End content-wrapper*/}

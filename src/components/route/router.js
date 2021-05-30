@@ -1,5 +1,7 @@
 
 import React from 'react'
+import addRoom from '../../admin/addRoom';
+//import Detail from '../body/detail/Detail.js';
 const Home = React.lazy(() => import('./../body/home/home.jsx'));
 const Gallery = React.lazy(() => import('./../body/gallery/gallery.jsx'));
 const Contact = React.lazy(() => import('./../body/contact/contact.jsx'));
@@ -15,6 +17,27 @@ const Pool = React.lazy(() => import('./../body/services/pool'));
 const Restaurant = React.lazy(() => import('./../body/services/restaurant.jsx'));
 const Spa = React.lazy(() => import('./../body/services/spa'));
 
+<<<<<<< refs/remotes/origin/quynh
+=======
+const BookingAdmin = React.lazy(() => import('../../admin/booking'));
+const EditAdmin = React.lazy(() => import('../../admin/edit'));
+const EditRoomAdmin = React.lazy(() => import('../../admin/editRoom'));
+const EditUserAdmin = React.lazy(() => import('../../admin/editUser'));
+const EditBookingAdmin = React.lazy(() => import('../../admin/editBooking'));
+const LoginAdmin = React.lazy(() => import('../../admin/signup-form/login'));
+const NewPassAdmin = React.lazy(() => import('../../admin/signup-form/newPassword'));
+const ForgotPassAdmin = React.lazy(() => import('../../admin/signup-form/forgotPassword'));
+const SignUpAdmin = React.lazy(() => import('../../admin/signup-form/signup'));
+const ResetCodeAdmin = React.lazy(() => import('../../admin/signup-form/resetCode'));
+const PassworChangedAdmin = React.lazy(() => import('../../admin/signup-form/passwordChanged'));
+const Admin = React.lazy(() => import('../../admin/index'));
+const UsersAdmin= React.lazy(() => import('../../admin/users'));
+const RoomAdmin = React.lazy(() => import('../../admin/rooms'));
+const AddRoomAdmin = React.lazy(() => import('../../admin/addRoom'));
+// const AddRoomAdmin = React.lazy(()=> import ('../../admin/addRoom'));
+// const Detail = React.lazy(() => import('../body/detail/Detail.js'));
+
+>>>>>>> local
 
 // import  Home  from './../body/home';
 // import  Gallery   from'./../body/gallery';
@@ -119,6 +142,91 @@ const Routes = [
         exact: true,
         main: () => < SignUp />
 
+<<<<<<< refs/remotes/origin/quynh
+=======
+    },
+    {
+        path: '/bookingAdmin',
+        exact: true,
+        main: () => < BookingAdmin />
+
+    },  {
+        path: '/editAdmin',
+        exact: true,
+        main: () => < EditAdmin />
+
+    },  {
+        path: '/editBookingAdmin',
+        exact: true,
+        main: () => < EditBookingAdmin />
+
+    },  {
+        path: '/editRoomAdmin',
+        exact: true,
+        main: () => < EditRoomAdmin />
+
+    },  {
+        path: '/editUserAdmin',
+        exact: true,
+        main: () => < EditUserAdmin />
+
+    },  {
+        path: '/loginAdmin',
+        exact: true,
+        main: () => <LoginAdmin  />
+
+    },  {
+        path: '/newpassAdmin',
+        exact: true,
+        main: () => < NewPassAdmin />
+
+    },  {
+        path: '/forgotpassAdmin',
+        exact: true,
+        main: () => < ForgotPassAdmin />
+
+    },  {
+        path: '/signupAdmin',
+        exact: true,
+        main: () => < SignUpAdmin />
+
+    },  {
+        path: '/resetCodeAdmin',
+        exact: true,
+        main: () => < ResetCodeAdmin />
+
+    },  {
+        path: '/passwordChangeAdmin',
+        exact: true,
+        main: () => < PassworChangedAdmin />
+
+    },  {
+        path: '/admin',
+        exact: true,
+        main: () => < Admin />
+
+    },  {
+        path: '/usersAdmin',
+        exact: true,
+        main: () => < UsersAdmin />
+
+    },  {
+        path: '/roomsAdmin',
+        exact: true,
+        main: () => < RoomAdmin />
+
+    },  
+    {
+        path: '/addRoomAdmin',
+        exact: true,
+        main: () => < AddRoomAdmin />
+
+    },
+    {
+        path='/detail',
+        exact: true,
+        main: () => <Detail />
+>>>>>>> local
     }
 ]
 
