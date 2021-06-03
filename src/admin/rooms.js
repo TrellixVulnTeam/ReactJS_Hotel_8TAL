@@ -3,11 +3,11 @@ import './assets/css/animate.scoped.css'
 import './assets/css/sidebar-menu.scoped.css'
 import './assets/css/adminstyle.scoped.css'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import MenuBar from './menubar';
+import editRoom from './editRoom';
 import Header from './header'
 import url from '../config'
-
+import { BrowserRouter as Router, Route, Link,NavLink, Switch } from "react-router-dom";
 class rooms extends Component {
     constructor(props) {
         super(props);
@@ -52,18 +52,19 @@ class rooms extends Component {
                             <div className="card">
                                 <div className="card-body">
                                     <h2>View Rooms</h2>
-                                    <Link to='/addRoomAdmin'> <a className="btn btn-primary a" style={{ float: 'left' }}>Add New Room</a></Link>
+                                    <NavLink to='/addRoomAdmin'> <a className="btn btn-primary a" style={{ float: 'left' }}>Add New Room</a></NavLink>
                                     <div className="table-responsive table-hover">
 
                                         <table className="table">
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
+                                                    <th>Room_id</th>
                                                     <th>Roomtype Id</th>
                                                     <th>No Room</th>
                                                     <th>Img</th>
-                                                    <th>Status</th>
                                                     <th>Phone</th>
+                                                    <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -74,14 +75,15 @@ class rooms extends Component {
                                                         <td>{element.room_id}</td>
                                                         <td>{element.roomtype_id}</td>
                                                         <td>{element.noroom}</td>
-                                                        <td><img src={element.img} /></td>
+                                                        <td><img src={element.img} width="180" height="150" alt={element.room_id}/></td>
                                                         <td>{element.phone}</td>
                                                         <td>{element.status}</td>
                                                         <td><div style={{ display: 'flex' }} width="100px" hover>
-                                                            <Link to={`/editRoom/${element.room_id}`} style={{ color: 'green' }}>
+                                                        <NavLink to={`/editRoomAdmin/${element.room_id}/editRoom`} style={{ color: 'green' }}>
                                                                 <button>
                                                                     <i class="fa fa-pencil" aria-hidden="true"></i>
-                                                                </button></Link>
+                                                                </button>
+                                                        </NavLink>
                                                             <button name="deletebooking" onClick={() => this.OnDelete(element.room_id)} style={{ color: "red" }}>
                                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                                             </button>

@@ -155,19 +155,19 @@ const Routes = [
         main: () => < EditAdmin />
 
     },  {
-        path: '/editBookingAdmin',
+        path: '/editBookingAdmin/:id_book/editBooking',
         exact: true,
-        main: () => < EditBookingAdmin />
+        main: ({match}) => < EditBookingAdmin match={match}/>
 
     },  {
-        path: '/editRoomAdmin',
+        path: '/editRoomAdmin/:id_room/editRoom',
         exact: true,
-        main: () => < EditRoomAdmin />
+        main: ({match}) => < EditRoomAdmin match={match} />
 
     },  {
-        path: '/editUserAdmin',
+        path: '/editUserAdmin/:id/editUser',
         exact: true,
-        main: () => < EditUserAdmin />
+        main: ({match,history}) => < EditUserAdmin match={match}history={history}/>
 
     },  {
         path: '/loginAdmin',

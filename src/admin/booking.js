@@ -6,6 +6,7 @@ import axios from 'axios';
 import MenuBar from './menubar';
 import Header from './header'
 import url from '../config'
+import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 class booking extends Component {
     constructor(props) {
         super(props);
@@ -67,7 +68,7 @@ class booking extends Component {
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>User_id</th>
-                                                            <th>Rooom_id</th>
+                                                            <th>Room_id</th>
                                                             <th>Phone</th>
                                                             <th>Arrival time</th>
                                                             <th>Departure time</th>
@@ -88,9 +89,11 @@ class booking extends Component {
                                                                 <td>{element.status}</td>
                                                                 <td>{element.payment}</td>
                                                                 <td><div style={{ display: "flex"}} width="100px" hover>
-                                                                    <button style={{color:"green"}} >
+                                                                <NavLink to={`/editBookingAdmin/${element.roombook_id}/editBooking`} style={{ color: 'green' }}>
+                                                                     <button>
                                                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                                                     </button>
+                                                                </NavLink>
                                                                         <button name="deletebooking" onClick={() => this.OnDelete(element.roombook_id)} style={{ color: "red" }}>
                                                                              <i class="fa fa-trash" aria-hidden="true"></i>
                                                                        </button>

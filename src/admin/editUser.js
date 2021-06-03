@@ -31,7 +31,9 @@ class EditUser extends Component {
     
 
       componentDidMount() {
-        axios.get(url+"/users?user_id=8").then(res => {
+        if (this.props.match && this.props.match.params.id) {
+           const user_id = this.props.match.params.id
+        axios.get(url+`/users?user_id=${user_id}`).then(res => {
           this.setState({
             user_id: res.data.user_id,
             name: res.data.name,
@@ -44,6 +46,7 @@ class EditUser extends Component {
         console.log(res)
       })
       }
+    }
    onSave = (user_id) => {
       let formData = new FormData();  
       formData.append('user_id',user_id);  
@@ -113,7 +116,7 @@ if (error.response) {
                         <option value="verified" className="text-body" >verified</option>
                       </select>
                     </div>
-                    <button type="submit" name="updateuser" onClick={this.onSave(8)} className="btn btn-primary" style={{float: 'right'}} >Submit</button>
+                    <button type="submit" name="updateuser" onClick={this.onSave} className="btn btn-primary" style={{float: 'right'}} >Submit</button>
                 </div>
               </div>
             </div>

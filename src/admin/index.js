@@ -62,7 +62,7 @@ class Index extends Component {
                                     <div className="col-12 col-lg-12">
                                         <div className="card">
                                             <div className="card-header"> <h1>Booking Details
-                  <div className="card-action">
+                                                <div className="card-action">
                                                     <div className="dropdown">
                                                         <a href="javascript:void();" className="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
                                                             <i className="icon-options" />

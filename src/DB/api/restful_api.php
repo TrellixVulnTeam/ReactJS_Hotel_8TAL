@@ -8,6 +8,7 @@ header("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
 header('Content-type: application/json; charset=utf-8');
 
 
+
 class Restful_api
 {
     protected $method   = '';
@@ -33,13 +34,15 @@ class Restful_api
 
         $this->query_string = $_SERVER['QUERY_STRING'];
 
-        $method   = $_SERVER['REQUEST_METHOD'];
+        $method  = $_SERVER['REQUEST_METHOD'];
         if ($method=="POST") {
+            if (isset( $_POST['method'] )){
             if ($_POST['method'] == 'PUT' || $_POST['method'] == 'put')
                 $method = 'PUT';
               
             if ($_POST['method'] == 'DELETE' || $_POST['method'] == 'delete')
                 $method = 'DELETE';
+            }
         }
 
         $allow_method   = array('GET', 'POST', 'PUT', 'DELETE');

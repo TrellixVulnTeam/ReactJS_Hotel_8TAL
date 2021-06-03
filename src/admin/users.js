@@ -6,6 +6,8 @@ import axios from 'axios'
 import MenuBar from './menubar';
 import Header from './header'
 import url from '../config'
+import editUser from './editRoom'
+import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 class users extends Component {
   constructor(props) {
     super(props);
@@ -79,9 +81,12 @@ if (error.response) {
                               <td>{element.status}</td>
                               <td>{element.role}</td>
                               <td><div style={{ display: 'flex'}} width="100px" hover>
-                                <button>
-                                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                                </button>
+                              <NavLink to={`/editUserAdmin/${element.user_id}/editUser`} style={{ color: 'green' }}>
+                                  <button>
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                  </button>
+                              </NavLink>
+                                                              
                                   <button name="deleteuser" onClick={() => this.OnDelete(element.user_id)} style={{ color: "red" }}>
                                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                                             </button>

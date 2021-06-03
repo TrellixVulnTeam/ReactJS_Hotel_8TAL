@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './assets/css/animate.scoped.css'
 import './assets/css/sidebar-menu.scoped.css'
 import './assets/css/adminstyle.scoped.css'
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import axios from 'axios';
 
 import MenuBar from './menubar';
@@ -33,7 +33,9 @@ class editBooking extends Component {
         }
 
           componentDidMount() {
-            axios.get(url+`/roombooks?roombook_id=7`).then((res) =>{
+            if (this.props.match && this.props.match.params.id_book) {
+              const roombook_id = this.props.match.params.id_book
+            axios.get(url+`/roombooks?roombook_id=${roombook_id}`).then((res) =>{
               this.setState({
                 roombook_id: res.data.roombook_id,
                 user_id: res.data.user_id,
@@ -47,6 +49,7 @@ class editBooking extends Component {
                 console.log(res)
             })
         }
+      }
           onSave = (roombook_id) => {
           let formData = new FormData();  
           formData.append('roombook_id', roombook_id);  

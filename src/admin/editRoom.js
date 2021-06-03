@@ -29,7 +29,9 @@ class editRoom extends Component {
     }
 
     componentDidMount() {
-        axios.get(url+`/rooms?room_id=7`).then(res => {
+        if (this.props.match && this.props.match.params.id_room) {
+            const room_id = this.props.match.params.id_room
+        axios.get(url+`/rooms?room_id=${room_id}`).then(res => {
             this.setState({
                 room_id: res.data.room_id,
                 roomtype_id: res.data.roomtype_id,
@@ -41,6 +43,7 @@ class editRoom extends Component {
             console.log(res)
         })
     }
+}
     onSave = (room_id) => {
         let formData = new FormData();
         formData.append('room_id',room_id);
@@ -96,7 +99,7 @@ render() {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="img " className="text-body">Img:</label>
-                                        <input type="file" className="form-control text-body" name="img" value={this.state.img} onChange={(e) => this.setState({ img: e.target.value })} />
+                                        <input type="file" className="form-control text-body" name="img" onChange={(e) => this.setState({ img: e.target.value })} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="status " className="text-body" >Status:</label>
@@ -109,7 +112,7 @@ render() {
                                         <label htmlFor="phone text-body" className="text-body">Phone:</label>
                                         <input type="phone" className="form-control text-body" name="phone" value={this.state.phone} onChange={(e) => this.setState({ phone: e.target.value })} required />
                                     </div>
-                                    <input type="submit" name="update" className="btn btn-primary" style={{ float: 'right' }} onClick={() => { this.onSave(7) }} />
+                                    <input type="submit" name="update" className="btn btn-primary" style={{ float: 'right' }} onClick= { this.onSave } />
 
                                 </div>
                             </div>
