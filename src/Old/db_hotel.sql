@@ -1,16 +1,50 @@
+CREATE TABLE `hotel_location`(
+    `id` int AUTO_INCREMENT PRIMARY KEY,
+    location varchar(255) unique,
+    `image` text
+    );
+ INSERT INTO `hotel_location` (`location`) 
+        VALUES ("Hanoi"),
+               ("Saigon"),
+               ("Danang"),
+               ("Hue"), 
+               ("Hoian");
+CREATE TABLE `hotel` (
+    `id` int AUTO_INCREMENT PRIMARY KEY,
+    `hotel_name` varchar(255),
+    `id_location` int,
+    `image` text,
+    FOREIGN KEY (`id_location`) REFERENCES `hotel_location`(`id`) on delete cascade on update cascade
+    );
+
+ INSERT INTO `hotel` (`hotel_name`,`id_location`) 
+        VALUES ("Quang Trung Hotel",2),
+               ("Lotus Center Hotel",1),
+                ("Roseland Centa Hotel & Spa",3),
+               ("Somerset Chancellor Court Serviced Residence",2),
+              ("The Myst Dong Khoi",3),
+              ("Mia Saigon - luxury boutique hotel",2);
+              
 CREATE TABLE IF NOT EXISTS `roomtypes` (
     `roomtype_id` INT(11) NOT NULL AUTO_INCREMENT,
     `roomtype` VARCHAR(255) NOT NULL,
     `rent` DECIMAL(10) NOT NULL,
     `quantity` INT(11) NOT NULL,
-    PRIMARY KEY (`roomtype_id`)
+    `hotel_id` int(11) not null,
+    PRIMARY KEY (`roomtype_id`),
+    FOREIGN key (`hotel_id`) REFERENCES `hotel`(`id`) on delete cascade on update cascade
 ); 
 
-INSERT INTO `roomtypes` (`roomtype`, `rent`, `quantity`) 
-        VALUES ("Luxury", 590, 10),
-               ("Family", 490, 10),
-               ("Couple", 390, 10),
-               ("Standard", 290, 10);
+INSERT INTO `roomtypes` (`roomtype`, `rent`, `quantity`,`hotel_id`) 
+        VALUES ("Luxury", 590, 10,1),
+               ("Family", 490, 10,2),
+               ("Couple", 390, 10,3),
+               ("Standard", 290, 10,5),
+               ("King Room", 590, 10,1),
+               ("Twin Room", 490, 10,2),
+               ("Hollywood Twin Room", 390, 10,3),
+               ("Studio Room", 290, 10,5),
+               ("Suites", 290, 10,2);
  
 CREATE TABLE IF NOT EXISTS `rooms` (
     `room_id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -20,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `rooms` (
     `status` VARCHAR(255) NOT NULL,
     `phone` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`room_id`),
-    FOREIGN KEY (roomtype_id) REFERENCES `roomtypes`(roomtype_id) on delete cascade on update cascade
+    FOREIGN KEY (`roomtype_id`) REFERENCES `roomtypes`(`roomtype_id`) on delete cascade on update cascade
 );
 
 CREATE TABLE IF NOT EXISTS `roomstatus` (

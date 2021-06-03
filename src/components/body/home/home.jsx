@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, createElement } from 'react';
 import Item_Home from './../../Item/home_item'
+import Item_location from './../../Item/location_item'
+import { Link } from 'react-router-dom';
+
 import './style.scoped.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from './../../footer/footer'
@@ -7,84 +10,58 @@ import Header from './../../header/header';
 import url from './../../../config'
 import axios from 'axios'
 import Carousel from 'react-bootstrap/Carousel';
+import { fireEvent } from '@testing-library/dom';
+import ReactDOM from 'react-dom';
 
 const SliderHeader = React.lazy(() => import('./../../header/sliderHeader'));
 
 
 class Home extends Component {
 
-
   constructor(props) {
     super(props);
-    this.state = { dataRoom: [] };
-
+    this.state = { dataRoom: [], display: [] , arr:[]};
   }
 
-  getAllRoom = async () => {
-    let allRoom = [];
-    await axios.get(url + "/rooms").then((response) => {
-      allRoom = response.data;
-    });
-    return allRoom;
+  searchRoom = async () => {
+    return await axios.get(url + "/rooms?query=searchRoom")
   }
-  getRoomType = async (id) => {
+  getRoomTypeById = async (id) => {
+      await axios.get(url + "/roomtypes?roomtype_id=" + id).then(res =>{ let x = this.state.arr; x.push(res.data);  this.setState({arr:x});console.log(this.state) });
+      
+  }
+  getRoomType  = (array) => {
+       array.filter((item, index) => array.indexOf(item) === index).forEach( id =>  this.getRoomTypeById(id));
 
-    let data = [];
-    await axios.get(url + "/roomtypes?roomtype_id=" + id).then(res => {
-      data = res.data;
-    });
-    return data;
   }
   componentDidMount = async () => {
-
-    let data = await this.getAllRoom();
-    let arr = [];
-
-    let filterRoomType = [];
-
-    data = data.filter(data => data.status == "available");
-
-    let getType = data.map((item) => {
-      return item.roomtype_id;
-    });
-
-
-    getType.map((item, index) => {
-      if (getType.indexOf(item) == index)
-        filterRoomType.push(item);
-    });
-
-     filterRoomType.forEach(async item => {
-      let room = await this.getRoomType(item);
-      arr.push(room)
-    });
-
-    setTimeout(() => {
-      for (let i = 0; i < data.length; i++) {
-        console.log(arr.length);
-        console.log(arr)
   
-        for (let j = 0; j < arr.length; j++) {
-          const element = arr[j];
-          if (element.roomtype_id == data[i].roomtype_id) {
-            data[i].rent = element.rent;
-            data[i].quantity = element.roomtype;
-            data[i].roomtype = element.roomtype;
-          }
-        }
-      };
-      
-    }, 200);
-    this.setState({dataRoom:data})
-   
-
-   
+    
+    await this.searchRoom().then(res => {this.setState({dataRoom:res.data}); });   
+  }
+  *chunks(arr, n) {
+    for (let i = 0; i < arr.length; i += n) {
+      yield arr.slice(i, i + n);
+    }
+  }
+  componentDidUpdate = (prevProps, prevState) => {
 
 
 
+    // return <Item_Home image="images/home/Presidential1.jpg" roomtype={value.rate} des=""></Item_Home>;
 
+    // <Carousel.Item>
+    //   <div className="row ">
+    //     <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
+    //   </div>
+    //   <br /> <hr /> <br />
+
+
+    // </Carousel.Item>
   }
   render() {
+    const {dataRoom}=this.state;
+    const data=[...this.chunks(dataRoom, 4)]
     return (
       <div>
         <Header />
@@ -108,6 +85,33 @@ class Home extends Component {
         <br />
         <hr />
         <div className="container ">
+          
+          <div className="row mt-5 ">
+            <h2 className="list-product-title ">
+              <center>
+                <h1 style={{ fontFamily: 'Didot', color: '#CC6600' }}>CITY</h1>
+              </center>
+            </h2>
+          </div>
+          <br />
+          <div className="row">
+          <Item_location className="col-sm-6" location="hanoi"> </Item_location>  
+         <Item_location className="col-sm-6"  location="Saigon"> </Item_location> 
+         </div>
+         <br></br>
+         <div className="row ">
+         <Item_location className="col-sm-4" location="Danang"> </Item_location>
+           <Item_location className="col-sm-4" location="Hoian"> </Item_location>
+           <Item_location className="col-sm-4"  location="hue" > </Item_location>
+
+         </div>
+        </div>  
+      
+
+
+
+        <div className="container ">
+
           <div className="row mt-5 ">
             <h2 className="list-product-title ">
               <center>
@@ -118,43 +122,22 @@ class Home extends Component {
           <br />
         </div>
         {/* slide room */}
+        
         <div className="container ">
+          
           <div id="slider2" className="carousel slide mt-1 " data-ride="carousel">
             <div className="carousel-inner">
               <div className="carousel-item active">
-                <Carousel>
-                  <Carousel.Item>
-                    <div className="row ">
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Family" des=""></Item_Home>
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Couple" des=""></Item_Home>
-                    </div>
-                    <br /> <hr /> <br />
 
-                    <div className="row">
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Family" des=""></Item_Home>
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Couple" des=""></Item_Home>
-                    </div>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <div className="row">
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Standard" des=""></Item_Home>
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                    </div>
-                    <br /> <hr /> <br />
-                    <div className="row">
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Family" des=""></Item_Home>
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Luxury" des=""></Item_Home>
-                      <Item_Home image="images/home/Presidential1.jpg" roomtype="Couple" des=""></Item_Home>
-                    </div>
-                  </Carousel.Item>
-                </Carousel>
+                <Carousel id="carousel">
+                  {data.map((value)=>{
+                    return <Carousel.Item>
+                        <div className="row">
+                            {value.map((element) => <Item_Home image={element.img} roomtype={element.roomtype}  price={element.rent}></Item_Home>)}
+                        </div>
+                    </Carousel.Item>
+                 })}
+                </Carousel> ;
               </div>
             </div>
 
@@ -179,26 +162,13 @@ class Home extends Component {
                 city in Vietnam.</div>
           </div><br />
           <div className="row infor_2">
-            <div className="col-sm-3">
-              <div className="thumbnail">
-                <img className="card-img-top " src="images/home/restaurant.jpg" alt="HKTQueen" />
-              </div>
-            </div>
-            <div className="col-sm-3">
-              <div className="thumbnail">
-                <img className="card-img-top " src="images/home/spa.jpg" alt="HKTQueen" />
-              </div>
-            </div>
-            <div className="col-sm-3">
-              <div className="thumbnail">
-                <img className="card-img-top " src="images/home/hoboi.jpg" alt="HKTQueen" />
-              </div>
-            </div>
-            <div className="col-sm-3">
-              <div className="thumbnail">
-                <img className="card-img-top " src="images/home/gym.jpg" alt="HKTQueen" />
-              </div>
-            </div>
+           
+            <Item_location image="images/home/restaurant.jpg"> </Item_location>
+            <Item_location image="images/home/hoboi.jpg"> </Item_location>
+            <Item_location image="images/home/spa.jpg"> </Item_location>
+            <Item_location image="images/home/gym.jpg"> </Item_location>
+
+          
           </div>
         </div>
         <br />

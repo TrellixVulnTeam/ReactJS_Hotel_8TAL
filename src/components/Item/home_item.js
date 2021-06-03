@@ -12,7 +12,10 @@ class Item_home extends Component {
                         </div>
                         <div className="card-body ">
                           <h5 className="card-title ">{this.props.roomtype} Room</h5>
-                          <p className="card-text ">{this.props.des}</p>
+                          <strong > Price: <span className="card-text text-danger ">  {this.props.price} $   </span> </strong>
+                          <p class="card-text text-success ">{this.props.des} </p>
+
+                          <p class="card-text text-success ">There is free cancellation </p>
                           <center>
                             <a href="ViewDetailsPresidential.php" className="btn btn-primary ">View Details</a>
                           </center>

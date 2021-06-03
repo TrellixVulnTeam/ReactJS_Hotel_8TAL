@@ -28,7 +28,6 @@ class App extends Component {
   show2 = (Routes) => {
     let result;
     result = Routes.map((route, index) => {
-      console.log(route)
       return (
         <Route
         key={index}

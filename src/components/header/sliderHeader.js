@@ -19,11 +19,7 @@ class Header extends Component {
     let value = event.target.value;
     this.setState({ [name]: value });
   }
-  search=()=>{
 
-
-    
-  }
 
   
 
@@ -36,16 +32,22 @@ class Header extends Component {
   }
   current_datetime=()=>{
     let current_datetime = new Date();
-    let month= (current_datetime.getMonth() + 1); //1
+    let month= (current_datetime.getMonth() + 1); 
     if(month<10) month="0"+month;
-    let formatted_date =  current_datetime.getFullYear() + "-" +month+ "-" + current_datetime.getDate();
+    let day= (current_datetime.getDate()); 
+    if(day<10) day="0"+day;
+    let formatted_date =  current_datetime.getFullYear() + "-" +month+ "-" + day;
     return formatted_date;
   }
   dateForDepart=()=>{
     let current_datetime = new Date();
-    let month= (current_datetime.getMonth() + 1); //2
+    let month= (current_datetime.getMonth() + 1); 
     if(month<10) month="0"+month;
-    let formatted_date =  current_datetime.getFullYear() + "-" +month+ "-" + (current_datetime.getDate()+1);
+    let day= (current_datetime.getDate()+1); 
+
+    if(day<10) day="0"+day;
+    let formatted_date =  current_datetime.getFullYear() + "-" +month+ "-" +day;
+
     return formatted_date;
   }
 

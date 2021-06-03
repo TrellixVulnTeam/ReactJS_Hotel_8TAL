@@ -28,6 +28,7 @@ class Restful_api
         if (!empty($_SERVER['PATH_INFO'])) {
 
             $this->endpoint = trim($_SERVER['PATH_INFO'], '/');
+            
         }
 
 
@@ -77,7 +78,17 @@ class Restful_api
     protected function _process_api()
     {
         if (method_exists($this, $this->endpoint)) {
+           if(isset($this->params['query']))
+            {
+                if(method_exists($this,$this->params['query'])){
+                  
+                    $this->{$this->params['query']}();
+
+                }
+            }
+            else
             $this->{$this->endpoint}();
+
         } else {
 
             $this->response(500, "Unknown endpoint");
