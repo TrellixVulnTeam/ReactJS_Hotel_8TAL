@@ -1,16 +1,54 @@
+create database db_hotel;
+use db_hotel;
+drop table rooms;
+drop database db_hotel;
+CREATE TABLE `hotel_location`(
+   `id` int AUTO_INCREMENT PRIMARY KEY,
+    location varchar(255) unique,
+    `image` varchar(255)
+    );
+ INSERT INTO `hotel_location` (`location`,`image`) 
+        VALUES ("Hanoi","/images/home/hanoi.jpg"),
+               ("Saigon","/images/home/saigon.jpg"),
+               ("Danang","/images/home/danang.jpg"),
+               ("Hue","/images/home/hue.jpg"), 
+               ("Hoian","/images/home/hoian.jpg");
+CREATE TABLE `hotel` (
+    `id` int AUTO_INCREMENT PRIMARY KEY,
+    `hotel_name` varchar(255),
+    `id_location` int,
+    `image` text,
+    FOREIGN KEY (`id_location`) REFERENCES `hotel_location`(`id`) on delete cascade on update cascade
+    );
+
+ INSERT INTO `hotel` (`hotel_name`,`id_location`) 
+        VALUES ("Quang Trung Hotel",2),
+               ("Lotus Center Hotel",1),
+                ("Roseland Centa Hotel & Spa",3),
+               ("Somerset Chancellor Court Serviced Residence",2),
+              ("The Myst Dong Khoi",3),
+              ("Mia Saigon - luxury boutique hotel",2);
+              
 CREATE TABLE IF NOT EXISTS `roomtypes` (
     `roomtype_id` INT(11) NOT NULL AUTO_INCREMENT,
     `roomtype` VARCHAR(255) NOT NULL,
     `rent` DECIMAL(10) NOT NULL,
     `quantity` INT(11) NOT NULL,
-    PRIMARY KEY (`roomtype_id`)
+    `hotel_id` int(11) not null,
+    PRIMARY KEY (`roomtype_id`),
+    FOREIGN key (`hotel_id`) REFERENCES `hotel`(`id`) on delete cascade on update cascade
 ); 
 
-INSERT INTO `roomtypes` (`roomtype`, `rent`, `quantity`) 
-        VALUES ("Luxury", 590, 10),
-               ("Family", 490, 10),
-               ("Couple", 390, 10),
-               ("Standard", 290, 10);
+INSERT INTO `roomtypes` (`roomtype`, `rent`, `quantity`,`hotel_id`) 
+        VALUES ("Luxury", 590, 10,1),
+               ("Family", 490, 10,2),
+               ("Couple", 390, 10,3),
+               ("Standard", 290, 10,5),
+               ("King Room", 590, 10,1),
+               ("Twin Room", 490, 10,2),
+               ("Hollywood Twin Room", 390, 10,3),
+               ("Studio Room", 290, 10,5),
+               ("Suites", 290, 10,2);
  
 CREATE TABLE IF NOT EXISTS `rooms` (
     `room_id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -20,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `rooms` (
     `status` VARCHAR(255) NOT NULL,
     `phone` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`room_id`),
-    FOREIGN KEY (roomtype_id) REFERENCES `roomtypes`(roomtype_id) on delete cascade on update cascade
+    FOREIGN KEY (`roomtype_id`) REFERENCES `roomtypes`(`roomtype_id`) on delete cascade on update cascade
 );
 
 CREATE TABLE IF NOT EXISTS `roomstatus` (
@@ -33,48 +71,21 @@ CREATE TABLE IF NOT EXISTS `roomstatus` (
 );
 
 
-INSERT INTO `rooms` (`roomtype_id`, `noroom`, `status`, `phone`)
-            VALUES (1, 501, "available", 19005051),
-                    (1, 502, "available", 19005051),
-                    (1, 503, "available", 19005051),
-                    (1, 504, "available", 19005051),
-                    (1, 505, "available", 19005051),
-                    (1, 506, "available", 19005051),
-                    (1, 507, "available", 19005051),
-                    (1, 508, "available", 19005051),
-                    (1, 509, "available", 19005051),
-                    (1, 510, "available", 19005051),
-                    (2, 401, "available", 19005051),
-                    (2, 402, "available", 19005051),
-                    (2, 403, "available", 19005051),
-                    (2, 404, "available", 19005051),
-                    (2, 405, "available", 19005051),
-                    (2, 406, "available", 19005051),
-                    (2, 407, "available", 19005051),
-                    (2, 408, "available", 19005051),
-                    (2, 409, "available", 19005051),
-                    (2, 410, "available", 19005051),
-                    (3, 301, "available", 19005051),
-                    (3, 302, "available", 19005051),
-                    (3, 303, "available", 19005051),
-                    (3, 304, "available", 19005051),
-                    (3, 305, "available", 19005051),
-                    (3, 306, "available", 19005051),
-                    (3, 307, "available", 19005051),
-                    (3, 308, "available", 19005051),
-                    (3, 309, "available", 19005051),
-                    (3, 310, "available", 19005051),
-                    (4, 201, "available", 19005051),
-                    (4, 202, "available", 19005051),
-                    (4, 203, "available", 19005051),
-                    (4, 204, "available", 19005051),
-                    (4, 205, "available", 19005051),
-                    (4, 206, "available", 19005051),
-                    (4, 207, "available", 19005051),
-                    (4, 208, "available", 19005051),
-                    (4, 209, "available", 19005051),
-                    (4, 210, "available", 19005051);
-                    
+INSERT INTO `rooms` (`roomtype_id`, `noroom`,`status`,`img`,  `phone`)
+            VALUES (1, 501, "available","images/room/room10.jpg", 19005051),
+                    (1, 502, "available","images/room/room1.jpg", 19085051),
+                    (1, 503, "available","images/room/room2.jpg", 19505051),
+                    (1, 504, "available","images/room/room3.jpg", 19006051),
+                    (1, 505, "available","images/room/room4.jpg", 19005051),
+                    (1, 506, "available","images/room/room5.jpg", 19005551),
+                    (1, 507, "available","images/room/room6.jpg", 19003051),
+                    (1, 508, "available","images/room/room7.jpg", 19025051),
+                    (1, 509, "available","images/room/room8.jpg", 19095051),
+                    (1, 510, "available","images/room/room9.jpg", 19015051),
+                    (2, 401, "available","images/room/room10.jpg", 19008051),
+                    (2, 402, "available","images/room/room11.jpg", 19405051),
+                    (2, 403, "available","images/room/room12.jpg", 19905051),
+                    (2, 403, "available","images/room/room13.jpg", 19905051);
 CREATE TABLE IF NOT EXISTS `contacts` (
     `contact_id` INT(11) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(255) NOT NULL,
@@ -153,7 +164,7 @@ INSERT INTO `roomstatus` (`room_id`, `arrive`, `depart`)
                     (10, "2021/04/20", "2021/04/22"),
                     (12, "2021/04/29", "2021/04/30"),
                     (13, "2021/04/25", "2021/04/27");
-
+                    
 CREATE TABLE IF NOT EXISTS `basket` (
     `basket_id` INT(11) NOT NULL AUTO_INCREMENT,
     `user_id` INT(11) NOT NULL,
