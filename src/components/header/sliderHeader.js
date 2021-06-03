@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel'
 import './header.scoped.css'
+import axios from 'axios'
+import url from './../../config'
 class Header extends Component {
 
   constructor(props){
@@ -10,7 +12,8 @@ class Header extends Component {
       arrive: this.current_datetime(),
       depart: '',
       person: ' ',
-      type: ' '};
+      type: ' ',
+      location: []};
 
   }
   handleForm=(event)=>{
@@ -19,7 +22,12 @@ class Header extends Component {
     let value = event.target.value;
     this.setState({ [name]: value });
   }
-
+  componentDidMount(){
+    axios.get(url+'/locations')
+    .then(res=>{
+      this.setState({location:res.data});
+    })
+  }
 
   
 
@@ -108,13 +116,13 @@ class Header extends Component {
               </select>
             </div>
             <div className="select-book" name="type" onChange={this.handleForm} >
-              <label>Type room</label>
+              <label>Location </label>
               <select name="book" className>
               <option value="luxury">ALL</option>
-                <option value="luxury">Luxury</option>
-                <option value="family">Family</option>
-                <option value="couple">Couple </option>
-                <option value="standard">Standard </option>
+               
+                  {this.state.location.map(element=>{
+                    return  <option value={element.location}>{element.location}</option>
+                  })}
               </select>
             </div>
             <div className="submit-form">

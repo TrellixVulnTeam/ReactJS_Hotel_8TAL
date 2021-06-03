@@ -6,26 +6,34 @@ import { ajaxTransport } from 'jquery';
 import url from './../../config'
 
 class location_item extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { data:[]};
-      }
-      componentDidMount = async () => {
-        await axios.get(url+'/rooms?query=searchLocation&location='+this.props.location)
-        .then(res => {this.setState({data:res.data});});  
-      }
-    render() {
-        return (            
-            <div className={this.props.className}>
-            <Link>
-              <div className="thumbnail"   >
-                <img className="card-img-bottom" src={this.state.data.image}  alt="HKTQueen"  />
+  constructor(props) {
+    super(props);
+    this.state = { data: [] };
+  }
+  componentDidMount = async () => {
+    await axios.get(url + '/rooms?query=searchLocation&location=' + this.props.location)
+      .then(res => { this.setState({ data: res.data }); });
+  }
+  render() {
+    return (
+      <div className={this.props.className}>
+        <Link>
+          <div className="thumbnail card">
+            <img className="card-img-top" src={this.state.data.image} alt="HKTQueen" />
+            <div className="card-img-overlay card-body ">
+              <h2 className="card-text text-danger"> {this.state.data.location}</h2>
+              <p className="card-text text-warning" >{this.state.data.totalOfProperties} properties </p>
               </div>
-              </Link >
-            </div>
-           
-        );
-    }
+              <div class="card-footer">
+              <h4 className="card-title text-info "> Price from:{this.state.data.rentFrom} $  </h4>    
+              <h4 className="card-title text-info "> Price average:{this.state.data.average} $  </h4>    
+              </div>
+            </div>        
+        </Link >
+      </div>
+
+    );
+  }
 }
 
 export default location_item;

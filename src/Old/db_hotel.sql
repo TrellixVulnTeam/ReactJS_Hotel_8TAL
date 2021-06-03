@@ -1,14 +1,14 @@
 CREATE TABLE `hotel_location`(
-    `id` int AUTO_INCREMENT PRIMARY KEY,
+   `id` int AUTO_INCREMENT PRIMARY KEY,
     location varchar(255) unique,
-    `image` text
+    `image` varchar(255)
     );
- INSERT INTO `hotel_location` (`location`) 
-        VALUES ("Hanoi"),
-               ("Saigon"),
-               ("Danang"),
-               ("Hue"), 
-               ("Hoian");
+ INSERT INTO `hotel_location` (`location`,`image`) 
+        VALUES ("Hanoi","/images/home/hanoi.jpg"),
+               ("Saigon","/images/home/saigon.jpg"),
+               ("Danang","/images/home/danang.jpg"),
+               ("Hue","/images/home/hue.jpg"), 
+               ("Hoian","/images/home/hoian.jpg");
 CREATE TABLE `hotel` (
     `id` int AUTO_INCREMENT PRIMARY KEY,
     `hotel_name` varchar(255),

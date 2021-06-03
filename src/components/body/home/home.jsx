@@ -1,7 +1,6 @@
 import React, { Component, createElement } from 'react';
 import Item_Home from './../../Item/home_item'
 import Item_location from './../../Item/location_item'
-import { Link } from 'react-router-dom';
 
 import './style.scoped.css'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -10,8 +9,6 @@ import Header from './../../header/header';
 import url from './../../../config'
 import axios from 'axios'
 import Carousel from 'react-bootstrap/Carousel';
-import { fireEvent } from '@testing-library/dom';
-import ReactDOM from 'react-dom';
 
 const SliderHeader = React.lazy(() => import('./../../header/sliderHeader'));
 
@@ -36,7 +33,6 @@ class Home extends Component {
   }
   componentDidMount = async () => {
   
-    
     await this.searchRoom().then(res => {this.setState({dataRoom:res.data}); });   
   }
   *chunks(arr, n) {
@@ -95,14 +91,14 @@ class Home extends Component {
           </div>
           <br />
           <div className="row">
-          <Item_location className="col-sm-6" location="hanoi"> </Item_location>  
+          <Item_location className="col-sm-6" location="Hanoi"> </Item_location>  
          <Item_location className="col-sm-6"  location="Saigon"> </Item_location> 
          </div>
          <br></br>
          <div className="row ">
          <Item_location className="col-sm-4" location="Danang"> </Item_location>
            <Item_location className="col-sm-4" location="Hoian"> </Item_location>
-           <Item_location className="col-sm-4"  location="hue" > </Item_location>
+           <Item_location className="col-sm-4"  location="Hue" > </Item_location>
 
          </div>
         </div>  
@@ -131,6 +127,7 @@ class Home extends Component {
 
                 <Carousel id="carousel">
                   {data.map((value)=>{
+                    
                     return <Carousel.Item>
                         <div className="row">
                             {value.map((element) => <Item_Home image={element.img} roomtype={element.roomtype}  price={element.rent}></Item_Home>)}
@@ -161,15 +158,7 @@ class Home extends Component {
             (floating bars on the water), shaping services, spa and massage. Hotel HTK Queen Đà Nẵng City with excellent facilities and services is the ideal choice for clients on jobs and vacations before visiting the most vibrant and rhythmic
                 city in Vietnam.</div>
           </div><br />
-          <div className="row infor_2">
-           
-            <Item_location image="images/home/restaurant.jpg"> </Item_location>
-            <Item_location image="images/home/hoboi.jpg"> </Item_location>
-            <Item_location image="images/home/spa.jpg"> </Item_location>
-            <Item_location image="images/home/gym.jpg"> </Item_location>
-
-          
-          </div>
+       
         </div>
         <br />
         <hr />

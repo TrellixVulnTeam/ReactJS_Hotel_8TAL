@@ -36,11 +36,13 @@ class Restful_api
 
         $method   = $_SERVER['REQUEST_METHOD'];
         if ($method=="POST") {
+            if(isset($_POST['method'] )){
             if ($_POST['method'] == 'PUT' || $_POST['method'] == 'put')
                 $method = 'PUT';
               
             if ($_POST['method'] == 'DELETE' || $_POST['method'] == 'delete')
                 $method = 'DELETE';
+            }
         }
 
         $allow_method   = array('GET', 'POST', 'PUT', 'DELETE');
