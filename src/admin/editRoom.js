@@ -72,6 +72,7 @@ class editRoom extends Component {
     }
 
 render() {
+
     return (
         <div className=" body bg-theme bg-theme1">
 
@@ -99,7 +100,7 @@ render() {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="img " className="text-body">Img:</label>
-                                        <input type="file" className="form-control text-body" name="img" onChange={(e) => this.setState({ img: e.target.value })} />
+                                        <input type="file" className="form-control text-body" name="img" onChange={(e) => this.setState({ img: "images/room/"+e.target.value.replace("C:\\fakepath\\", "") })} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="status " className="text-body" >Status:</label>
