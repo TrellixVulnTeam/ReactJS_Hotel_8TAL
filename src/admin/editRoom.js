@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom'
 import MenuBar from './menubar';
 import Header from './header'
 import url from '../config'
-
+const refreshPage = ()=>{
+    window.location.reload();
+ }
 class editRoom extends Component {
     constructor(props) {
         super(props);

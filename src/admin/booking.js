@@ -7,6 +7,9 @@ import MenuBar from './menubar';
 import Header from './header'
 import url from '../config'
 import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
+const refreshPage = ()=>{
+    window.location.reload();
+ }
 class booking extends Component {
     constructor(props) {
         super(props);
@@ -90,11 +93,11 @@ class booking extends Component {
                                                                 <td>{element.payment}</td>
                                                                 <td><div style={{ display: "flex"}} width="100px" hover>
                                                                 <NavLink to={`/editBookingAdmin/${element.roombook_id}/editBooking`} style={{ color: 'green' }}>
-                                                                     <button>
+                                                                     <button  >
                                                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                                                     </button>
                                                                 </NavLink>
-                                                                        <button name="deletebooking" onClick={() => this.OnDelete(element.roombook_id)} style={{ color: "red" }}>
+                                                                        <button  name="deletebooking" onClick={() => this.OnDelete(element.roombook_id)} style={{ color: "red" }} >
                                                                              <i class="fa fa-trash" aria-hidden="true"></i>
                                                                        </button>
                                                                 </div>

@@ -8,7 +8,7 @@ import editRoom from './editRoom';
 import Header from './header'
 import url from '../config'
 import { BrowserRouter as Router, Route, Link,NavLink, Switch } from "react-router-dom";
-//import Creatable from 'react-select/creatable';
+
 class rooms extends Component {
     constructor(props) {
         super(props);
@@ -40,6 +40,7 @@ class rooms extends Component {
         
     });
     }
+    
     render() {
         return (
             <div className=" body bg-theme bg-theme1">
@@ -54,11 +55,6 @@ class rooms extends Component {
                                 <div className="card-body">
                                     <h2>View Rooms</h2>
                                     <NavLink to='/addRoomAdmin'> <a className="btn btn-primary a" style={{ float: 'left' }}>Add New Room</a></NavLink>
-                                     {/* <Select
-  options={aquaticCreatures}
-  isMulti
-  onChange={opt => console.log(opt)}
-/> */}
                                     <div className="table-responsive table-hover">
 
                                         <table className="table">
@@ -86,12 +82,12 @@ class rooms extends Component {
                                                         <td>{element.status}</td>
                                                         <td><div style={{ display: 'flex' }} width="100px" hover>
                                                         <NavLink to={`/editRoomAdmin/${element.room_id}/editRoom`} style={{ color: 'green' }}>
-                                                                <button>
+                                                                <button  >
                                                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                                                 </button>
                                                                 
                                                         </NavLink>
-                                                            <button name="deletebooking" onClick={() => this.OnDelete(element.room_id)} style={{ color: "red" }}>
+                                                            <button name="deletebooking"  onClick={() => this.OnDelete(element.room_id)} style={{ color: "red" }} >
                                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                                             </button>
                                                         </div>

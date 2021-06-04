@@ -8,6 +8,9 @@ import Header from './header'
 import url from '../config'
 import editUser from './editRoom'
 import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
+const refreshPage = ()=>{
+  window.location.reload();
+}
 class users extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +44,10 @@ if (error.response) {
 
 });
 }
+handleRefresh = () => {
+  // by calling this method react re-renders the component
+  this.setState({});
+};
   render() {
     return (
       <div className="bg-theme bg-theme1">
@@ -82,7 +89,7 @@ if (error.response) {
                               <td>{element.role}</td>
                               <td><div style={{ display: 'flex'}} width="100px" hover>
                               <NavLink to={`/editUserAdmin/${element.user_id}/editUser`} style={{ color: 'green' }}>
-                                  <button>
+                                  <button  > 
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                   </button>
                               </NavLink>

@@ -106,20 +106,20 @@ CREATE TABLE IF NOT EXISTS `users` (
     PRIMARY KEY (`user_id`)
 );
 
-INSERT INTO `users` (`name`, `email`, `password`, `status`, `role`) 
-        VALUES ("Nguyen Dinh Kha", "dinhkhakl01@gmail.com", "$2y$10$whZn4byonj/hehXiXp8eFuLUIJeqr4S1ehVPr106aHyF6IS3a41gK", "verified", "admin"),
-        ("Kha Nguyen", "kha.nguyen22@student.passerellesnumeriques.org", "$2y$10$xlKuRozj7KYvifghzkkV7uj9rJYIOsvWSwZIh8y0OQNG1bw6HQhee", "verified", "admin"),
-        ("Admin", "admin@gmail.com", "admin", "verified", "admin");
 
         INSERT INTO `users` (`name`, `email`, `password`, `status`, `role`) 
-        VALUES ("Nguyen Dinh Kha", "dinhkhakl01@gmail.com", "khanguyen123456", "verified", "admin"),
-        ("Nguyen Doan Ngoc Hau", "ndnh01@gmail.com", "hauNguyen123456", "verified", "admin"),
-		("Kha Nguyen", "hau.nguyen22@student.passerellesnumeriques.org", "haunguyen123456", "verified", "admin"),
-        ("Admin", "admin@gmail.com", "admin", "verified", "admin"),
-        ("Trung Trinh", "trungtrinh@gmail.com", "trungtrinh123456", "verified", "user"),
-        ("Nhu Quynh", "nhuquynh@gmail.com", "nhuquynh123456", "verified", "user"),
-		("Thu Sang", "thusang@gmail.com", "thusang123456", "verified", "user"),
-		("Dinh Kha", "dinhkha@gmail.com", "dinhkha123456", "verified", "user"),
+        VALUES ("admin", "admin@gmail.com", "admin", "verified", "admin"),
+        ("Nguyễn Thị Thu Hà", "nguyenthithuha2911@gmail.com", "nguyenthithuha2911123456", "verified", "admin"),
+        ("Nguyễn Thị Thu", "thuthi@gmail.com", "thuthi123456", "verified", "admin"),
+		("Nguyễn Đình Long", "long.nguyen@student.passerellesnumeriques.org", "longnguyen123456", "verified", "admin"),
+        ("Hồ Thị Hương Sen", "huongsen@gmail.com", "sen123456", "verified", "user"),
+        ("Trần Thị Như Mai", "nhumai@gmail.com", "nhumai123456", "verified", "user"),
+		("Trịnh Thị Thục Trưng", "trungtrinh@gmail.com", "trungtrinh134456", "verified", "user"),
+		("Hồ Thị Như Quỳnh", "quynhho@gmail.com", "quynhho1243", "verified", "user"),
+        ("Hương Sen", "huongsen34@gmail.com", "sen2456", "verified", "user"),
+        ("Như Mai", "nhumai23@gmail.com", "nhumai123456", "verified", "user"),
+		("Thục Trưng", "trungtrinh434@gmail.com", "trungtrinh123346", "verified", "user"),
+		("Hồ Thị Như Quỳnh", "quynhho@gmail.com", "quynhho125445", "verified", "user"),
 		("User", "user@gmail.com", "user123456", "verified", "user");
 
 -- CREATE TABLE IF NOT EXISTS `payment` ()
