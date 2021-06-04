@@ -56,6 +56,7 @@ class Room extends restful_api
 
 		} elseif ($this->method == 'PUT') {
 				$id=$this->params['room_id'];
+      				$status = $this->params['status'];
 				$noroom=$this->params['noroom'];
 				$phone=$this->params['phone'];
 				$type=$this->params['roomtype_id'];
@@ -65,7 +66,7 @@ class Room extends restful_api
 				$this->response(404, "Khong tim thay id");
 			} else {
 				$con = new Database;	
-				$con->query("update rooms set noroom='$noroom',img='$img',phone='$phone',roomtype_id='$type' where room_id='$id'"); 
+				$con->query("UPDATE rooms set noroom='$noroom',img='$img',phone='$phone',  status='$status',roomtype_id='$type' where room_id='$id'"); 
 				$con->close();
 				$data['message']="UPDATE ".$id." THANH CONG";
 				$this->response(200,$data);

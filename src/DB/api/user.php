@@ -90,19 +90,20 @@ class User extends restful_api
 					$this->response(200,"Khong the thay doi quyen admin");
 					return;
 				}
-				$name = $this->params['name'];
-				$email = $this->params['email'];
-                       	 	$password = $this->params['password'];
-				$role = $this->params['role'];
-				$status = $this->params['status'];
-				$con->query("UPDATE users set name='$name',email='$email',password= '$password',role='$role',status='$status' where user_id='$user_id '");
-				$data['message']="Update thành công";
-				$con->close();
-				$this->response(200,$data);
+	
 				
 			}
-		}
+			$name = $this->params['name'];
+			$email = $this->params['email'];
+			$password = $this->params['password'];
+			$role = $this->params['role'];
+			$status = $this->params['status'];
+			$con->query("UPDATE users set name='$name',email='$email',password= '$password',role='$role',status='$status' where user_id='$user_id '");
+			$con->close();
+			$data['message']="Update thành công";
+			$this->response(200,$data);
 
+			}
 		} elseif ($this->method == 'DELETE') {
 			$id = $this->params['user_id']; 
 			if (empty($id)) {

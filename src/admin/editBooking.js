@@ -126,7 +126,7 @@ class editBooking extends Component {
                       <option value="unpaid"className="text-body">Unpaid</option>
                     </select>
                   </div>
-                  <input type="submit" name="updatebook" className="btn btn-primary" style={{ float: 'right' }} onClick={() => { this.onSave(7) }} />
+                  <input type="submit" name="updatebook" className="btn btn-primary" style={{ float: 'right' }} onClick={() => { this.onSave(this.state.roombook_id) }} />
               </div>
             </div>
           </div>

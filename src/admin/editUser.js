@@ -21,11 +21,11 @@ class EditUser extends Component {
           role:'',
         }
       }
-    myhandleChange = (event) => {
+      myhandleChange = (event) => {
         let name = event.target.name;
         let value = event.target.value;
         this.setState({ [name]: value });
-      }
+    }
       mySubmitHandler = (event) => {
       }
     
@@ -111,12 +111,12 @@ if (error.response) {
                     </div>
                     <div className="form-group">
                       <label htmlFor="status " className="text-body">Status :</label>
-                      <select name="status"  value={this.state.value} onChange={this.myhandleChange} className="form-control text-body" id required>
-                        <option value="unverified" className="text-body">unverified</option>
-                        <option value="verified" className="text-body" >verified</option>
+                      <select name="status" value={this.state.value} onChange={this.myhandleChange}className="form-control text-body" id required>
+                        <option value="unverified"  className="text-body">unverified</option>
+                        <option value="verified"  className="text-body" >verified</option>
                       </select>
                     </div>
-                    <button type="submit" name="updateuser" onClick={this.onSave} className="btn btn-primary" style={{float: 'right'}} >Submit</button>
+                    <button type="submit" name="updateuser" onClick={this.onSave(this.state.user_id)} className="btn btn-primary" style={{float: 'right'}} >Save</button>
                 </div>
               </div>
             </div>

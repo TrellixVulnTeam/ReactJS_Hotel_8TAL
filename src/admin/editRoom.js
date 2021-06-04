@@ -112,7 +112,7 @@ render() {
                                         <label htmlFor="phone text-body" className="text-body">Phone:</label>
                                         <input type="phone" className="form-control text-body" name="phone" value={this.state.phone} onChange={(e) => this.setState({ phone: e.target.value })} required />
                                     </div>
-                                    <input type="submit" name="update" className="btn btn-primary" style={{ float: 'right' }} onClick= { this.onSave } />
+                                    <input type="submit" name="update" className="btn btn-primary" style={{ float: 'right' }} onClick= { this.onSave(this.state.room_id)} />
 
                                 </div>
                             </div>
