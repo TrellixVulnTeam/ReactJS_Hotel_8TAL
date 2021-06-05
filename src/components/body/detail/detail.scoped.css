@@ -1,0 +1,50 @@
+.headerDetail{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 40px;
+  height: 108px;
+  padding-top: 40px;
+  color: #131313;
+  background-color: #e7e5e4;
+  letter-spacing: .15em;
+
+}
+.dtail{
+    padding: 0px 20px;
+}
+.space{
+    padding: 20px 70px;
+}
+.sao{
+    font-family: 'Times New Roman', Times, serif; 
+    color: #FF9900;
+}
+.gachdung{
+    color: chocolate;
+    padding-top: 25px;
+    padding-left: 0px;
+}
+.spa{
+    display: flex;
+}
+.moderndb{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+
+}
+.spac{
+    display: flex;
+
+}
+.tien{
+    padding-top: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    color: mediumblue;
+}
+.gach{
+    color: chocolate;
+    padding-top: 0px;
+}

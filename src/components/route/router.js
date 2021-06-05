@@ -1,5 +1,6 @@
 
 import React from 'react'
+import Detail from '../body/detail/detail.jsx';
 const Home = React.lazy(() => import('./../body/home/home.jsx'));
 const Gallery = React.lazy(() => import('./../body/gallery/gallery.jsx'));
 const Contact = React.lazy(() => import('./../body/contact/contact.jsx'));
@@ -14,6 +15,10 @@ const Reservation4 = React.lazy(() => import('./../body/reservation/reservation4
 const Pool = React.lazy(() => import('./../body/services/pool'));
 const Restaurant = React.lazy(() => import('./../body/services/restaurant.jsx'));
 const Spa = React.lazy(() => import('./../body/services/spa'));
+const Location = React.lazy(() => import('../body/room/location_hotel'));
+
+
+
 
 const BookingAdmin = React.lazy(() => import('../../admin/booking'));
 const EditAdmin = React.lazy(() => import('../../admin/edit'));
@@ -132,6 +137,31 @@ const Routes = [
         main: () => < About />
 
     },
+    
+
+    {
+        path: '/location/:local?',
+        exact: true,
+        main: ({match}) => <Location match={match}/>
+
+    },
+    
+    {
+        path: '/location',
+        exact: true,
+        main: () => <Location  />
+
+    },
+
+    {
+        path: '/detail/:id',
+        exact: true,
+        main: ({match}) => < Detail match={match}  />
+
+    },
+
+
+
     {
         path: '/signIn',
         exact: true,

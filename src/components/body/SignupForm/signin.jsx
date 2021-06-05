@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import './style.scoped.css'
 import axios from 'axios';
+import url from './../../../config'
 import { data, event } from 'jquery';
 import {BrowserRouter as Router,Route,Switch } from 'react-router-dom'
 
@@ -11,7 +12,8 @@ class signin extends Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            redirect:false
         }
     }
     //  setCookie= (values)=> {
@@ -29,7 +31,7 @@ class signin extends Component {
         
         axios({
             method: 'GET',
-            url: 'http://localhost/quynhreactjs/ReactJS_Hotel/src/DB/api/controller.php/checklogin?email='+this.state.email+'&password='+this.state.password,
+            url: url+'/checklogin?email='+this.state.email+'&password='+this.state.password,
         
         }).then(res => {
             // this.setState({
@@ -41,9 +43,9 @@ class signin extends Component {
             // })
             console.log(res.data.message)
             if (res.data.message === "OK") {
-              
-                //   this.props.history.Push("/"); // ok roi do
-            }
+              this.setState({redirect:true})
+              localStorage.setItem("login","true");
+             }
             else {
 
             
@@ -72,6 +74,7 @@ class signin extends Component {
         return (
 
             <div>
+                {this.state.redirect?<Redirect to='/home'/>:null}
                 <button className="header">
                     <Link to='/home' >Home</Link>
                 </button>

@@ -9,27 +9,10 @@ class Header extends Component {
       <div>
        
 
-          {/* <ul> */}
-          {/* <li className="menu"></li>
-          <li className="menu"><Link to="/room"> ROOMS  </Link></li>
-          <li className="menu"><Link to="/services"> SERVICES </Link> </li> */}
-          {/* <Dropdown>
-            <DropdownToggle caret color="primary">
-              Material dropdown
-                      </DropdownToggle>
-            <DropdownMenu>
-              <NavLink to="/link_to_somewhere">
-                <DropdownItem>Link</DropdownItem>
-              </NavLink>
-            </DropdownMenu>
-          </Dropdown> */}
-
-
-
           <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#363636', color: '#fff' }}>
             <a className="navbar-brand" >
               <Link to="/home"> </Link>
-              <img src="images/logo-icon.png" alt="HKT Queen" className="logo" />
+              <img src="/images/logo-icon.png" alt="HKT Queen" className="logo" />
             </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon" ></span>
@@ -68,12 +51,25 @@ class Header extends Component {
                 <li className="nav-item active">
                   <a className="nav-link" ><Link to="/about"> ABOUT US  </Link></a>
                 </li>
-                <li className="nav-item active">
+              
+         
+                {JSON.parse(localStorage.getItem('login'))?true:
+                  <li className="nav-item active">
                   <a className="nav-link"><Link to="/signIn"> SIGN IN  </Link></a>
                 </li>
-                <li className="nav-item active">
-                  <a className="nav-link" ><Link to="/signUp"> SIGN UP  </Link></a>
-                </li>
+                           }
+        
+
+              
+                {JSON.parse(localStorage.getItem('login'))?true:
+                 <li className="nav-item active">
+                 <a className="nav-link" ><Link to="/signUp"> SIGN UP  </Link></a>
+               </li> 
+  }
+                
+
+                
+               
                 {/* <li className="nav-item active">
                   <div className="social" style={{}}>
                     <button className="register signIn" id="signin" data-toggle="modal" data-target="#login">

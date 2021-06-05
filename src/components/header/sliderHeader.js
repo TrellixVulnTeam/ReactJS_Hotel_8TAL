@@ -4,6 +4,13 @@ import Carousel from 'react-bootstrap/Carousel'
 import './header.scoped.css'
 import axios from 'axios'
 import url from './../../config'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams,
+  Redirect,useHistory, Link
+} from 'react-router-dom'
 class Header extends Component {
 
   constructor(props){
@@ -12,8 +19,11 @@ class Header extends Component {
       arrive: this.current_datetime(),
       depart: '',
       person: ' ',
-      type: ' ',
-      location: []};
+      price: ' ',
+      redirect:false,
+      local:'',
+      location: []
+    };
 
   }
   handleForm=(event)=>{
@@ -58,12 +68,14 @@ class Header extends Component {
 
     return formatted_date;
   }
+  search=()=>{
+    this.setState({redirect:true})
+  }
 
     render() {
         return (
             <div >
-
-    <Carousel id="slider1" className="mt-1">
+      <Carousel id="slider1" className="mt-1">
           <Carousel.Item interval={1000}>
             <img
               className="d-block w-100 slider_1"
@@ -105,28 +117,27 @@ class Header extends Component {
               <input id="departure" name="depart" type="date" min={this.dateForDepart()} onChange={this.handleForm} />
             </div>
             <div className="select-book">
-              <label>Person</label>
-              <select name="person" id="person" onChange={this.handleForm}  >
-              <option value={1}>ALL</option>
-
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
+              <label>Price</label>
+              <select name="price" id="person" onChange={this.handleForm}  >
+                <option value={0}>ALL</option>
+                <option value={290}> {'>'} 0-290$  </option>    
+                <option value={390}> {'>'} 290- 390$  </option>              
+                <option value={490}> {'>'} 390$- 490$  </option>              
+                <option value={590}> {'>'}  590$  </option>                     
               </select>
             </div>
             <div className="select-book" name="type" onChange={this.handleForm} >
               <label>Location </label>
-              <select name="book" className>
-              <option value="luxury">ALL</option>
-               
+              <select name="local" className>
+              <option value="all">ALL</option> 
                   {this.state.location.map(element=>{
                     return  <option value={element.location}>{element.location}</option>
                   })}
               </select>
             </div>
             <div className="submit-form">
-              <input type="submit" value="Search"  />
+                      <Link to={`/location/${this.state.local}?query=search&location=${this.state.local}&price=${this.state.price}`} ><input type="submit" value="Search" onClick={this.search}/>     </Link> 
+
             </div>
           </form>
         </div> 

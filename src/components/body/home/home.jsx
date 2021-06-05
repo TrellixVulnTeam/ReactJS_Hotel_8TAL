@@ -99,7 +99,6 @@ class Home extends Component {
          <Item_location className="col-sm-4" location="Danang"> </Item_location>
            <Item_location className="col-sm-4" location="Hoian"> </Item_location>
            <Item_location className="col-sm-4"  location="Hue" > </Item_location>
-
          </div>
         </div>  
       
@@ -130,7 +129,7 @@ class Home extends Component {
                     
                     return <Carousel.Item>
                         <div className="row">
-                            {value.map((element) => <Item_Home image={element.img} roomtype={element.roomtype}  price={element.rent}></Item_Home>)}
+                            {value.map((element) => <Item_Home image={element.img} roomtype={element.roomtype}  price={element.rent} id={element.room_id} ></Item_Home>)}
                         </div>
                     </Carousel.Item>
                  })}
