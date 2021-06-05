@@ -4,7 +4,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import './header.scoped.css'
 class Header extends Component {
+  logout=()=>{
+    localStorage.setItem("login",'false');
+  }
   render() {
+
     return (
       <div>
        
@@ -61,11 +65,15 @@ class Header extends Component {
         
 
               
-                {JSON.parse(localStorage.getItem('login'))?true:
+                {JSON.parse(localStorage.getItem('login'))? 
+                <li className="nav-item active">
+                  {this.logout()}
+                 <a className="nav-link" >
+                   <Link to="/signIn"> LOG OUT  </Link></a>
+               </li>:
                  <li className="nav-item active">
                  <a className="nav-link" ><Link to="/signUp"> SIGN UP  </Link></a>
-               </li> 
-  }
+               </li>}
                 
 
                 
