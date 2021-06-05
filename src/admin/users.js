@@ -6,6 +6,11 @@ import axios from 'axios'
 import MenuBar from './menubar';
 import Header from './header'
 import url from '../config'
+import editUser from './editRoom'
+import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
+const refreshPage = ()=>{
+  window.location.reload();
+}
 class users extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +24,30 @@ class users extends Component {
 
     })
   }
+  OnDelete = (user_id) => {
+    let formData = new FormData();
+    formData.append('user_id', user_id);
+    formData.append('method','delete'); // luu y o day
+    let config = {
+        headers: {
+            "Content-Type": "application/json",
+             
+    }
+
+}
+axios.post(url+`/users?user_id=${user_id}`, formData, config).then(Response => {
+    console.log(Response.data.message);  
+    }).catch (function (error) {
+if (error.response) {
+    console.log(error.response.headers);
+}
+
+});
+}
+handleRefresh = () => {
+  // by calling this method react re-renders the component
+  this.setState({});
+};
   render() {
     return (
       <div className="bg-theme bg-theme1">
@@ -59,14 +88,15 @@ class users extends Component {
                               <td>{element.status}</td>
                               <td>{element.role}</td>
                               <td><div style={{ display: 'flex'}} width="100px" hover>
-                                <button>
-                                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                                </button>
-                                <form action="" method="post">
-                                  <button name="deletebooking"  style={{color:'red'}}>
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                              <NavLink to={`/editUserAdmin/${element.user_id}/editUser`} style={{ color: 'green' }}>
+                                  <button  > 
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
                                   </button>
-                                </form>
+                              </NavLink>
+                                                              
+                                  <button name="deleteuser" onClick={() => this.OnDelete(element.user_id)} style={{ color: "red" }}>
+                                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                                            </button>
                               </div>
                               </td>
                             </tr>)

@@ -6,18 +6,48 @@ import axios from 'axios';
 import MenuBar from './menubar';
 import Header from './header'
 import url from '../config'
+import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
+const refreshPage = ()=>{
+    window.location.reload();
+ }
 class booking extends Component {
     constructor(props) {
         super(props);
         this.state = { data: [] }
     }
-// hello hello
+
     componentDidMount() {
         axios.get(url+"/roombooks").then(res => {
             this.setState({ data: res.data })
-
         })
     }
+        OnDelete = (roombook_id) => {
+            let formData = new FormData();
+            formData.append('roombook_id',roombook_id);
+            formData.append('method','DELETE'); // luu y o day
+            let config = {
+                headers: {
+                    "Content-Type": "application/json",
+                     
+            }
+    
+        }
+        axios.post(url+`/roombooks?roombook_id=${roombook_id}`, formData, config).then(Response => {
+            console.log(Response.data.message);  
+            }).catch (function (error) {
+        if (error.response) {
+            console.log(error.response.headers);
+        }
+        
+    });
+    }
+// hello hello
+    // componentDidMount() {
+    //     axios.get(url+"/roombooks").then(res => {
+    //         this.setState({ data: res.data })
+
+    //     })
+    // }
 
     render() {
         return (
@@ -40,12 +70,11 @@ class booking extends Component {
                                                     <thead>
                                                         <tr>
                                                             <th>ID</th>
-                                                            <th>Name</th>
-                                                            <th>Email</th>
+                                                            <th>User_id</th>
+                                                            <th>Room_id</th>
                                                             <th>Phone</th>
-                                                            <th>Room</th>
-                                                            <th>Arrive</th>
-                                                            <th>Depart</th>
+                                                            <th>Arrival time</th>
+                                                            <th>Departure time</th>
                                                             <th>Status</th>
                                                             <th>Payment </th>
                                                             <th>Action</th>
@@ -63,14 +92,14 @@ class booking extends Component {
                                                                 <td>{element.status}</td>
                                                                 <td>{element.payment}</td>
                                                                 <td><div style={{ display: "flex"}} width="100px" hover>
-                                                                    <button style={{color:"green"}} >
+                                                                <NavLink to={`/editBookingAdmin/${element.roombook_id}/editBooking`} style={{ color: 'green' }}>
+                                                                     <button  >
                                                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                                                     </button>
-                                                                    <form action="" method="post">
-                                                                        <button name="deletebooking" style={{color:"red"}}>
-                                                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                                                        </button>
-                                                                    </form>
+                                                                </NavLink>
+                                                                        <button  name="deletebooking" onClick={() => this.OnDelete(element.roombook_id)} style={{ color: "red" }} >
+                                                                             <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                       </button>
                                                                 </div>
                                                                 </td>
                                                             </tr>)
