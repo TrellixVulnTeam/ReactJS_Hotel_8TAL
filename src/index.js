@@ -5,12 +5,13 @@ import {BrowserRouter as Router } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import App from './App'
+import Catcha from './components/captcha/captcha'
 // import Test from './test'
 ReactDOM.render(
   <BrowserRouter>
     <React.Suspense fallback={<div>Loading...</div>}>
-   <App></App>
-     
+   {/* <App></App> */}
+     <Catcha></Catcha>
     </React.Suspense>
   </BrowserRouter>,
   document.getElementById('root')

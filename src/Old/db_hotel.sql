@@ -1,3 +1,32 @@
+
+ -- Event:Hang ngay deu check key cua request co het han hay chua neu het han thi update request.status="expired"
+
+-- Function: tao key ;tao ra mot key va khong trung lap; khi nguoi book dat phong bnay thi chi can dua key cho provider der lay thong tin phong
+
+-- Trigger: truoc khi insert request caan kiem tra phong insert co available khong
+
+
+
+-- Triiger: kiem tra update request , status bang sucsees la thanh cong va expired la key da het han nen khong the chinh sua; check khi update status accept '
+--  thi phong do phai available
+
+
+-- canel khi provider da accept ma cancel
+
+-- Trigger: check truoc khi them room moi thi room do da ton tai chua
+
+
+
+
+
+
+-- Function: checkin key ; kiem tra xem key co hop le hay lkhong , neu hop le va dung ngay checkin thi moi chap nhan;
+-- Neu goi function return true co nghia la thanh cong( se luu vao bang payment va bang history ); sua trang thai cua status request nay la success
+
+
+
+
+
 CREATE TABLE `hotel_location`(
    `id` int AUTO_INCREMENT PRIMARY KEY,
     location varchar(255) unique,
@@ -9,6 +38,9 @@ CREATE TABLE `hotel_location`(
                ("Danang","/images/home/danang.jpg"),
                ("Hue","/images/home/hue.jpg"), 
                ("Hoian","/images/home/hoian.jpg");
+
+
+
 CREATE TABLE `hotel` (
     `id` int AUTO_INCREMENT PRIMARY KEY,
     `hotel_name` varchar(255),
@@ -18,6 +50,9 @@ CREATE TABLE `hotel` (
     `des` text,
     FOREIGN KEY (`id_location`) REFERENCES `hotel_location`(`id`) on delete cascade on update cascade
     );
+
+
+
 
  INSERT INTO `hotel` (`hotel_name`,`id_location`,`address`,`des`,`image`) 
         VALUES ("Quang Trung Hotel"
@@ -297,6 +332,70 @@ INSERT INTO `users` (`name`, `email`, `password`, `status`, `role`)
 		("User", "user@gmail.com", "user123456", "verified", "user");
 -- CREATE TABLE IF NOT EXISTS `payment` ()
 
+
+CREATE TABLE request (
+    
+    id int not null PRIMARY key AUTO_INCREMENT,
+    room_id int ,
+	`status` varchar(255) default "received",
+    checkin date   ,
+    checkout date  ,
+    `key` varchar(255) ,
+    `des` text,
+    FOREIGN KEY(room_id) REFERENCES `rooms`(room_id) on delete cascade on update cascade
+    );
+CREATE TABLE IF NOT EXISTS `basket` (
+    `basket_id` INT(11) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) NOT NULL,
+    `room_id` INT(11) NOT NULL,
+    id_request int,
+    PRIMARY KEY (`basket_id`),
+	FOREIGN KEY(user_id) REFERENCES `users`(user_id) on delete cascade on update cascade,
+    UNIQUE(basket_id,id_request),
+	FOREIGN KEY(room_id) REFERENCES `rooms`(room_id) on delete cascade on update cascade,
+    FOREIGN KEY(id_request) REFERENCES `request`(id) on delete cascade on update cascade
+
+);
+
+
+CREATE TABLE history (
+    id int not null primary key AUTO_INCREMENT,
+    id_request int not null,
+    user_id int not null ,
+    room_id int not null ,
+    checkin date,
+    checkout date,
+    create_at timestamp  ,
+    FOREIGN KEY(user_id) REFERENCES `users`(user_id) on delete cascade on update cascade ,
+	FOREIGN KEY(room_id) REFERENCES `rooms`(room_id) on delete cascade on update cascade,
+    FOREIGN KEY(id_request) REFERENCES `request`(id) on delete cascade on update cascade
+);
+
+    
+
+
+CREATE TABLE providers(
+	id int not null AUTO_INCREMENT PRIMARY KEY,
+    address varchar(510),
+    id_hotel int not null ,
+    user_id int ,
+    UNIQUE(id,user_id),
+    FOREIGN KEY(user_id) REFERENCES `users`(user_id) on delete cascade on update cascade ,
+	FOREIGN KEY(id_hotel) REFERENCES `hotel`(id) on delete cascade on update cascade
+);
+
+CREATE TABLE payment(
+    id int not null AUTO_INCREMENT PRIMARY KEY,
+    id_provider int ,
+    id_request int ,
+    create_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    cost decimal(12,2),
+    FOREIGN KEY(id_request) REFERENCES `request`(id) on delete cascade on update cascade,
+    FOREIGN KEY(id_provider) REFERENCES `providers`(id) on delete cascade on update cascade
+    );
+    
+
+
 CREATE TABLE IF NOT EXISTS `roombooks` (
     `roombook_id` INT(11) NOT NULL AUTO_INCREMENT,
     `user_id` INT(11) NOT NULL,
@@ -338,11 +437,222 @@ INSERT INTO `roomstatus` (`room_id`, `arrive`, `depart`)
                     (12, "2021/04/29", "2021/04/30"),
                     (13, "2021/04/25", "2021/04/27");
 
-CREATE TABLE IF NOT EXISTS `basket` (
-    `basket_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `user_id` INT(11) NOT NULL,
-    `room_id` INT(11) NOT NULL,
-    PRIMARY KEY (`basket_id`),
-	FOREIGN KEY(user_id) REFERENCES `users`(user_id) on delete cascade on update cascade ,
-	FOREIGN KEY(room_id) REFERENCES `rooms`(room_id) on delete cascade on update cascade
+
+
+
+
+
+-- Function tao key ;tao ra mot key va khong trung lap; khi nguoi book dat phong bnay thi chi can dua key cho provider der lay thong tin phong
+
+    
+DELIMITER //
+
+CREATE FUNCTION createKey()
+returns varchar(255) 
+BEGIN 
+DECLARE a int;
+DECLARE b varchar(255);
+SELECT id into a from request ORDER BY id DESC LIMIT 1;
+set b=concat(
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(a)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed:=round(rand(@seed)*4294967296))*36+1, 1),
+  substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand(@seed)*36+1, 1)
 );
+
+RETURN b;
+END //
+delimiter;
+
+
+
+
+-- Trigger truoc khi insert request caan kiem tra phong insert co available khong
+
+
+
+
+delimiter //
+    create trigger before_request_insert 	
+		before insert on request FOR EACH ROW
+	begin
+		declare errormessage text;
+        declare roomstatus text;
+        SELECT rooms.status into roomstatus from rooms where room_id=NEW.room_id;
+        set errormessage = "this room not available";
+        
+        if roomstatus <> "available" then
+        signal sqlstate '45000' SET message_text =errormessage;
+        
+        end if;
+        
+        end //
+        
+delimiter ;
+
+
+-- Triiger kiem tra update request , status bang sucsees la thanh cong va expired la key da het han nen khong the chinh sua; check khi update status accept '
+-- thi phong do phai available
+-- canel khi provider da accept ma cancel
+
+
+
+
+delimiter //
+    create trigger before_request_update 	
+		before update on request FOR EACH ROW
+	begin
+		declare errormessage text;
+        declare roomstatus text;
+        SELECT rooms.status into roomstatus from rooms where room_id=NEW.room_id;
+
+        if DATEDIFF(OLD.checkin,CURDATE())<0 OR DATEDIFF(OLD.checkout,CURDATE()) < 1    then
+                signal sqlstate '45000' SET message_text ="Date of checkin or checkout invalid";
+        end if;
+        IF OLD.status="success" then
+                signal sqlstate '45000' SET message_text ="cannot modify";
+        end if;
+        IF OLD.status="expired" then
+                signal sqlstate '45000' SET message_text ="cannot modify";
+        end if;
+        
+        if NEW.status="accept" and roomstatus <> "available" then
+                signal sqlstate '45000' SET message_text ="this room not available";
+        end if;
+
+        if NEW.status="cancel" then
+               update rooms set rooms.status="available" where rooms.room_id=OLD.room_id;
+        end if; 
+        
+        end //
+        
+delimiter ;
+
+
+
+-- Trigger check truoc khi them room moi thi room do da ton tai chua
+
+delimiter //
+    create trigger before_rooms_insert 	
+		before insert on rooms FOR EACH ROW
+	begin
+        declare noroom_check int;
+ 
+        SELECT rooms.noroom into noroom_check from rooms where roomtype_id=NEW.roomtype_id;
+       
+        if NEW.noroom=noroom_check then
+                signal sqlstate '45000' SET message_text ="The noroom already exists";
+        end if; 
+        
+        end //
+        
+delimiter ;
+
+
+-- Function checkin key ; kiem tra xem key co hop le hay lkhong , neu hop le va dung ngay checkin thi moi chap nhan;
+-- Neu goi function return true co nghia la thanh cong( se luu vao bang payment va bang history ); sua trang thai cua status request nay la success
+
+
+DELIMITER //
+CREATE FUNCTION checkInKey(keycheck varchar(255))         
+    RETURNS BOOLEAN    
+    BEGIN 
+       DECLARE check_valid BOOLEAN default FALSE; 
+      declare finished int default 0;
+     declare status1  varchar(255);
+     declare key1 varchar(255);
+     declare checkin1 date ;
+    declare checkout date;
+    declare id_request int;
+    declare id_provider int;
+    declare id_room int;
+    declare id_user int;
+    declare cost decimal(10,2);
+	declare curloop cursor for select `id`,`room_id`,`key`,`status`,`checkin`,`checkout` from request;
+    declare continue handler for not found set finished = 1;
+    open curloop;    
+    label_loop: loop
+		if finished = 1 then
+			leave label_loop;
+        end if;
+        fetch curloop into id_request,id_room, key1,status1,checkin1,checkout;
+        if key1 = keycheck AND status1 = "accept" then
+                if DATEDIFF(checkin1,CURDATE())<>0 then
+                signal sqlstate '45000' SET message_text ="Date to checkin not match";
+                ELSE 
+                update request set request.status="success" where request.id= id_request;
+                 set check_valid=TRUE;
+               end if;
+        end if ;      
+    end loop label_loop;
+    close curloop;  
+    if check_valid=TRUE then
+        select id into id_provider from providers
+        inner join hotel on hotel.id=providers.id_hotel
+        inner join roomtypes on roomtypes.id_hotel=hotel.id
+        inner join rooms on rooms.roomtype_id=roomtypes.roomtype_id
+        where rooms.room_id=id_room;
+        
+        select roomtypes.rent into cost from roomtypes
+        inner join rooms on rooms.roomtype_id=roomtypes.roomtype_id
+        where rooms.room_id=id_room;
+
+        select basket.user_id into id_user from basket
+        inner join request on basket.id_request=request.id_request
+        where basket.id_request=id_request;
+
+        insert into payment(`id_provider`,`id_request`,`cost`) values(id_provider,id_request,DATEDIFF(checkin1,checkout1)*cost);
+        insert into history(`id_request`,`room_id`,`id_user`,`checkin`,`checkout`,`create_at`) values(id_request,id_room,id_user,checkin1,checkout,now());
+
+    end if;
+    RETURN check_valid; 
+  END //
+
+DELIMITER ;
+
+
+--Event : Hang ngay deu check key cua request co het han hay chua neu het han thi update request.status="expired"
+
+delimiter //
+ 
+ create event destroyKeyExpired
+ on schedule every  1 day
+
+ do
+  begin
+	declare checkInDay date;
+    DECLARE statusKey varchar(255);
+    DECLARE id_request int;
+    declare finished int default 0;
+	declare curloop cursor for select id,`status`,`checkin` from request;
+    declare continue handler for not found set finished = 1;
+    open curloop;    
+    label_loop: loop
+		if finished = 1 then
+			leave label_loop;
+        end if;
+        fetch curloop into id_request, statusKey,checkInDay;
+        if statusKey <> "success" AND DATEDIFF(checkInDay,CURDATE()) < 0 then
+               UPDATE request set `status`="expired" where request.id=id_request;
+        end if ;      
+    end loop label_loop;
+    close curloop;  
+   
+
+  end//
+  
+delimiter ;
