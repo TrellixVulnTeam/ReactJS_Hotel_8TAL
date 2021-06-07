@@ -493,10 +493,13 @@ delimiter //
 		declare errormessage text;
         declare roomstatus text;
         SELECT rooms.status into roomstatus from rooms where room_id=NEW.room_id;
-        set errormessage = "this room not available";
         
         if roomstatus <> "available" then
-        signal sqlstate '45000' SET message_text =errormessage;
+        signal sqlstate '45000' SET message_text = "this room not available";
+        
+        end if;
+         if DATEDIFF(NEW.checkout,NEW.checkin) <= 0then
+        signal sqlstate '45000' SET message_text ="checkout date must be grater than checkin day";
         
         end if;
         
@@ -520,7 +523,7 @@ delimiter //
         declare roomstatus text;
         SELECT rooms.status into roomstatus from rooms where room_id=NEW.room_id;
 
-        if DATEDIFF(OLD.checkin,CURDATE())<0 OR DATEDIFF(OLD.checkout,CURDATE()) < 1    then
+        if DATEDIFF(New.checkin,CURDATE())<0 OR DATEDIFF(NEW.checkout,CURDATE()) < 1    then
                 signal sqlstate '45000' SET message_text ="Date of checkin or checkout invalid";
         end if;
         IF OLD.status="success" then
@@ -576,7 +579,7 @@ CREATE FUNCTION checkInKey(keycheck varchar(255))
      declare status1  varchar(255);
      declare key1 varchar(255);
      declare checkin1 date ;
-    declare checkout date;
+    declare checkout1 date;
     declare id_request int;
     declare id_provider int;
     declare id_room int;
@@ -589,21 +592,23 @@ CREATE FUNCTION checkInKey(keycheck varchar(255))
 		if finished = 1 then
 			leave label_loop;
         end if;
-        fetch curloop into id_request,id_room, key1,status1,checkin1,checkout;
+        fetch curloop into id_request,id_room, key1,status1,checkin1,checkout1;
         if key1 = keycheck AND status1 = "accept" then
-                if DATEDIFF(checkin1,CURDATE())<>0 then
-                signal sqlstate '45000' SET message_text ="Date to checkin not match";
-                ELSE 
-                update request set request.status="success" where request.id= id_request;
-                 set check_valid=TRUE;
+                if DATEDIFF(checkin1,CURDATE()) <>0 then
+                signal sqlstate '45000' SET message_text ="Date checkin is not today";
+                else 
+                set check_valid=TRUE;
+                leave label_loop;
                end if;
         end if ;      
     end loop label_loop;
     close curloop;  
     if check_valid=TRUE then
-        select id into id_provider from providers
+       
+        update request set request.status="success" where request.id= id_request;
+        select providers.id into id_provider from providers
         inner join hotel on hotel.id=providers.id_hotel
-        inner join roomtypes on roomtypes.id_hotel=hotel.id
+        inner join roomtypes on roomtypes.hotel_id=hotel.id
         inner join rooms on rooms.roomtype_id=roomtypes.roomtype_id
         where rooms.room_id=id_room;
         
@@ -612,11 +617,11 @@ CREATE FUNCTION checkInKey(keycheck varchar(255))
         where rooms.room_id=id_room;
 
         select basket.user_id into id_user from basket
-        inner join request on basket.id_request=request.id_request
+        inner join request on basket.id_request=request.id
         where basket.id_request=id_request;
 
-        insert into payment(`id_provider`,`id_request`,`cost`) values(id_provider,id_request,DATEDIFF(checkin1,checkout1)*cost);
-        insert into history(`id_request`,`room_id`,`id_user`,`checkin`,`checkout`,`create_at`) values(id_request,id_room,id_user,checkin1,checkout,now());
+        insert into payment(`id_provider`,`id_request`,`cost`) values(id_provider,id_request,DATEDIFF(checkout1,checkin)*cost);
+        insert into history(`id_request`,`room_id`,`user_id`,`checkin`,`checkout`,`create_at`) values(id_request,id_room,id_user,checkin1,checkout1,now());
 
     end if;
     RETURN check_valid; 
