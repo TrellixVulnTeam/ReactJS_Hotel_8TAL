@@ -208,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `rooms` (
     `roomtype_id` INT(11) NOT NULL,
     `noroom` INT(11) NOT NULL,
     `img` VARCHAR(255) NOT NULL,
-    `status` VARCHAR(255) NOT NULL,
+    `status` VARCHAR(255) NOT NULL default "available",
     `phone` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`room_id`),
     FOREIGN KEY (`roomtype_id`) REFERENCES `roomtypes`(`roomtype_id`) on delete cascade on update cascade
@@ -553,11 +553,8 @@ delimiter //
     create trigger before_rooms_insert 	
 		before insert on rooms FOR EACH ROW
 	begin
-        declare noroom_check int;
- 
-        SELECT rooms.noroom into noroom_check from rooms where roomtype_id=NEW.roomtype_id;
        
-        if NEW.noroom=noroom_check then
+        if NEW.noroom in (SELECT rooms.noroom from rooms where roomtype_id=NEW.roomtype_id) then
                 signal sqlstate '45000' SET message_text ="The noroom already exists";
         end if; 
         

@@ -11,7 +11,7 @@ class Database{
         private $charset;
         public $connection;
         private $result;
-        private $show_errors = TRUE;
+        private $show_errors = false;
         public $query_count = 0;
     
 
@@ -36,6 +36,13 @@ class Database{
      
             try{
                $this->result= $this->connection->query($query);
+               if(!$this->result){
+                   $this->show_errors=true;
+               }
+               else{
+                $this->show_errors=true;
+
+               }
             }
           
              catch(Throwable $e) {
@@ -45,6 +52,9 @@ class Database{
             return $this->result;
         }
     
+        public function getError(){
+            return $this->connection-> error;
+        }
         public function getAllData() {
            
             $result = array();

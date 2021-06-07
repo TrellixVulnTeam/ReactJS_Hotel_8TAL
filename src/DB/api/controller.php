@@ -8,6 +8,7 @@ require 'roomtype.php';
 require 'roombook.php';
 require 'checklogin.php';
 require 'location.php';
+require 'provider.php';
 
 header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
 header("Pragma: no-cache"); // HTTP 1.0.
@@ -39,6 +40,8 @@ try {
 
     if ($_SERVER['PATH_INFO'] == '/locations')
         new Location();
+    if ($_SERVER['PATH_INFO'] == '/providers')
+        new Provider();
 } catch (Throwable $e) {
     $data['message'] = "UNKNOWN SOURCE";
     echo json_encode($data);
