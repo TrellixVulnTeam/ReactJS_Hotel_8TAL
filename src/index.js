@@ -10,8 +10,8 @@ import Catcha from './components/captcha/captcha'
 ReactDOM.render(
   <BrowserRouter>
     <React.Suspense fallback={<div>Loading...</div>}>
-   {/* <App></App> */}
-     <Catcha></Catcha>
+   <App></App>
+     {/* <Catcha></Catcha> */}
     </React.Suspense>
   </BrowserRouter>,
   document.getElementById('root')

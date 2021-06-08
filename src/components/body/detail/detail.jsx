@@ -43,7 +43,7 @@ const Detail = (props) => {
                 <center> <h3 class="headerDetail"> Welcome to view detail room </h3></center>
                 <div></div>
                 <div class="row">
-                    <div class="col-sm-6" > <img src={data.img} alt="Image rooms" / >
+                    <div class="col-sm-6" > <img src={data.img} alt="Image rooms" />
                     </div>
                     <div class="col-sm-6" >
                         <div class="spa">

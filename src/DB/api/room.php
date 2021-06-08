@@ -21,17 +21,25 @@ class Room extends restful_api
 		if ($this->method == 'GET') {
 			$con = new Database();
             if (empty($this->params)) {
-                $con->query("SELECT * FROM `rooms`");
+                $con->query("SELECT * FROM `rooms`
+				INNER JOIN roomtypes on roomtypes.roomtype_id=rooms.roomtype_id
+				INNER JOIN hotel on hotel.id=roomtypes.hotel_id");	
                 $data = $con->getAllData();
             } else {
                 if(!isset($this->params['room_id'])&&isset($this->params['roomtype_id'])){
                     $id=$this->params['roomtype_id'];
-                    $con->query("select * from rooms where roomtype_id='$id'");
+                    $con->query("select * from rooms
+					INNER JOIN roomtypes on roomtypes.roomtype_id=rooms.roomtype_id
+					INNER JOIN hotel on hotel.id=roomtypes.hotel_id
+					where rooms.roomtype_id='$id'");
                     $data = $con->getAllData();
                 }
                 else{
                 $id=$this->params['room_id'];
-                $con->query("select * from rooms where room_id='$id'");
+                $con->query("select * from rooms 
+				INNER JOIN roomtypes on roomtypes.roomtype_id=rooms.roomtype_id
+				INNER JOIN hotel on hotel.id=roomtypes.hotel_id
+				where room_id='$id'");
                 $data = $con->getData();
                 }
                 
@@ -113,6 +121,60 @@ class Room extends restful_api
 					WHERE status='available'");
 					$data = $con->getAllData();
 				}
+				$this->response(200, $data);
+			 
+			}catch(Throwable $e) {
+
+				$this->response(500, "ERROR");
+			}
+			
+
+	}
+	function search(){
+
+		try{	
+			if ($this->method == 'GET') {
+				$con = new Database();
+				$sql='';
+				if(!isset( $this->params['location'])&& !isset( $this->params['price'])){
+					$sql=" SELECT roomtypes.*, hotel_location.location,hotel.* FROM `roomtypes`
+				INNER JOIN hotel on hotel.id=roomtypes.hotel_id
+                INNER JOIN hotel_location on hotel_location.id=hotel.id_location
+						";
+				}
+				if(isset( $this->params['price'])&&!isset( $this->params['location'])){
+					$price=intval($this->params['price']);
+					$price2=$price+100;
+					$sql=" SELECT roomtypes.*, hotel_location.location,hotel.* FROM `roomtypes`
+				INNER JOIN hotel on hotel.id=roomtypes.hotel_id
+                INNER JOIN hotel_location on hotel_location.id=hotel.id_location
+                WHERE roomtypes.rent >= '$price' and roomtypes.rent <= '$price2'";
+
+				}
+				if(!isset( $this->params['price'])&&isset( $this->params['location'])){
+					$location=$this->params['location'];
+					
+					$sql="	SELECT roomtypes.*, hotel_location.location,hotel.* FROM `roomtypes`
+				INNER JOIN hotel on hotel.id=roomtypes.hotel_id
+                INNER JOIN hotel_location on hotel_location.id=hotel.id_location
+                WHERE hotel_location.location='$location'";
+
+				}
+				if(isset( $this->params['price'])&&isset($this->params['location'])){
+					$price=intval($this->params['price']);
+					$price2=$price+100;
+					$location=$this->params['location'];
+
+					$sql=" SELECT roomtypes.*, hotel_location.location,hotel.* FROM `roomtypes`
+					INNER JOIN hotel on hotel.id=roomtypes.hotel_id
+					INNER JOIN hotel_location on hotel_location.id=hotel.id_location
+					WHERE roomtypes.rent >= '$price' and roomtypes.rent <= '$price2' and hotel_location.location='$location'";
+
+				}
+				}
+				$con->query($sql);
+				$data= $con->getAllData();
+				
 				$this->response(200, $data);
 			 
 			}catch(Throwable $e) {
