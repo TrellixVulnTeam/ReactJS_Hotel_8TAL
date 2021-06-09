@@ -5,14 +5,14 @@ import Gallery from './components/body/gallery'
 // import Test from './API/test'
 
 
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link,
-//   useRouteMatch,
-//   useParams
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
 
 import React, { Component } from 'react';
 import Footer from './components/Footer/Footer';
@@ -23,30 +23,26 @@ class App extends Component {
       <Footer></Footer>
     );
   }
-  // show2 = (routes) => {
+  show2 = (routes) => {
 
-  //   let result;
-  //   result = routes.map((route, index) => {
-  //     console.log(route)
-  //           return (
-  //                    <Route
-  //                       path={route.path}
-  //                       exact={route.exact}
-  //                       component={route.main}/> 
-  //                   );
-  //                                     }
-  //                      )
+    let result;
+    result = routes.map((route, index) => {
+      console.log(route)
+            return (
+                     <Route
+                        path={route.path}
+                        exact={route.exact}
+                        component={route.main}/> 
+                    );
+                                      }
+                       )
 
-  //   return result;
+    return result;
 
 
-  // }
-
+  }
 
 
 }
-
-
-
 
 export default App;
