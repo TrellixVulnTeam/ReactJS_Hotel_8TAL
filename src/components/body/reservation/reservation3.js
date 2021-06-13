@@ -43,7 +43,7 @@ class Reservation3 extends Component {
                             <h6 className="check_availability_title">your stay dates</h6>
                             <div className="check_availability-field">
                               <label>Name on Card</label>
-                              <input className="form-control wrap-box" type="text" placeholder="EX: NGUYEN DINH KHA" />
+                              <input className="form-control wrap-box" type="text" placeholder="EX: NGUYEN DINH LONG" />
                               <br />
                               <label>Credit card number</label>
                               <input className="form-control wrap-box" type="text" placeholder="EX: 4304  2052 10741" />
@@ -62,33 +62,6 @@ class Reservation3 extends Component {
                           <h4 className="widget-title">Basket</h4>
                           {/* Booking Summary */}
                           <form className="check_availability booking-summary">
-                            {/*?php 
-                                            if(ISSET($_SESSION['email'])) {
-                                                include_once "signup-form/connection.php";
-                                                $user = new User();
-                                                $room = new Room();
-                                                $roomType = new RoomType();
-                                                $basket = new Basket();
-                                                $_SESSION['total'] = 0;
-                                                $query = $user-*/}getUserByEmail($_SESSION['email']);//get User
-                            if(mysqli_num_rows($query) &gt; 0) {'{'}
-                            $fetch = mysqli_fetch_assoc($query);
-                            $query1 = $basket-&gt;getBasketByUserID($fetch['user_id']);//get basket_id, 
-                            if(mysqli_num_rows($query1) &gt; 0) {'{'}
-                            while($fetch1 = mysqli_fetch_assoc($query1)) {'{'}
-                            $query2 = $room-&gt;getRoomByRoomID($fetch1['room_id']);//get roomtype_id, noroom
-                            if(mysqli_num_rows($query2) &gt; 0) {'{'}
-                            $fetch2 = mysqli_fetch_assoc($query2);
-                            $query3 = $roomType-&gt;getRoomTypeByID($fetch2['roomtype_id']);//get rent, roomtype
-                            if(mysqli_num_rows($query3) &gt; 0) {'{'}
-                            $fetch3 = mysqli_fetch_assoc($query3);
-                            $first_date = strtotime($_SESSION['depart']);
-                            $second_date = strtotime($_SESSION['arrive']);
-                            $datediff = abs($first_date - $second_date);
-                            $_SESSION['day'] = ceil($datediff/(60*60*24));
-                            $_SESSION['rent'] = $_SESSION['day'] * $fetch3['rent'];
-                            $_SESSION['total'] += $_SESSION['rent'];
-                            ?&gt;
                             <div className="booking-summary-room-type">
                               <h6 className="check_availability_title">{/*?php echo $fetch3['roomtype']; ?*/}</h6>
                               <div className="booking-summary-detail">

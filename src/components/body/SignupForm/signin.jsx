@@ -13,8 +13,12 @@ class signin extends Component {
         this.state = {
             email: '',
             password: '',
-            redirect:false
+            redirect:false,
+            role:''
         }
+        localStorage.removeItem('id_user');
+        localStorage.setItem('login','false');
+
     }
     //  setCookie= (values)=> {
     //     const [cookies, setCookie] = useCookies(['access_token', 'refresh_token'])
@@ -43,12 +47,12 @@ class signin extends Component {
             // })
             console.log(res.data.message)
             if (res.data.message === "OK") {
-              this.setState({redirect:true})
+                localStorage.setItem("id_user",res.data.id_user);
+              this.setState({role:res.data.role,redirect:true})
               localStorage.setItem("login","true");
+
              }
             else {
-
-            
                 //console.log(data.data.message);
                 alert(" Đăng Nhập sai mật khẩu ")
             }
@@ -68,13 +72,23 @@ class signin extends Component {
     mySubmitHandler = (event) => {
         event.preventDefault();
     }
+    routeControl(){
+        if(this.state.role=="admin"){
+           return <Redirect to='/admin'/>
+        }
+        if(this.state.role=="provider"){
+            return <Redirect to='/provider'/>
+        }if(this.state.role=="user"){
+            return <Redirect to='/home'/>
+        }
+    }
     
     render() {
           
         return (
 
             <div>
-                {this.state.redirect?<Redirect to='/home'/>:null}
+                {this.state.redirect?this.routeControl():null}
                 <button className="header">
                     <Link to='/home' >Home</Link>
                 </button>

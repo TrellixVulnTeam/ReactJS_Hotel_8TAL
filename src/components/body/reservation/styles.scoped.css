@@ -1887,7 +1887,7 @@ tbody.collapse.in {
 }
 
 .breadcrumb>li+li:before {
-    content: "/ ";
+    content: "/ ";
     padding: 0 5px;
     color: #ccc;
 }
@@ -2315,21 +2315,10 @@ button.close {
 /* 
 2.4 Content
     2.4.1 Map
-
-
-
-
  
     2.4.14 RESTAURANTS
   2.4.17 SIDEBAR
-
-
-
     2.4.25 RESERVATION
-
-
-
-
 /* 2.4.18 SIDEBAR */
 
 .sidebar {
@@ -4165,6 +4154,3 @@ a:focus {
         transform: translateX(65%);
     }
 }
-
-
-/* END/ REPONSIVE */

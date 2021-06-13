@@ -4,81 +4,85 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import './header.scoped.css'
 class Header extends Component {
-  logout=()=>{
-    localStorage.setItem("login",'false');
+  logout = () => {
+    localStorage.setItem("login", 'false');
   }
   render() {
 
     return (
       <div>
-       
 
-          <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#363636', color: '#fff' }}>
-            <a className="navbar-brand" >
-              <Link to="/home"> </Link>
-              <img src="/images/logo-icon.png" alt="HKT Queen" className="logo" />
-            </a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon" ></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav">
-                <li className="nav-item active">
-                  <a className="nav-link" >
-                    <Link to="/"> HOME </Link>
-                  </a>
-                </li>
-                <li className="nav-item active">
-                  <a className="nav-link" ><Link to="/room"> ROOMS  </Link></a>
-                </li>
-                <li className="nav-item active">
-                  <div className="--dropdown">
-                    <button className="--dropbtn"><Link to="/restaurant"> SERVICES </Link>
-                      <i className="fa fa-caret-down" />
-                    </button>
-                    <div className="--dropdown-content">
-                      <a > <Link to="/restaurant"> RESTAURANT  </Link></a>
-                      <a ><Link to="/spa"> SPA  </Link></a>
-                      <a ><Link to="/pool"> Pool  </Link></a>
-                    </div>
+
+        <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#363636', color: '#fff' }}>
+          <a className="navbar-brand" >
+            <Link to="/home"> </Link>
+            <img src="/images/logo-icon.png" alt="HKT Queen" className="logo" />
+          </a>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon" ></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav">
+              <li className="nav-item active">
+                <a className="nav-link" >
+                  <Link to="/"> HOME </Link>
+                </a>
+              </li>
+              <li className="nav-item ">
+                <a className="nav-link" ><Link to="/room"> ROOMS  </Link></a>
+              </li>
+              <li className="nav-item ">
+                <div className="--dropdown">
+                  <button className="--dropbtn"><Link to="/restaurant"> SERVICES </Link>
+                    <i className="fa fa-caret-down" />
+                  </button>
+                  <div className="--dropdown-content">
+                    <a > <Link to="/restaurant"> RESTAURANT  </Link></a>
+                    <a ><Link to="/spa"> SPA  </Link></a>
+                    <a ><Link to="/pool"> Pool  </Link></a>
                   </div>
-                </li>
-                <li className="nav-item active">
-                  <a className="nav-link" ><Link to="/reservation1"> RESERVATION  </Link></a>
-                </li>
-                <li className="nav-item active">
-                  <a className="nav-link" ><Link to="/gallery"> GALLERY  </Link></a>
-                </li>
-                <li className="nav-item active">
-                  <a className="nav-link"><Link to="/contact"> CONTACT  </Link></a>
-                </li>
-                <li className="nav-item active">
-                  <a className="nav-link" ><Link to="/about"> ABOUT US  </Link></a>
-                </li>
-              
-         
-                {JSON.parse(localStorage.getItem('login'))?true:
-                  <li className="nav-item active">
+                </div>
+              </li>
+              <li className="nav-item ">
+                <a className="nav-link" ><Link to="/reservation1"> RESERVATION  </Link></a>
+              </li>
+              <li className="nav-item ">
+                <a className="nav-link" ><Link to="/gallery"> GALLERY  </Link></a>
+              </li>
+              <li className="nav-item ">
+                <a className="nav-link"><Link to="/contact"> CONTACT  </Link></a>
+              </li>
+              <li className="nav-item ">
+                <a className="nav-link" ><Link to="/about"> ABOUT US  </Link></a>
+              </li>
+
+
+              {JSON.parse(localStorage.getItem('login')) ? "" :
+                <li className="nav-item ">
                   <a className="nav-link"><Link to="/signIn"> SIGN IN  </Link></a>
                 </li>
-                           }
-        
+              }
 
-              
-                {JSON.parse(localStorage.getItem('login'))? 
-                <li className="nav-item active">
-                  {this.logout()}
-                 <a className="nav-link" >
-                   <Link to="/signIn"> LOG OUT  </Link></a>
-               </li>:
-                 <li className="nav-item active">
-                 <a className="nav-link" ><Link to="/signUp"> SIGN UP  </Link></a>
-               </li>}
-                
 
-                
-               
-                {/* <li className="nav-item active">
+
+              {JSON.parse(localStorage.getItem('login')) ?
+                <li className="nav-item ">
+                  <a className="nav-link" >
+                    <Link to="/signIn" onClick={this.logout}> LOG OUT  </Link></a>
+                </li> :
+                <li className="nav-item ">
+                  <a className="nav-link" ><Link to="/signUp"> SIGN UP  </Link></a>
+                </li>}
+              {JSON.parse(localStorage.getItem('login')) ?   <li className="nav-item ">
+                  <Link to="/basket"><i class="fa fa-shopping-cart cart-icon"></i></Link>
+
+                </li> :''
+              }
+
+
+
+
+              {/* <li className="nav-item active">
                   <div className="social" style={{}}>
                     <button className="register signIn" id="signin" data-toggle="modal" data-target="#login">
                       <a ><Link to="/signIn"> SIGN IN  </Link></a>
@@ -88,7 +92,7 @@ class Header extends Component {
                     </button>
                   </div>
                 </li> */}
-                {/* <li className="nav-item dropdown">
+              {/* <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle user-management" style={{}} id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><i className="fa fa-user fa-fw user" >
                   </i>
                   </a>
@@ -97,11 +101,11 @@ class Header extends Component {
                     <a className="dropdown-item" href="logout-user.php">Logout</a>
                   </div>
                 </li> */}
-              </ul>
-            </div>
-          </nav>
+            </ul>
+          </div>
+        </nav>
 
-          {/* //   <li className="menu"><Link to="/reservation"> RESERVATION  </Link></li>
+        {/* //   <li className="menu"><Link to="/reservation"> RESERVATION  </Link></li>
         //   <li className="menu"><Link to="/gallery"> GALLARY </Link></li>
         //   <li className="menu"><Link to="/contact"> CONTACT  </Link></li>
         //   <li className="menu"><Link to="/about"> ABOUT US   </Link></li>
@@ -109,12 +113,12 @@ class Header extends Component {
         //   <li className="menu"><Link to="/signUp"> SIGN UP   </Link></li>
         // </ul>
          */}
-          
+
       </div>
     );
 
   }
-  
+
 
 }
 

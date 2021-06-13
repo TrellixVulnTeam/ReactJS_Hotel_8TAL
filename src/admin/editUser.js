@@ -43,13 +43,13 @@ class EditUser extends Component {
             status: res.data.status,
             role: res.data.role,
         })
-        console.log(res)
       })
       }
     }
-   onSave = (user_id) => {
+   onSave = (event) => {
       let formData = new FormData();  
-      formData.append('user_id',user_id);  
+      event.preventDefault();
+      formData.append('user_id',this.state.user_id);  
       formData.append('name', this.state.name);
       formData.append('email', this.state.email);  
       formData.append('password', this.state.password);
@@ -59,19 +59,11 @@ class EditUser extends Component {
       formData.append('method','PUT');
       let config = {
         headers: {
-            "Content-Type": "application/json",
-             
-    }
-
-}
-axios.post(url+`/users?user_id=${user_id}`, formData, config).then(Response => {
-    console.log(Response.data.message);  
-    }).catch (function (error) {
-if (error.response) {
-    console.log(error.response.headers);
-}
-
-});
+            "Content-Type": "application/json",        
+            }}
+axios.post(url+`/users`, formData, config).then(res => {
+    console.log(res.data);  
+    })
 
 }
   
@@ -116,7 +108,7 @@ if (error.response) {
                         <option value="verified"  className="text-body" >verified</option>
                       </select>
                     </div>
-                    <button type="submit" name="updateuser" onClick={this.onSave(this.state.user_id)} className="btn btn-primary" style={{float: 'right'}} >Save</button>
+                    <button type="submit" name="updateuser" onClick={this.onSave} className="btn btn-primary" style={{float: 'right'}} >Save</button>
                 </div>
               </div>
             </div>

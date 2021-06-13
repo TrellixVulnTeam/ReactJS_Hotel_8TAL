@@ -16,8 +16,9 @@ const Pool = React.lazy(() => import('./../body/services/pool'));
 const Restaurant = React.lazy(() => import('./../body/services/restaurant.jsx'));
 const Spa = React.lazy(() => import('./../body/services/spa'));
 const Location = React.lazy(() => import('../body/room/location_hotel'));
+const Basket = React.lazy(() => import('../basket/basket'));
 
-
+const ErrorPage =React.lazy(()=>import('../../ErrorPage'))
 
 
 const BookingAdmin = React.lazy(() => import('../../admin/booking'));
@@ -31,11 +32,19 @@ const ForgotPassAdmin = React.lazy(() => import('../../admin/signup-form/forgotP
 const SignUpAdmin = React.lazy(() => import('../../admin/signup-form/signup'));
 const ResetCodeAdmin = React.lazy(() => import('../../admin/signup-form/resetCode'));
 const PassworChangedAdmin = React.lazy(() => import('../../admin/signup-form/passwordChanged'));
-
 const Admin = React.lazy(() => import('../../admin/index'));
 const UsersAdmin= React.lazy(() => import('../../admin/users'));
 const RoomAdmin = React.lazy(() => import('../../admin/rooms'));
 const AddRoomAdmin = React.lazy(() => import('../../admin/addRoom'));
+const CreateProviderAccount = React.lazy(() => import('../../admin/createProviderAccount'));
+
+
+
+
+
+const View = React.lazy(() => import('../../provider/view'));
+const CreateRoom = React.lazy(() => import('../../provider/createRoom'));
+const CheckInKey = React.lazy(() => import('../../provider/checkKey'));
 
 
 
@@ -66,6 +75,29 @@ const Routes = [
         path: '/home',
         exact: true,
         main: () => <Home />
+
+    },
+    {
+        path: '/createProviderAccount',
+        exact: true,
+        main: () => <CreateProviderAccount />
+
+    },
+    {
+        path: '/createRoom',
+        exact: true,
+        main: () => <CreateRoom />
+
+    }, {
+        path: '/checkInKey',
+        exact: true,
+        main: () => <CheckInKey />
+
+    },
+    {
+        path: '/provider',
+        exact: true,
+        main: () => <View />
 
     },
     {
@@ -103,6 +135,24 @@ const Routes = [
 
     {
         path: '/reservation2',
+        exact: true,
+        main: () => < Reservation2 />
+
+    },
+    // {
+    //     path: '/reservation1',
+    //     exact: true,
+    //     main: () => < Reservation1 />
+
+    // },
+    {
+        path: '/basket',
+        exact: true,
+        main: () => < Basket />
+
+    },
+    {
+        path: '/reservation2/:id',
         exact: true,
         main: () => < Reservation2 />
 
@@ -161,7 +211,12 @@ const Routes = [
     },
 
 
+    {
+        path: '/errorPage',
+        exact: true,
+        main: () => < ErrorPage />
 
+    },
     {
         path: '/signIn',
         exact: true,

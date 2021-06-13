@@ -2,9 +2,25 @@ import React, { Component } from 'react';
 import './styles.scoped.css'
 import Footer from './../../footer/footer'
 import Header from './../../header/header'
-
-
 class Reservation4 extends Component {
+    constructor(props) {
+    super(props);
+    this.state = {
+      phone: '',
+      arrive: '',
+      depart: '',
+      numbPerson: '',
+      roomType: '',
+      information: []
+    }
+  }
+  componentDidMount() {
+    if (localStorage.getItem("infor") !== null) {
+      this.setState(() => ({
+        information: JSON.parse(localStorage.getItem("infor"))
+      }))
+    }
+  }
     render() {
         return (
             <div className="container-fluid">
@@ -60,74 +76,12 @@ class Reservation4 extends Component {
                                   <span>Email: <b>{/*?php if(ISSET($_SESSION['email'])) {echo $_SESSION['email'];} ?*/}</b></span>
                                 </div>
                                 <div>
-                                  <span>Phone: <b>{/*?php if(ISSET($_SESSION['phone'])) {echo $_SESSION['phone'];} ?*/}</b></span>
+                                  <span>Phone: <b>{this.state.information.slice().map((infor) =>infor.phone)}</b></span>
                                 </div>
                               </div>
                               <div className="bill-content-room">
                                 <span>{/*?php echo $date = date("d-m-Y");?*/}</span>
-                                ";
-                                $query = $user-&gt;getUserByEmail($_SESSION['email']);//get User
-                                if(mysqli_num_rows($query) &gt; 0) {'{'}
-                                $fetch = mysqli_fetch_assoc($query);
-                                $query1 = $basket-&gt;getBasketByUserID($fetch['user_id']);//get basket_id, 
-                                if(mysqli_num_rows($query1) &gt; 0) {'{'}
-                                $i = 1;
-                                while($fetch1 = mysqli_fetch_assoc($query1)) {'{'}
-                                $query2 = $room-&gt;getRoomByRoomID($fetch1['room_id']);//get roomtype_id, noroom
-                                if(mysqli_num_rows($query2) &gt; 0) {'{'}
-                                $fetch2 = mysqli_fetch_assoc($query2);
-                                $query3 = $roomType-&gt;getRoomTypeByID($fetch2['roomtype_id']);//get rent, roomtype
-                                if(mysqli_num_rows($query3) &gt; 0) {'{'}
-                                $fetch3 = mysqli_fetch_assoc($query3);
-                                $first_date = strtotime($_SESSION['depart']);
-                                $second_date = strtotime($_SESSION['arrive']);
-                                $datediff = abs($first_date - $second_date);
-                                $_SESSION['day'] = ceil($datediff/(60*60*24));
-                                $_SESSION['rent'] = $_SESSION['day'] * $fetch3['rent'];
-                                $_SESSION['total'] += $_SESSION['rent'];
-                                ?&gt;
-                                insertRoomBook($fetch['user_id'], $fetch1['room_id'], $_SESSION['phone'], $_SESSION['arrive'], $_SESSION['depart'])){'{'}
-                                $roomstatus = new RoomStatus();
-                                $roomstatus-&gt;insertRoomStatus($fetch1['room_id'], $_SESSION['arrive'], $_SESSION['depart']);
-                                $check=true;
-                                $sendMail = $sendMail."
-                                ";
-                                {'}'}
-                                {'}'}
-                                {'}'}
-                                {'}'}
-                                $i++;
-                                {'}'}
-                                if($check) {'{'}
-                                $mail = new PHPMailer();
-                                $subject = "Hotel reservation invoice";
-                                $body = "Dear Mr./Ms. ".$_SESSION['name'].", <br /><p>Thank you for your reservation at HKT Queen.<br />
-                                  And here is a list of the rooms you have booked: </p><p>$sendMail</p><h2>Total: $".$total."</h2><br /><p>If you have any questions please contact us by email: hktqueenhotel@gmail.com
-                                  or phone number: (+84) 337 965 469</p><p>Have a nice day.</p>
-                                Best regards,<br />
-                                HKT Queen Hotel";
-                                //SMTP Settings
-                                $mail-&gt;isSMTP();
-                                $mail-&gt;Host = "smtp.gmail.com";
-                                $mail-&gt;SMTPAuth = true;
-                                $mail-&gt;Username = "dinhkhakl01@gmail.com"; //enter you email address
-                                $mail-&gt;Password = 'Luly041101'; //enter you email password
-                                $mail-&gt;Port = 465;
-                                $mail-&gt;SMTPSecure = "ssl";
-                                //Email Settings
-                                $mail-&gt;isHTML(true);
-                                $mail-&gt;setFrom($_SESSION['email'], "HKT Queen Hotel");
-                                $mail-&gt;addAddress($_SESSION['email']); //enter you email address
-                                $mail-&gt;Subject = ($subject);
-                                $mail-&gt;Body = $body;
-                                if($mail-&gt;send()) {'{'}
-                                $result = $basket-&gt;deleteBasketByUserID($fetch['user_id']);
-                                {'}'}
-                                {'}'}
-                                {'}'}
-                                {'}'}
-                                {'}'}
-                                ?&gt;
+                              
                                 <table className="table table-responsive-lg table-responsive-xl">
                                   <thead>
                                     <tr>
@@ -140,38 +94,17 @@ class Reservation4 extends Component {
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    {/*?php
-                                                            if(ISSET($_SESSION['email'])) {
-                                                                include_once "signup-form/connection.php";
-                                                                $user = new User();
-                                                                $room = new Room();
-                                                                $roomType = new RoomType();
-                                                                $basket = new Basket();
-                                                                $roomBook = new RoomBook();
-                                                                $_SESSION['total'] = 0;
-                                                                $check = false;
-                                                                $sendMail="BẢNG HÓA ĐƠN</br*/}
-                                    <tr>
-                                      <td>No room</td>
-                                      <td>Arrive</td>
-                                      <td>Depart</td>
-                                      <td>Price</td>
-                                    </tr><tr>
-                                      <td>{/*?php echo $i; ?*/}</td>
-                                      <td>{/*?php echo $fetch2['noroom']; ?*/}</td>
-                                      <td>{/*?php echo $fetch3['roomtype']; ?*/}</td>
-                                      <td>{/*?php echo $_SESSION['arrive']; ?*/}</td>
-                                      <td>{/*?php echo $_SESSION['depart']; ?*/}</td>
-                                      <td>${/*?php echo $fetch3['rent'].' X '.$_SESSION['day'].'d'; ?*/}</td>
-                                    </tr>
-                                    {/*?php
-                                                                                    if(isset($_POST['confirm'])){
-                                                                                        if($roomBook-*/}<tr>
-                                      <td>".$fetch2['noroom']."\n</td>
-                                      <td>".$_SESSION['arrive']."</td>
-                                      <td>".$_SESSION['depart']."</td>
-                                      <td> $".$fetch3['rent'].' X '.$_SESSION['day'].'d'."</td>
-                                    </tr>
+
+                                  {this.state.information.slice().map((infor) => {
+                                  return (<tr>
+                                    <td>{infor.roomType}</td>
+                                    <td>{infor.roomType}</td>
+                                    <td>{infor.arrive}</td>
+                                    <td>{infor.depart}</td>
+                                    <td>{infor.numbPerson}</td>            
+                                       </tr>
+                                         )
+                                       })}        
                                     <tr>
                                       <td><b>Total</b></td>
                                       <td style={{visibility: 'hidden'}} />

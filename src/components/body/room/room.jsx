@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Item from '../../Item/item_room';
+import Item from '../../Item/item_room_left';
+import Item1 from '../../Item/item_room_right';
 import './room.scoped.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from '../../header/header';
@@ -30,18 +31,28 @@ class Room extends Component {
           <div className="container">
             <div className="wrap-room-4">
               <div className="row">
-             
-              
-              
                 {this.state.data.map((element, index) => {
-                  return (<p>
-                    <div class="row">
-                    <Item image1={element.img} roomtype={element.roomtype} pri={"Start form " +element.rent +" $ per day"}
-               image2={element.image} 
-               des={element.des} id={element.room_id } hotel={element.hotel_name} address={element.address} noroom={element.noroom}></Item>
-              
-                    </div>
-                  </p>)
+                  if(index % 2 == 1){
+                      return (<p>
+                          <div class="row">
+                                <Item image1={element.img} roomtype={element.roomtype} pri={"Start form " +element.rent +" $ per day"}
+                                 image2={element.image} 
+                                 des={element.des} id={element.room_id } hotel={element.hotel_name} address={element.address} noroom={element.noroom}>
+                                </Item>                               
+                          </div>
+                            </p>)
+                  }else{
+                      return (<p>
+                          <div class="row">
+                            <Item1 image1={element.img} roomtype={element.roomtype} pri={"Start form " +element.rent +" $ per day"}
+                              image2={element.image} 
+                              des={element.des} id={element.room_id } hotel={element.hotel_name} address={element.address} noroom={element.noroom}>
+
+                              </Item1>
+                              
+                          </div>
+                            </p>)
+                    }
                 })}
 
               </div>

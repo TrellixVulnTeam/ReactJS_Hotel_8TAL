@@ -1,50 +1,68 @@
-.headerDetail{
+.headerDetail {
     font-family: 'Times New Roman', Times, serif;
     font-size: xx-large;
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 40px;
-  height: 108px;
-  padding-top: 40px;
-  color: #131313;
-  background-color: #e7e5e4;
-  letter-spacing: .15em;
-
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 40px;
+    height: 108px;
+    padding-top: 40px;
+    color: #131313;
+    background-color: #e7e5e4;
+    letter-spacing: .15em;
 }
-.dtail{
+
+.dtail {
     padding: 0px 20px;
 }
-.space{
+
+.space {
     padding: 20px 70px;
 }
-.sao{
-    font-family: 'Times New Roman', Times, serif; 
+
+.sao {
+    font-family: 'Times New Roman', Times, serif;
     color: #FF9900;
 }
-.gachdung{
-    color: chocolate;
-    padding-top: 25px;
-    padding-left: 0px;
+
+.gachdung {
+    color: blue;
+    padding-top: 40px;
 }
-.spa{
+
+.spa {
     display: flex;
 }
-.moderndb{
+
+.moderndb {
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-
+    font-size: 20px;
 }
-.spac{
+
+.spac {
     display: flex;
-
 }
-.tien{
+
+.tien {
     padding-top: 20px;
     font-family: 'Times New Roman', Times, serif;
     font-size: xx-large;
     color: mediumblue;
 }
-.gach{
+
+.gach {
     color: chocolate;
     padding-top: 0px;
+}
+
+.hheader {
+    padding: 20px;
+}
+
+.th1 {
+    color: salmon;
+}
+
+.th2 {
+    color: #FF9900;
 }

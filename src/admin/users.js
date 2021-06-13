@@ -75,6 +75,7 @@ handleRefresh = () => {
                             <th>Code</th>
                             <th>status</th>
                             <th>Role</th>
+                            <th> Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -89,13 +90,13 @@ handleRefresh = () => {
                               <td>{element.role}</td>
                               <td><div style={{ display: 'flex'}} width="100px" hover>
                               <NavLink to={`/editUserAdmin/${element.user_id}/editUser`} style={{ color: 'green' }}>
-                                  <button  > 
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                  <button className="btn btn-success" > 
+                                  update
                                   </button>
                               </NavLink>
                                                               
-                                  <button name="deleteuser" onClick={() => this.OnDelete(element.user_id)} style={{ color: "red" }}>
-                                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                  <button name="deleteuser" onClick={() => this.OnDelete(element.user_id)}className="btn btn-danger">
+                                                             delete
                                                             </button>
                               </div>
                               </td>

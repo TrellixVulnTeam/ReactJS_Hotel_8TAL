@@ -81,15 +81,15 @@ class rooms extends Component {
                                                         <td>{element.phone}</td>
                                                         <td>{element.status}</td>
                                                         <td><div style={{ display: 'flex' }} width="100px" hover>
-                                                        <NavLink to={`/editRoomAdmin/${element.room_id}/editRoom`} style={{ color: 'green' }}>
-                                                                <button  >
-                                                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                                                </button>
+                                                        <NavLink to={`/editRoomAdmin/${element.room_id}/editRoom`} >
+                                                                <button className="btn btn-success"  >
+                                                                    update
+                                                                    </button>
                                                                 
                                                         </NavLink>
-                                                            <button name="deletebooking"  onClick={() => this.OnDelete(element.room_id)} style={{ color: "red" }} >
-                                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                                            </button>
+                                                            <button name="deletebooking"  onClick={() => this.OnDelete(element.room_id)} className="btn btn-danger" >
+                                                                delete
+                                                                </button>
                                                         </div>
                                                         </td>
                                                     </tr>)

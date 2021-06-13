@@ -19,7 +19,7 @@ class menubar extends Component {
                 <ul className="sidebar-menu do-nicescrol in">
                     <li>
                         <Link to='/admin'> <a className="a" >
-                            <i className="fa fa-tachometer" aria-hidden="true" /> <span>Dashboard</span>
+                            <i className="fa fa-tachometer" aria-hidden="true" /> <span>History</span>
 
 
                         </a>
@@ -49,13 +49,20 @@ class menubar extends Component {
                         </Link>
                     </li>
                     <li>
-                        <Link to='/loginAdmin'>
+                        <Link to='/createProviderAccount'>
+                            <a className="a" target="_blank">
+                            <i className="fa fa-user" aria-hidden="true" /> <span>Create Provider Account</span>
+                            </a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to='/signIn'>
                             <a className="a" target="_blank">
                                 <i className="fa fa-sign-out" aria-hidden="true" /> <span>Log Out</span>
                             </a>
                         </Link>
                     </li>
-
+                   
                 </ul>
             </div>
 
