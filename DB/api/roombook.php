@@ -76,7 +76,7 @@ class RoomBook extends restful_api
 					// update khi da co nguoi dat phong
 					$con->query("UPDATE ROOMS SET status='unavailable' where room_id='$room_id'");
 					$data['message']="BOOKROOM Thanh cong";
-					$this->response(200,);
+					$this->response(200);
 
 
 				}
